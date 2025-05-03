@@ -84,3 +84,103 @@ if (contactForm) {
         contactForm.reset();
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded - checking for contact form');
+    
+    const contactForm = document.getElementById('contact-form');
+    console.log('Contact form found:', !!contactForm);
+    
+    if (contactForm) {
+        // Log form inputs
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        
+        console.log('Form elements found:');
+        console.log('- name input:', !!nameInput);
+        console.log('- email input:', !!emailInput);
+        console.log('- message input:', !!messageInput);
+        
+        contactForm.addEventListener('submit', function(event) {
+            console.log('Form submit event triggered');
+            event.preventDefault();
+            
+            // Get and log form values
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+            
+            console.log('Form values:');
+            console.log('- name:', name);
+            console.log('- email:', email);
+            console.log('- message:', message);
+            
+            // Validate form data
+            if (!name || !email || !message) {
+                console.error('Validation failed - missing required fields');
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Prepare data for sending
+            const formData = { name, email, message };
+            console.log('Sending form data:', formData);
+            
+            // Show loading indicator
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Send form data to server
+            fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                console.log('Response received from server:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Server response data:', data);
+                
+                if (data.success) {
+                    console.log('Email sent successfully');
+                    showMessage('Message sent successfully!', 'success');
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    throw new Error(data.message || 'Failed to send message');
+                }
+            })
+            .catch(error => {
+                console.error('Error during fetch or processing response:', error);
+                showMessage(error.message || 'An error occurred. Please try again.', 'error');
+            })
+            .finally(() => {
+                // Reset button
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
+            });
+        });
+    } else {
+        console.error('Contact form with ID "contact-form" not found in the document');
+    }
+
+    // Helper function to show messages
+    function showMessage(text, type) {
+        const messageEl = document.createElement('div');
+        messageEl.className = `${type}-message`;
+        messageEl.textContent = text;
+        contactForm.appendChild(messageEl);
+        
+        // Remove message after 3 seconds
+        setTimeout(() => {
+            messageEl.remove();
+        }, 3000);
+    }
+});
