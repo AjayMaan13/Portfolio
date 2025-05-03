@@ -12,7 +12,8 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #2d3436; /* Darker slate for better readability */
+    background-color: #f7f7f7; /* Subtle light background */
 }
 
 /* Header & Navigation */
@@ -20,8 +21,8 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     z-index: 1000;
 }
 
@@ -35,7 +36,7 @@ nav {
 .logo {
     font-weight: 700;
     font-size: 1.5rem;
-    color: #0077B5;
+    color: #6c5ce7; /* Primary theme color - Purple */
 }
 
 .nav-links {
@@ -49,17 +50,17 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #2d3436;
     font-weight: 500;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #0077B5;
+    color: #6c5ce7; /* Primary theme color - Purple */
 }
 
 .nav-links a.active {
-    color: #0077B5;
+    color: #6c5ce7; /* Primary theme color - Purple */
     font-weight: 600;
 }
 
@@ -71,7 +72,7 @@ nav {
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: #2d3436;
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -86,7 +87,7 @@ section {
 .section-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #0077B5;
+    color: #6c5ce7; /* Primary theme color - Purple */
     text-align: center;
 }
 
@@ -95,7 +96,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #dfe6e9 100%);
     text-align: center;
 }
 
@@ -107,27 +108,29 @@ section {
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: #2d3436;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: #555;
+    color: #636e72;
 }
 
 .cta-button {
     display: inline-block;
-    background-color: #0077B5;
+    background-color: #6c5ce7; /* Primary theme color - Purple */
     color: white;
     padding: 0.8rem 2rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .cta-button:hover {
-    background-color: #005582;
+    background-color: #5649c0; /* Darker shade of primary color */
+    transform: translateY(-2px);
 }
 
 /* About Section */
@@ -143,7 +146,7 @@ section {
 .profile-image {
     width: 100%;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
 .skills {
@@ -153,8 +156,8 @@ section {
 }
 
 .skill-tag {
-    background-color: #e8f4fc;
-    color: #0077B5;
+    background-color: #e1ddff; /* Light version of primary color */
+    color: #6c5ce7; /* Primary theme color - Purple */
     border-radius: 50px;
     padding: 0.5rem 1rem;
     margin: 0.5rem;
@@ -174,12 +177,14 @@ section {
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s;
+    border-top: 4px solid #6c5ce7; /* Adding accent border */
 }
 
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
 }
 
 .project-image {
@@ -195,6 +200,7 @@ section {
 .project-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #2d3436;
 }
 
 .project-tags {
@@ -209,6 +215,7 @@ section {
     padding: 0.3rem 0.8rem;
     margin: 0.3rem;
     font-size: 0.8rem;
+    color: #636e72;
 }
 
 /* Contact Section */
@@ -225,8 +232,13 @@ section {
 }
 
 .contact-info a {
-    color: #0077B5;
+    color: #6c5ce7; /* Primary theme color - Purple */
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #5649c0; /* Darker shade of primary color */
 }
 
 .social-links {
@@ -242,6 +254,7 @@ section {
     width: 30px;
     height: 30px;
     transition: transform 0.3s;
+    filter: hue-rotate(220deg); /* Apply color filter to icons */
 }
 
 .social-icon:hover img {
@@ -261,14 +274,21 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: #2d3436;
 }
 
 input, textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ddd;
+    border: 1px solid #dfe6e9;
     border-radius: 5px;
     font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #6c5ce7; /* Primary theme color - Purple */
 }
 
 textarea {
@@ -277,24 +297,25 @@ textarea {
 }
 
 .submit-button {
-    background-color: #0077B5;
+    background-color: #6c5ce7; /* Primary theme color - Purple */
     color: white;
     border: none;
     padding: 0.8rem 2rem;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
     align-self: flex-start;
 }
 
 .submit-button:hover {
-    background-color: #005582;
+    background-color: #5649c0; /* Darker shade of primary color */
+    transform: translateY(-2px);
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #2d3436;
     color: white;
     text-align: center;
     padding: 2rem;
@@ -318,7 +339,7 @@ footer {
 .skills-category h3 {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #2d3436;
     text-align: center;
 }
 
@@ -337,13 +358,14 @@ footer {
     border-radius: 8px;
     padding: 15px;
     width: 100px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 3px solid #6c5ce7; /* Primary theme color - Purple */
 }
 
 .skill-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2);
 }
 
 .skill-item img {
@@ -356,6 +378,7 @@ footer {
     font-size: 0.9rem;
     font-weight: 500;
     text-align: center;
+    color: #2d3436;
 }
 
 /* GitHub Stats Section */
@@ -379,13 +402,14 @@ footer {
     background-color: #f5f5f5;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     text-align: center;
+    border-left: 5px solid #6c5ce7; /* Primary theme color - Purple */
 }
 
 .github-stat-card h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #2d3436;
 }
 
 .github-stat-card img {
@@ -403,40 +427,3 @@ footer {
     text-align: center;
 }
 
-
-/* Responsive Styles for Skills and GitHub Stats */
-@media screen and (max-width: 768px) {
-    .skills-grid {
-        gap: 15px;
-    }
-    
-    .skill-item {
-        width: 80px;
-        padding: 10px;
-    }
-    
-    .skill-item img {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .github-stat-card {
-        padding: 15px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .skills-grid {
-        gap: 10px;
-    }
-    
-    .skill-item {
-        width: 70px;
-        padding: 8px;
-    }
-    
-    .skill-item img {
-        width: 35px;
-        height: 35px;
-    }
-}
