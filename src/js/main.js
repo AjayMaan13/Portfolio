@@ -72,12 +72,6 @@ if (contactForm) {
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
         
-        // Basic form validation
-        if (!name || !email || !message) {
-            alert('Please fill in all fields');
-            return;
-        }
-        
         // In a real project, you would send this data to a server
         // For this demo, we'll just show a success message
         alert('Thank you for your message! I will get back to you soon.');
