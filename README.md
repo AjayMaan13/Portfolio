@@ -6,6 +6,9 @@ A full-stack web application with responsive design, animations, and email funct
 
 This project consists of a web application with both client-side and server-side components. It features responsive design, custom animations, and email functionality.
 
+## 🌐 Deployment
+This website is hosted on Vercel and can be accessed at https://portfolio-gray-xi-10.vercel.app.
+
 ## 🔧 Technology Stack
 
 - **Frontend**: HTML, CSS, JavaScript
