@@ -1,180 +1,291 @@
-// Main JavaScript functionality
+/**
+ * Main JavaScript Functionality
+ * Handles navigation, scrolling, form handling, and general interactions
+ */
 
-// Mobile navigation toggle
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-const navLinks = document.querySelectorAll('.nav-links li');
-
-burger.addEventListener('click', () => {
-    // Toggle Nav
-    nav.classList.toggle('nav-active');
-    
-    // Animate Links
-    navLinks.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
-    });
-    
-    // Burger Animation
-    burger.classList.toggle('toggle');
-});
-
-// Close mobile menu when a link is clicked
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (nav.classList.contains('nav-active')) {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            
-            navLinks.forEach(link => {
-                link.style.animation = '';
-            });
-        }
-    });
-});
-
-// Active section highlighting
+// DOM Elements
+const header = document.querySelector('.header');
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navLinkItems = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section');
-const navItems = document.querySelectorAll('.nav-links a');
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.querySelector('.form-status');
+const backToTop = document.querySelector('.back-to-top');
+const pageLoader = document.querySelector('.page-loader');
 
-window.addEventListener('scroll', () => {
-    let current = '';
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide page loader after content loads
+    if (pageLoader) {
+        setTimeout(() => {
+            pageLoader.classList.add('loaded');
+        }, 500);
+    }
     
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
+    // Set up scroll observers
+    setupScrollObservers();
     
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').substring(1) === current) {
-            item.classList.add('active');
-        }
-    });
+    // Set active nav link based on initial scroll position
+    updateActiveNavLink();
 });
 
-// Contact form handling
-const contactForm = document.getElementById('contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+// Mobile menu toggle
+if (mobileMenuToggle && navLinks) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
         
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // In a real project, you would send this data to a server
-        // For this demo, we'll just show a success message
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
+        // Add overflow hidden to body when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded - checking for contact form');
-    
-    const contactForm = document.getElementById('contact-form');
-    console.log('Contact form found:', !!contactForm);
-    
-    if (contactForm) {
-        // Log form inputs
-        const nameInput = document.getElementById('name');
-        const emailInput = document.getElementById('email');
-        const messageInput = document.getElementById('message');
-        
-        console.log('Form elements found:');
-        console.log('- name input:', !!nameInput);
-        console.log('- email input:', !!emailInput);
-        console.log('- message input:', !!messageInput);
-        
-        contactForm.addEventListener('submit', function(event) {
-            console.log('Form submit event triggered');
-            event.preventDefault();
-            
-            // Get and log form values
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
-            const message = messageInput.value.trim();
-            
-            console.log('Form values:');
-            console.log('- name:', name);
-            console.log('- email:', email);
-            console.log('- message:', message);
-            
-            // Validate form data
-            if (!name || !email || !message) {
-                console.error('Validation failed - missing required fields');
-                showMessage('Please fill in all fields', 'error');
-                return;
-            }
-            
-            // Prepare data for sending
-            const formData = { name, email, message };
-            console.log('Sending form data:', formData);
-            
-            // Show loading indicator
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-            
-            // Send form data to server
-            fetch('/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                console.log('Response received from server:', response.status);
-                return response.json();
-            })
-            .then(data => {
-                console.log('Server response data:', data);
-                
-                if (data.success) {
-                    console.log('Email sent successfully');
-                    showMessage('Message sent successfully!', 'success');
-                    // Reset form
-                    contactForm.reset();
-                } else {
-                    throw new Error(data.message || 'Failed to send message');
-                }
-            })
-            .catch(error => {
-                console.error('Error during fetch or processing response:', error);
-                showMessage(error.message || 'An error occurred. Please try again.', 'error');
-            })
-            .finally(() => {
-                // Reset button
-                submitButton.textContent = originalButtonText;
-                submitButton.disabled = false;
-            });
-        });
-    } else {
-        console.error('Contact form with ID "contact-form" not found in the document');
-    }
+// Close mobile menu when clicking a nav link
+navLinkItems.forEach(link => {
+    link.addEventListener('click', () => {
+        if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+            mobileMenuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
 
-    // Helper function to show messages
-    function showMessage(text, type) {
-        const messageEl = document.createElement('div');
-        messageEl.className = `${type}-message`;
-        messageEl.textContent = text;
-        contactForm.appendChild(messageEl);
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Remove message after 3 seconds
-        setTimeout(() => {
-            messageEl.remove();
-        }, 3000);
+        const targetId = this.getAttribute('href');
+        
+        // Skip if it's just '#'
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            // Get the target's position, accounting for the fixed header
+            const headerHeight = header.offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            // Smooth scroll to target
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Change header style on scroll
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    // Update active nav link
+    updateActiveNavLink();
+    
+    // Show/hide back to top button
+    if (backToTop) {
+        if (window.scrollY > 500) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
+        }
     }
 });
+
+// Set up intersection observers for scroll animations
+function setupScrollObservers() {
+    // Elements to animate
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    // Create observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animation class based on data-animation attribute
+                const animation = entry.target.dataset.animation || 'fade-in';
+                entry.target.classList.add(animation);
+                
+                // Unobserve after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Offset from the bottom
+    });
+    
+    // Observe all elements
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Update active navigation link based on scroll position
+function updateActiveNavLink() {
+    // Get current scroll position
+    const scrollPosition = window.scrollY;
+    
+    // Loop through all sections
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100; // Offset for header
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        // Check if current scroll position is within this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to current section's nav link
+            const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            if (correspondingLink) {
+                correspondingLink.classList.add('active');
+            }
+        }
+    });
+}
+
+// Contact form handling
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const formDataObj = Object.fromEntries(formData.entries());
+        
+        // Basic form validation
+        if (!formDataObj.name || !formDataObj.email || !formDataObj.message) {
+            showFormMessage('Please fill in all fields.', 'error');
+            return;
+        }
+        
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formDataObj.email)) {
+            showFormMessage('Please enter a valid email address.', 'error');
+            return;
+        }
+        
+        // Show loading state
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+        
+        try {
+            // Send form data to server
+            const response = await fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formDataObj),
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                // Show success message
+                showFormMessage('Message sent successfully!', 'success');
+                
+                // Reset form
+                contactForm.reset();
+            } else {
+                // Show error message
+                showFormMessage(data.message || 'Failed to send message.', 'error');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            showFormMessage('An error occurred. Please try again.', 'error');
+        } finally {
+            // Reset button state
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+        }
+    });
+}
+
+// Show form message (success or error)
+function showFormMessage(message, type) {
+    if (formStatus) {
+        // Create message element
+        formStatus.innerHTML = `<div class="${type}-message">${message}</div>`;
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            formStatus.innerHTML = '';
+        }, 5000);
+    }
+}
+
+// Context-Aware Navigation
+function initContextNav() {
+    // DOM elements
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const header = document.querySelector('.header');
+    const progressBar = document.querySelector('.scroll-progress');
+    
+    // Update progress bar width based on scroll position
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        
+        progressBar.style.width = scrollPercentage + '%';
+    });
+    
+    // Create section observer to detect which section is in view
+    const options = {
+        threshold: 0.2, // 20% of the section must be visible
+        rootMargin: '-70px 0px -30% 0px' // Adjust based on header height
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Add active class to section when it comes into view
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    // Get the href attribute without the #
+                    const href = link.getAttribute('href').substring(1);
+                    if (href === id) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Add data-active attribute for additional effects
+                entry.target.setAttribute('data-active', 'true');
+            } else {
+                entry.target.removeAttribute('data-active');
+            }
+        });
+    }, options);
+    
+    // Observe all sections
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// Call this function on page load
+document.addEventListener('DOMContentLoaded', initContextNav);
