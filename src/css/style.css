@@ -1149,22 +1149,24 @@ section[data-active="true"] {
 }
 
 
-/* Interactive Terminal Styles */
+/* Terminal Styles */
 .terminal-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px; /* Position above toggle button */
     right: 20px;
     width: 500px;
     height: 300px;
-    background-color: rgba(30, 30, 30, 0.9);
-    border-radius: 8px;
+    background-color: rgba(20, 20, 20, 0.95);
+    border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     z-index: 1000;
-    transform: translateY(calc(100% + 20px));
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(calc(100% + 100px));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .terminal-container.open {
@@ -1175,9 +1177,9 @@ section[data-active="true"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #1a1a1a;
-    border-bottom: 1px solid #333;
+    padding: 10px 15px;
+    background-color: rgba(30, 30, 30, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .terminal-controls {
@@ -1190,6 +1192,11 @@ section[data-active="true"] {
     height: 12px;
     border-radius: 50%;
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.control:hover {
+    opacity: 0.7;
 }
 
 .control.close {
@@ -1206,8 +1213,9 @@ section[data-active="true"] {
 
 .terminal-title {
     color: #ddd;
-    font-family: var(--font-secondary);
+    font-family: var(--font-secondary, 'Courier New', monospace);
     font-size: 14px;
+    font-weight: 500;
 }
 
 .terminal-body {
@@ -1215,17 +1223,18 @@ section[data-active="true"] {
     padding: 15px;
     overflow-y: auto;
     color: #ddd;
-    font-family: var(--font-secondary);
+    font-family: var(--font-secondary, 'Courier New', monospace);
     font-size: 14px;
+    line-height: 1.5;
 }
 
 .terminal-output {
     margin-bottom: 15px;
+    white-space: pre-wrap;
 }
 
 .terminal-output p {
     margin: 5px 0;
-    line-height: 1.4;
 }
 
 .terminal-prompt {
@@ -1243,7 +1252,7 @@ section[data-active="true"] {
     background: transparent;
     border: none;
     color: #ddd;
-    font-family: var(--font-secondary);
+    font-family: var(--font-secondary, 'Courier New', monospace);
     font-size: 14px;
     outline: none;
     padding: 0;
@@ -1257,21 +1266,25 @@ section[data-active="true"] {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: var(--gradient-primary);
+    background: var(--gradient-primary, #5045E4);
     border: none;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(80, 69, 228, 0.3);
     z-index: 999;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .terminal-toggle:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 6px 20px rgba(80, 69, 228, 0.4);
+}
+
+.terminal-toggle:active {
+    transform: translateY(-1px);
 }
 
 .terminal-toggle svg {
@@ -1281,8 +1294,37 @@ section[data-active="true"] {
 }
 
 .command {
-    color: var(--color-accent-primary);
+    color: var(--color-accent-primary, #5045E4);
     font-weight: bold;
+}
+
+/* Dark theme adjustments */
+.dark-theme .terminal-container {
+    background-color: rgba(10, 10, 10, 0.95);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .terminal-header {
+    background-color: rgba(20, 20, 20, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .terminal-container {
+        width: calc(100% - 40px);
+        height: 250px;
+        bottom: 90px;
+    }
+    
+    .terminal-toggle {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    .terminal-toggle:hover {
+        right: 50%;
+        transform: translateX(50%) translateY(-3px);
+    }
 }
 
 /* Dark theme adjustments */

@@ -40,26 +40,7 @@ const COMMANDS = {
                    <p>- <span class="command">portfolio</span>: This website you're currently exploring</p>
                    <p>- <span class="command">ecommerce</span>: Full-stack e-commerce platform</p>
                    <p>- <span class="command">weather</span>: Real-time weather application</p>
-                   <p>- <span class="command">taskapi</span>: RESTful API for task management</p>
-                   <p>Type <span class="command">project [name]</span> to learn more about a specific project.</p>`;
-        }
-    },
-    project: {
-        description: 'Get details about a specific project',
-        action: (args) => {
-            const project = args[0]?.toLowerCase();
-            switch (project) {
-                case 'portfolio':
-                    return '<p>Portfolio: A modern personal website with dark/light theme toggle and interactive elements.</p>';
-                case 'ecommerce':
-                    return '<p>E-commerce: Full-stack platform with user authentication and payment processing.</p>';
-                case 'weather':
-                    return '<p>Weather App: Real-time weather application using weather API and location services.</p>';
-                case 'taskapi':
-                    return '<p>Task API: RESTful API built with Node.js, Express, and MongoDB.</p>';
-                default:
-                    return `<p>Project "${args[0]}" not found. Type <span class="command">projects</span> to see available projects.</p>`;
-            }
+                   <p>- <span class="command">taskapi</span>: RESTful API for task management</p>`;
         }
     },
     contact: {
@@ -88,41 +69,61 @@ const COMMANDS = {
 
 // Initialize terminal
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Terminal script loaded');
+    
     const terminalToggle = document.querySelector('.terminal-toggle');
     const terminalContainer = document.querySelector('.terminal-container');
     const terminalInput = document.querySelector('.terminal-input');
     const terminalOutput = document.querySelector('.terminal-output');
     const closeButton = document.querySelector('.control.close');
     
+    console.log('Terminal elements:', {
+        toggle: !!terminalToggle,
+        container: !!terminalContainer,
+        input: !!terminalInput,
+        output: !!terminalOutput,
+        close: !!closeButton
+    });
+    
+    if (!terminalToggle || !terminalContainer) {
+        console.error('Terminal elements not found');
+        return;
+    }
+    
     // Toggle terminal visibility
     terminalToggle.addEventListener('click', () => {
+        console.log('Terminal toggle clicked');
         terminalContainer.classList.toggle('open');
-        if (terminalContainer.classList.contains('open')) {
+        if (terminalContainer.classList.contains('open') && terminalInput) {
             terminalInput.focus();
         }
     });
     
     // Close terminal
-    closeButton.addEventListener('click', () => {
-        terminalContainer.classList.remove('open');
-    });
+    if (closeButton) {
+        closeButton.addEventListener('click', () => {
+            terminalContainer.classList.remove('open');
+        });
+    }
     
     // Handle command input
-    terminalInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            const input = terminalInput.value.trim();
-            if (input) {
-                // Add command to output
-                terminalOutput.innerHTML += `<p><span class="terminal-prompt">ajay@portfolio:~$</span> ${input}</p>`;
-                
-                // Process command
-                processCommand(input);
-                
-                // Clear input
-                terminalInput.value = '';
+    if (terminalInput) {
+        terminalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const input = terminalInput.value.trim();
+                if (input) {
+                    // Add command to output
+                    terminalOutput.innerHTML += `<p><span class="terminal-prompt">ajay@portfolio:~$</span> ${input}</p>`;
+                    
+                    // Process command
+                    processCommand(input);
+                    
+                    // Clear input
+                    terminalInput.value = '';
+                }
             }
-        }
-    });
+        });
+    }
     
     // Process command and show response
     function processCommand(input) {

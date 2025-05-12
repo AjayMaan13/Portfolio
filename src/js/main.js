@@ -289,3 +289,11 @@ function initContextNav() {
 
 // Call this function on page load
 document.addEventListener('DOMContentLoaded', initContextNav);
+
+// Add this at the bottom of your main.js for testing
+setTimeout(() => {
+    console.log('=== Terminal Debug Info ===');
+    console.log('Terminal toggle:', document.querySelector('.terminal-toggle'));
+    console.log('Terminal container:', document.querySelector('.terminal-container'));
+    console.log('All scripts loaded');
+}, 2000);
