@@ -1,6 +1,6 @@
 /**
- * Main JavaScript Functionality
- * Handles navigation, scrolling, form handling, and general interactions
+ * Enhanced Main JavaScript with Typing Effect
+ * Handles navigation, scrolling, form handling, and typing animation
  */
 
 // DOM Elements
@@ -23,12 +23,138 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
     
+    // Initialize typing effect
+    simpleTypingEffect();
+    
     // Set up scroll observers
     setupScrollObservers();
     
     // Set active nav link based on initial scroll position
     updateActiveNavLink();
 });
+
+// Simple, reliable typing effect
+function simpleTypingEffect() {
+    const roles = [
+        'Software Engineer',
+        'Web Developer',
+        'Problem Solver',
+        'Full-Stack Developer',
+        'Programming Student'
+    ];
+    
+    const element = document.querySelector('.typing-text');
+    
+    if (!element) {
+        console.error('Typing element not found!');
+        return;
+    }
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    
+    function type() {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            element.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            element.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+        
+        let speed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && charIndex === currentRole.length) {
+            speed = 2000; // Pause at end
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            speed = 500; // Pause before next word
+        }
+        
+        setTimeout(type, speed);
+    }
+    
+    // Start after DOM is fully loaded
+    setTimeout(type, 1000);
+}
+
+// Typing Animation Effect
+function initTypingEffect() {
+    const roles = [
+        'Software Engineer',
+        'Web Developer',
+        'Problem Solver',
+        'Full-Stack Developer',
+        'Programming Student'
+    ];
+    
+    const typingElement = document.querySelector('.typing-text');
+    
+    if (!typingElement) return;
+    
+    let currentRoleIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let isWaiting = false;
+    
+    const TYPING_SPEED = 100;
+    const DELETING_SPEED = 50;
+    const PAUSE_AFTER_COMPLETE = 2000;
+    const PAUSE_AFTER_DELETE = 500;
+    
+    function type() {
+        if (isWaiting) return;
+        
+        const currentRole = roles[currentRoleIndex];
+        
+        if (!isDeleting) {
+            // Typing phase
+            typingElement.textContent = currentRole.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+            
+            if (currentCharIndex === currentRole.length) {
+                // Finished typing, wait before deleting
+                isWaiting = true;
+                setTimeout(() => {
+                    isWaiting = false;
+                    isDeleting = true;
+                    type();
+                }, PAUSE_AFTER_COMPLETE);
+                return;
+            }
+            
+            setTimeout(type, TYPING_SPEED);
+        } else {
+            // Deleting phase
+            typingElement.textContent = currentRole.substring(0, currentCharIndex);
+            currentCharIndex--;
+            
+            if (currentCharIndex < 0) {
+                // Finished deleting, move to next role
+                isDeleting = false;
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                currentCharIndex = 0;
+                
+                isWaiting = true;
+                setTimeout(() => {
+                    isWaiting = false;
+                    type();
+                }, PAUSE_AFTER_DELETE);
+                return;
+            }
+            
+            setTimeout(type, DELETING_SPEED);
+        }
+    }
+    
+    // Start the typing effect after page loads
+    setTimeout(type, 1000);
+}
 
 // Mobile menu toggle
 if (mobileMenuToggle && navLinks) {
@@ -159,6 +285,27 @@ function updateActiveNavLink() {
         }
     });
 }
+// Add smooth scroll for hero scroll hint
+function scrollToNext() {
+    const nextSection = document.querySelector('#about');
+    if (nextSection) {
+        // Get header height to account for fixed header
+        const headerHeight = header.offsetHeight;
+        
+        // Calculate the position to scroll to
+        const sectionTop = nextSection.getBoundingClientRect().top + window.pageYOffset;
+        const targetPosition = sectionTop - headerHeight - 20; // 20px extra padding
+        
+        // Smooth scroll to the target position
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Make sure the function is globally available
+window.scrollToNext = scrollToNext;
 
 // Contact form handling
 if (contactForm) {
@@ -289,11 +436,3 @@ function initContextNav() {
 
 // Call this function on page load
 document.addEventListener('DOMContentLoaded', initContextNav);
-
-// Add this at the bottom of your main.js for testing
-setTimeout(() => {
-    console.log('=== Terminal Debug Info ===');
-    console.log('Terminal toggle:', document.querySelector('.terminal-toggle'));
-    console.log('Terminal container:', document.querySelector('.terminal-container'));
-    console.log('All scripts loaded');
-}, 2000);
