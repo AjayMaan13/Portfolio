@@ -1,12 +1,211 @@
 /**
- * Updated projects.js with scroll animations and opening effects
+ * Updated projects.js with new projects and no image sections
  * This replaces your existing projects.js file
  */
 
-// Enhanced project data with detailed information
+
 const enhancedProjectsData = [
     {
         id: 'project1',
+        title: 'FinSight - Personal Finance Tracker',
+        description: 'A modern, full-stack personal finance application that helps users track transactions, set financial goals, manage budgets, and gain insights into their spending patterns.',
+        detailedDescription: `
+            <p>A comprehensive personal finance application built with modern full-stack technologies to help users manage their finances effectively.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>💰 Transaction Management: Create, edit, delete, and import transactions from CSV</li>
+                <li>🎯 Goal Tracking: Set and monitor financial goals with progress visualization</li>
+                <li>💳 Budget Management: Create and track budgets by category</li>
+                <li>📊 Financial Insights: Visual analytics with charts and spending patterns</li>
+                <li>🔐 User Authentication: Secure JWT-based authentication with role management</li>
+                <li>📤 Data Import: CSV import functionality for bulk transaction uploads</li>
+                <li>⚡ Real-time Updates: Dynamic dashboard with live financial summaries</li>
+                <li>📱 Responsive Design: Mobile-first design with dark theme</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Built with React 19, Node.js/Express backend, PostgreSQL database, and includes a Python Flask microservice for future ML features like balance forecasting and anomaly detection.</p>
+            <h4>Architecture:</h4>
+            <p>Microservices architecture with separate frontend, backend API, database, and ML service components. Implements RESTful API design with comprehensive authentication and data validation.</p>
+        `,
+        technologies: ['React 19', 'Node.js', 'Express', 'PostgreSQL', 'Sequelize', 'JWT', 'Python', 'Flask', 'Tailwind CSS', 'Recharts'],
+        tags: ['Full-Stack', 'React', 'Node.js', 'PostgreSQL', 'ML'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/FinSight',
+        categories: ['web', 'frontend', 'backend'],
+        stats: {
+            'Tech Stack': '10+ Technologies',
+            'API Endpoints': '25+',
+            'Features': '8 Core Features',
+            'Architecture': 'Microservices'
+        }
+    },
+    {
+        id: 'project2',
+        title: 'Seneca Polytechnic Deliveries',
+        description: 'A comprehensive C/C++ delivery logistics system that optimizes package routing and truck assignments for efficient delivery operations.',
+        detailedDescription: `
+            <p>A sophisticated delivery management system implementing optimal routing algorithms, capacity constraints, and distance calculations for logistics operations.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>🚛 Multi-route Support: Blue, Yellow, and Green delivery routes</li>
+                <li>📦 Package Validation: Weight, size, and destination verification</li>
+                <li>🗺️ Route Optimization: Shortest path algorithms with Euclidean distance</li>
+                <li>⚖️ Capacity Management: Weight (2500kg) and volume (100m³) constraints</li>
+                <li>🎯 Smart Assignment: Multi-criteria truck selection logic</li>
+                <li>🔍 Load Balancing: Optimal distribution across available trucks</li>
+                <li>🧪 Comprehensive Testing: 32 test cases with 100% coverage</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Developed in C/C++ with modular design, custom pathfinding algorithms, and sophisticated data structures. Implements graph algorithms for route traversal and multi-criteria optimization.</p>
+            <h4>Algorithms & Data Structures:</h4>
+            <p>Features custom shortest path algorithms, 2D array map representation, dynamic memory management, and complex struct-based data modeling for trucks, packages, and routes.</p>
+        `,
+        technologies: ['C', 'C++', 'Visual Studio', 'Microsoft Test Framework', 'Git', 'Algorithms', 'Data Structures'],
+        tags: ['C/C++', 'Algorithms', 'System Programming', 'Testing'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/SenecaPolytechnicDeliveries',
+        categories: ['backend'],
+        stats: {
+            'Test Cases': '32',
+            'Code Coverage': '100%',
+            'Routes Supported': '3',
+            'Memory Management': 'Optimized'
+        }
+    },
+    {
+        id: 'project3',
+        title: 'SmartLib - Library Management System',
+        description: 'A comprehensive C++ library management system demonstrating advanced object-oriented programming principles, dynamic memory management, and professional software design patterns.',
+        detailedDescription: `
+            <p>A professional-grade library management system built in C++ that simulates real-world library operations with enterprise-level software engineering practices.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>📚 Complete Publication Management: Add, remove, search, and track books</li>
+                <li>🔄 Automated Checkout/Return System: Handle member transactions with due dates</li>
+                <li>💰 Penalty Calculation: Automatic late fee computation for overdue items</li>
+                <li>💾 Persistent Data Storage: File-based database for maintaining records</li>
+                <li>🔍 Advanced Search Capabilities: Multi-criteria search with filtering</li>
+                <li>🖥️ Professional CLI Interface: Menu-driven console application</li>
+                <li>🧪 Comprehensive Testing: Multiple test configurations</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Built with modern C++17 features, implementing advanced OOP concepts including inheritance, polymorphism, virtual functions, and custom operator overloading. Uses proper memory management with RAII principles.</p>
+            <h4>Architecture:</h4>
+            <p>Follows MVC architecture with clear separation of concerns. Implements design patterns like Factory, Strategy, and Template Method for flexible and maintainable code.</p>
+        `,
+        technologies: ['C++17', 'OOP', 'STL', 'File I/O', 'Memory Management', 'Design Patterns'],
+        tags: ['C++', 'OOP', 'System Programming', 'Design Patterns'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/SmartLib',
+        categories: ['backend'],
+        stats: {
+            'Lines of Code': '3,000+',
+            'Classes': '8 Core Classes',
+            'Design Patterns': '5+ Patterns',
+            'Memory Safety': 'Zero Leaks'
+        }
+    },
+    {
+        id: 'project4',
+        title: 'TeachMe Online Education Platform - Database',
+        description: 'Comprehensive database design for an online education platform featuring advanced SQL programming, business intelligence, and containerized deployment with Oracle Docker.',
+        detailedDescription: `
+            <p>A sophisticated database system powering an online education platform that connects instructors and students through diverse courses with advanced SQL programming and Docker deployment.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>📊 Business Intelligence: Course performance analytics and enrollment trends</li>
+                <li>📈 Financial Reporting: Revenue analysis and growth tracking</li>
+                <li>🏗️ Advanced SQL: Window functions, CTEs, complex joins</li>
+                <li>🐳 Containerization: Docker deployment with Oracle XE</li>
+                <li>📋 Analytics Views: Pre-computed business metrics</li>
+                <li>🔍 Complex Queries: Multi-dimensional data analysis</li>
+                <li>📦 Data Integrity: Constraints and validation rules</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Built with Oracle Database 12c+, implements ER modeling, database normalization, and advanced SQL features including analytical functions, subqueries, and materialized views.</p>
+            <h4>Architecture:</h4>
+            <p>Features comprehensive entity relationships (Users, Courses, Enrollments, Tests, Scores, etc.) with proper foreign key constraints and business rule enforcement through database design.</p>
+        `,
+        technologies: ['Oracle Database', 'SQL', 'PL/SQL', 'Docker', 'Business Intelligence', 'Database Design'],
+        tags: ['Database', 'SQL', 'Oracle', 'Docker', 'BI'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/TeachMe-Education-DB',
+        categories: ['backend'],
+        stats: {
+            'Tables': '9 Core Tables',
+            'Views': 'Multiple BI Views',
+            'Deployment': 'Docker Ready',
+            'SQL Features': 'Advanced Analytics'
+        }
+    },
+    {
+        id: 'project5',
+        title: 'Digital Dine-In - Restaurant Management System',
+        description: 'A comprehensive console-based restaurant ordering and billing system built with modern C++ design patterns, featuring menu management, order processing, and persistent storage.',
+        detailedDescription: `
+            <p>A sophisticated command-line restaurant management application that streamlines the ordering process for waitstaff with memory safety and object-oriented design principles.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>🍽️ Interactive Menu System: Navigate through food and drink categories</li>
+                <li>📐 Size Selection: Multiple size options with dynamic pricing</li>
+                <li>📝 Order Customization: Special instructions for food items</li>
+                <li>💰 Automatic Billing: Tax computation and formatted receipts</li>
+                <li>💾 Data Persistence: CSV integration and bill file generation</li>
+                <li>🔒 Memory Safety: Zero memory leaks with RAII principles</li>
+                <li>🎯 Input Validation: Comprehensive user input sanitization</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Built with C++11/14 using abstract base classes, inheritance hierarchies, operator overloading, and proper const-correctness. Implements RAII for automatic resource management.</p>
+            <h4>Architecture:</h4>
+            <p>Features abstract Billable interface with Food and Drink implementations, Menu container system, and modular design with clear separation of concerns across multiple files.</p>
+        `,
+        technologies: ['C++11/14', 'OOP', 'File I/O', 'Memory Management', 'Design Patterns', 'CLI Design'],
+        tags: ['C++', 'OOP', 'CLI', 'File I/O'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/Digital-Dine-In',
+        categories: ['backend'],
+        stats: {
+            'Lines of Code': '2,000+',
+            'Classes': '7',
+            'Memory Leaks': '0',
+            'Design Patterns': 'Multiple'
+        }
+    },
+    {
+        id: 'project6',
+        title: 'Credit Card Validator Upgraded',
+        description: 'Advanced credit card management system with military-grade encryption, real-time API integration, and professional logging using OpenSSL, cURL, and JSON.',
+        detailedDescription: `
+            <p>A comprehensive C application that evolved from a simple validator into a production-ready card management system with advanced security and network programming.</p>
+            <h4>Key Features:</h4>
+            <ul>
+                <li>🔐 AES-256-CBC Encryption: Military-grade security with OpenSSL</li>
+                <li>🌐 Real-time API Integration: BIN database lookups with cURL</li>
+                <li>📝 JSON Structured Logging: Professional audit trails</li>
+                <li>💳 Secure Card Storage: Encrypted data persistence</li>
+                <li>🔍 Card Validation: Luhn algorithm with type detection</li>
+                <li>📊 Activity Monitoring: Complete operation history</li>
+                <li>🛡️ Memory Safety: Secure memory management practices</li>
+            </ul>
+            <h4>Technical Implementation:</h4>
+            <p>Built with OpenSSL for cryptography, cURL for HTTP operations, and cJSON for data parsing. Implements secure key management, proper IV handling, and Base64 encoding.</p>
+            <h4>Security Features:</h4>
+            <p>Features AES-256-CBC encryption, secure memory management, input sanitization, and comprehensive logging for audit compliance and forensic analysis.</p>
+        `,
+        technologies: ['C', 'OpenSSL', 'cURL', 'cJSON', 'Security', 'Cryptography', 'Network Programming'],
+        tags: ['C', 'Security', 'Encryption', 'API', 'Network'],
+        demoUrl: '#',
+        codeUrl: 'https://github.com/AjayMaan13/Credit-Card-Validator-Upgraded',
+        categories: ['backend'],
+        stats: {
+            'Encryption': 'AES-256-CBC',
+            'Memory Leaks': '0',
+            'API Integration': 'Real-time',
+            'Security': 'Military-grade'
+        }
+    },
+    {
+        id: 'project7',
         title: 'Personal Portfolio',
         description: 'A modern portfolio website with dark/light theme toggle, interactive elements, and responsive design.',
         detailedDescription: `
@@ -18,107 +217,23 @@ const enhancedProjectsData = [
                 <li>📱 Fully responsive design for all device types</li>
                 <li>⚡ Performance optimized with lazy loading</li>
                 <li>🎨 Custom CSS animations and microinteractions</li>
+                <li>🖥️ Interactive terminal feature</li>
+                <li>🎯 Guided tour functionality</li>
+                <li>📧 Contact form with email integration</li>
             </ul>
             <h4>Technical Implementation:</h4>
             <p>Built with vanilla JavaScript for optimal performance, utilizing modern CSS features like CSS Grid and Flexbox. The theme system uses CSS custom properties for seamless color transitions.</p>
         `,
-        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express'],
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express', 'Nodemailer'],
         tags: ['Web', 'Frontend', 'UI/UX'],
-        image: 'src/images/project1.jpg',
         demoUrl: 'https://portfolio-gray-xi-10.vercel.app',
         codeUrl: 'https://github.com/AjayMaan13/Portfolio',
         categories: ['web', 'frontend'],
         stats: {
-            'Lines of Code': '2,500+',
-            'Components': '12',
-            'Load Time': '< 1s'
-        }
-    },
-    {
-        id: 'project2',
-        title: 'E-commerce Platform',
-        description: 'Full-stack e-commerce application with user authentication, payment processing, and admin dashboard.',
-        detailedDescription: `
-            <p>A comprehensive e-commerce solution built with modern web technologies.</p>
-            <h4>Key Features:</h4>
-            <ul>
-                <li>🛒 Shopping cart and checkout system</li>
-                <li>💳 Secure payment processing</li>
-                <li>👤 User authentication and profiles</li>
-                <li>📊 Admin dashboard for inventory management</li>
-                <li>📱 Mobile-first responsive design</li>
-            </ul>
-            <h4>Technical Stack:</h4>
-            <p>Built using React for the frontend, Node.js/Express for the backend, and MongoDB for data storage. Integrated with Stripe for payment processing.</p>
-        `,
-        technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe'],
-        tags: ['Web', 'Fullstack', 'Node.js'],
-        image: 'src/images/project2.jpg',
-        demoUrl: '#',
-        codeUrl: '#',
-        categories: ['web', 'frontend', 'backend'],
-        stats: {
-            'Pages': '15+',
-            'API Endpoints': '25+',
-            'Users': '100+'
-        }
-    },
-    {
-        id: 'project3',
-        title: 'Weather App',
-        description: 'Real-time weather application using weather API with location search and forecast visualization.',
-        detailedDescription: `
-            <p>A sleek weather application providing real-time weather data and forecasts.</p>
-            <h4>Key Features:</h4>
-            <ul>
-                <li>🌤️ Real-time weather data</li>
-                <li>📍 Location-based weather detection</li>
-                <li>📈 5-day weather forecast</li>
-                <li>🔍 City search functionality</li>
-                <li>📊 Interactive weather charts</li>
-            </ul>
-            <h4>API Integration:</h4>
-            <p>Integrated with OpenWeatherMap API for real-time data. Features geolocation support for automatic weather detection based on user location.</p>
-        `,
-        technologies: ['JavaScript', 'Weather API', 'Chart.js', 'HTML5', 'CSS3'],
-        tags: ['Web', 'API', 'JavaScript'],
-        image: 'src/images/project3.jpg',
-        demoUrl: '#',
-        codeUrl: '#',
-        categories: ['web', 'frontend'],
-        stats: {
-            'API Calls': '1000+/day',
-            'Cities': '200k+',
-            'Accuracy': '99.9%'
-        }
-    },
-    {
-        id: 'project4',
-        title: 'Task Management API',
-        description: 'RESTful API for task management built with Node.js, Express, and MongoDB with full CRUD operations.',
-        detailedDescription: `
-            <p>A robust REST API for task and project management applications.</p>
-            <h4>Key Features:</h4>
-            <ul>
-                <li>📝 Full CRUD operations for tasks</li>
-                <li>👥 User authentication and authorization</li>
-                <li>📅 Project and deadline management</li>
-                <li>🔒 JWT-based security</li>
-                <li>📚 Comprehensive API documentation</li>
-            </ul>
-            <h4>Architecture:</h4>
-            <p>Built with Node.js and Express, following RESTful principles. Uses MongoDB for data persistence and JWT for secure authentication.</p>
-        `,
-        technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Swagger'],
-        tags: ['API', 'Node.js', 'MongoDB'],
-        image: 'src/images/project4.jpg',
-        demoUrl: '#',
-        codeUrl: '#',
-        categories: ['backend'],
-        stats: {
-            'Endpoints': '15',
-            'Response Time': '< 200ms',
-            'Uptime': '99.9%'
+            'Lines of Code': '5,000+',
+            'Components': '15+',
+            'Load Time': '< 1s',
+            'Features': '10+'
         }
     }
 ];
@@ -156,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModalHandlers();
 });
 
-// Add CSS for scroll animations
+// Add CSS for scroll animations (no flip animations)
 function addScrollAnimationCSS() {
     const style = document.createElement('style');
     style.textContent = `
@@ -191,13 +306,122 @@ function addScrollAnimationCSS() {
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        /* Enhanced card hover effects */
+        /* Enhanced card hover effects - no flip */
+        .project-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            height: auto;
+            padding: var(--space-6);
+            border: 1px solid var(--color-divider);
+        }
+        
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent-primary);
         }
         
         .project-card.animate-in:hover {
             transform: translateY(-5px);
+        }
+        
+        /* Project card content - no flip needed */
+        .project-card-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-2xl);
+            font-weight: var(--weight-bold);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
+            opacity: 0.9;
+        }
+        
+        .project-title {
+            font-size: var(--text-xl);
+            font-weight: var(--weight-bold);
+            margin-bottom: var(--space-2);
+            color: var(--color-text-primary);
+        }
+        
+        .project-description {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-4);
+            flex-grow: 1;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .project-tag {
+            background-color: rgba(var(--color-accent-primary-rgb), 0.1);
+            color: var(--color-accent-primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--weight-medium);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: auto;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background-color: var(--color-bg-secondary);
+            border-radius: var(--radius-full);
+            color: var(--color-text-primary);
+            font-weight: var(--weight-medium);
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            font-size: var(--text-sm);
+            border: 1px solid var(--color-divider);
+        }
+        
+        .project-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .project-link:hover {
+            background-color: var(--color-accent-primary);
+            color: white;
+            transform: translateY(-2px);
+            border-color: var(--color-accent-primary);
+        }
+        
+        .project-details-btn {
+            background-color: var(--color-accent-primary);
+            color: white;
+            border-color: var(--color-accent-primary);
+        }
+        
+        .project-details-btn:hover {
+            background-color: var(--color-accent-secondary);
+            border-color: var(--color-accent-secondary);
         }
         
         /* Respect users' motion preferences */
@@ -263,48 +487,39 @@ function generateProjectCards() {
     console.log(`Created ${enhancedProjectsData.length} project cards`);
 }
 
-// Create a single project card
+// Create a single project card (no flip, show details by default)
 function createProjectCard(project, index) {
     const card = document.createElement('div');
-    card.className = 'project-card'; // Remove animate-on-scroll, we handle it differently now
+    card.className = 'project-card';
     card.setAttribute('data-categories', project.categories.join(','));
     card.setAttribute('data-project-index', index);
     
-    // Create HTML structure
+    // Create HTML structure without flip animation
     card.innerHTML = `
-        <div class="project-card-inner">
-            <!-- Front of card -->
-            <div class="project-card-front">
-                <img src="${project.image}" alt="${project.title}" class="project-image" 
-                     onerror="this.src='https://via.placeholder.com/300x200?text=Project+Image'">
-                <div class="project-overlay">
-                    <h3 class="project-title">${project.title}</h3>
-                    <p class="project-tags">
-                        ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                    </p>
-                </div>
+        <div class="project-card-content">
+            <div class="project-image-placeholder">
+                <span>${project.title.split(' ')[0]}</span>
             </div>
-            
-            <!-- Back of card -->
-            <div class="project-card-back">
-                <h3 class="project-title">${project.title}</h3>
-                <p class="project-description">${project.description}</p>
-                <div class="project-links">
-                    <button class="project-link project-details-btn" data-project-index="${index}">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M12 1v6m0 6v6"></path>
-                            <path d="M1 12h6m6 0h6"></path>
-                        </svg>
-                        View Details
-                    </button>
-                    <a href="${project.codeUrl}" class="project-link" target="_blank" rel="noopener">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                        Code
-                    </a>
-                </div>
+            <h3 class="project-title">${project.title}</h3>
+            <p class="project-description">${project.description}</p>
+            <div class="project-tags">
+                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+            </div>
+            <div class="project-links">
+                <button class="project-link project-details-btn" data-project-index="${index}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6"></path>
+                        <path d="M1 12h6m6 0h6"></path>
+                    </svg>
+                    View Details
+                </button>
+                <a href="${project.codeUrl}" class="project-link" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    Code
+                </a>
             </div>
         </div>
     `;
@@ -333,7 +548,7 @@ function setupModalHandlers() {
     });
 }
 
-// Create and show project modal
+// Create and show improved project modal
 function createProjectModal(project) {
     console.log('Creating modal for project:', project.title);
     
@@ -343,7 +558,7 @@ function createProjectModal(project) {
         existingModal.remove();
     }
 
-    // Create modal structure
+    // Create modal structure with improved design
     const modal = document.createElement('div');
     modal.className = 'project-modal';
     modal.innerHTML = `
@@ -357,20 +572,17 @@ function createProjectModal(project) {
             </button>
             
             <div class="modal-content">
-                <!-- Header Section -->
+                <!-- Header Section with Gradient Background -->
                 <div class="modal-header">
-                    <div class="modal-image-container">
-                        <img src="${project.image}" alt="${project.title}" class="modal-image"
-                             onerror="this.src='https://via.placeholder.com/800x300?text=Project+Image'">
-                        <div class="modal-overlay-gradient"></div>
-                        <div class="modal-title-overlay">
-                            <h1 class="modal-title">${project.title}</h1>
-                            <div class="modal-tech-stack">
-                                ${project.technologies.map(tech => 
-                                    `<span class="tech-badge">${tech}</span>`
-                                ).join('')}
-                            </div>
-                        </div>
+                    <div class="modal-icon">
+                        <span>${project.title.split(' ')[0].charAt(0)}</span>
+                    </div>
+                    <h1 class="modal-title">${project.title}</h1>
+                    <div class="modal-tech-stack">
+                        ${project.technologies.slice(0, 5).map(tech => 
+                            `<span class="tech-badge">${tech}</span>`
+                        ).join('')}
+                        ${project.technologies.length > 5 ? `<span class="tech-badge-more">+${project.technologies.length - 5} more</span>` : ''}
                     </div>
                 </div>
 
@@ -380,9 +592,21 @@ function createProjectModal(project) {
                         ${project.detailedDescription}
                     </div>
 
+                    <!-- Technologies Grid -->
+                    <div class="modal-technologies">
+                        <h3>Technologies Used</h3>
+                        <div class="tech-grid">
+                            ${project.technologies.map(tech => `
+                                <div class="tech-item">
+                                    <span class="tech-name">${tech}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
                     <!-- Project Stats -->
                     <div class="modal-stats">
-                        <h3>Project Stats</h3>
+                        <h3>Project Metrics</h3>
                         <div class="stats-grid">
                             ${Object.entries(project.stats || {}).map(([key, value]) => `
                                 <div class="stat-item">
@@ -527,9 +751,8 @@ function filterProjects(category) {
     }, 400); // Wait for hiding animation to complete
 }
 
-// Enhanced setup function that replaces the old 3D effect
+// Enhanced setup function
 function setup3DCardEffect() {
-    // This function now handles both the scroll animations and any additional effects
     console.log('✨ Enhanced project animations initialized');
     
     // If cards are already visible, trigger animations immediately
