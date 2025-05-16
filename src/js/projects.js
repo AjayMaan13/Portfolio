@@ -272,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Add CSS for scroll animations (no flip animations)
+// Updated CSS for smaller cards and better modal
 function addScrollAnimationCSS() {
     const style = document.createElement('style');
     style.textContent = `
@@ -306,15 +307,17 @@ function addScrollAnimationCSS() {
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        /* Enhanced card hover effects - no flip */
+        /* Smaller cards with consistent height */
         .project-card {
             background: var(--color-surface);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
-            height: auto;
-            padding: var(--space-6);
+            height: 420px; /* Fixed height for consistency */
+            padding: var(--space-5);
             border: 1px solid var(--color-divider);
+            display: flex;
+            flex-direction: column;
         }
         
         .project-card:hover {
@@ -327,7 +330,7 @@ function addScrollAnimationCSS() {
             transform: translateY(-5px);
         }
         
-        /* Project card content - no flip needed */
+        /* Project card content */
         .project-card-content {
             height: 100%;
             display: flex;
@@ -336,39 +339,44 @@ function addScrollAnimationCSS() {
         
         .project-image-placeholder {
             width: 100%;
-            height: 200px;
+            height: 160px; /* Smaller height */
             background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: var(--text-2xl);
+            font-size: var(--text-xl); /* Smaller font */
             font-weight: var(--weight-bold);
             border-radius: var(--radius-md);
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-3);
             opacity: 0.9;
         }
         
         .project-title {
-            font-size: var(--text-xl);
+            font-size: var(--text-lg); /* Smaller title */
             font-weight: var(--weight-bold);
             margin-bottom: var(--space-2);
             color: var(--color-text-primary);
+            line-height: 1.3;
         }
         
         .project-description {
             font-size: var(--text-sm);
             color: var(--color-text-secondary);
-            line-height: 1.6;
-            margin-bottom: var(--space-4);
+            line-height: 1.5;
+            margin-bottom: var(--space-3);
             flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--space-2);
-            margin-bottom: var(--space-4);
+            gap: var(--space-1);
+            margin-bottom: var(--space-3);
         }
         
         .project-tag {
@@ -382,28 +390,30 @@ function addScrollAnimationCSS() {
         
         .project-links {
             display: flex;
-            gap: var(--space-3);
+            gap: var(--space-2);
             margin-top: auto;
         }
         
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-2);
-            padding: var(--space-2) var(--space-4);
+            gap: var(--space-1);
+            padding: var(--space-2) var(--space-3);
             background-color: var(--color-bg-secondary);
             border-radius: var(--radius-full);
             color: var(--color-text-primary);
             font-weight: var(--weight-medium);
             transition: all var(--transition-speed) ease;
             text-decoration: none;
-            font-size: var(--text-sm);
+            font-size: var(--text-xs);
             border: 1px solid var(--color-divider);
+            flex: 1;
+            justify-content: center;
         }
         
         .project-link svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
         }
         
         .project-link:hover {
@@ -424,6 +434,13 @@ function addScrollAnimationCSS() {
             border-color: var(--color-accent-secondary);
         }
         
+        /* Adjust projects grid for smaller cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-6);
+        }
+        
         /* Respect users' motion preferences */
         @media (prefers-reduced-motion: reduce) {
             .project-card {
@@ -433,6 +450,18 @@ function addScrollAnimationCSS() {
             
             .project-card.animate-in {
                 transform: none;
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-card {
+                height: auto;
+                min-height: 380px;
             }
         }
     `;
