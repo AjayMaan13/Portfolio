@@ -1,4 +1,4 @@
-# My Web Application
+# My Web Application / Portfolio
 
 A full-stack web application with responsive design, animations, and email functionality.
 
