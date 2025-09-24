@@ -308,6 +308,7 @@ function scrollToNext() {
 window.scrollToNext = scrollToNext;
 
 // Contact form handling
+// Contact form handling (replace existing form handler)
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -316,9 +317,9 @@ if (contactForm) {
         const formData = new FormData(contactForm);
         const formDataObj = Object.fromEntries(formData.entries());
         
-        // Basic form validation
-        if (!formDataObj.name || !formDataObj.email || !formDataObj.message) {
-            showFormMessage('Please fill in all fields.', 'error');
+        // Basic form validation (now includes subject)
+        if (!formDataObj.name || !formDataObj.email || !formDataObj.subject || !formDataObj.message) {
+            showFormMessage('Please fill in all required fields.', 'error');
             return;
         }
         
@@ -348,13 +349,9 @@ if (contactForm) {
             const data = await response.json();
             
             if (data.success) {
-                // Show success message
                 showFormMessage('Message sent successfully!', 'success');
-                
-                // Reset form
                 contactForm.reset();
             } else {
-                // Show error message
                 showFormMessage(data.message || 'Failed to send message.', 'error');
             }
         } catch (error) {
