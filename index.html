@@ -127,19 +127,80 @@
             }
         </script>
 
-        <!-- Updated About Section HTML -->
         <section id="about" class="about-section">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
-                <div class="about-content-new">
-                    <div class="about-text-main">
+                <div class="about-content-structured">
+                    <!-- Main intro text -->
+                    <div class="about-intro">
                         <p>Hi! I'm <strong>Ajaypartap Singh Maan</strong> — a passionate developer, problem solver, and lifelong learner. I'm currently studying <strong>Computer Programming & Analysis</strong> at Seneca Polytechnic, maintaining a <strong>4.0 GPA</strong> and earning <strong>3-time President's Honour List</strong> recognition.</p>
-                        
-                        <p>I've been coding since I was 12, and I love turning complex ideas into practical solutions. My projects range from <strong>AI Receipt Analyzers</strong> using GPT-4 Vision, to <strong>real-time ETL pipelines</strong> for air quality monitoring, to <strong>secure C++ systems</strong> with memory-safe design.</p>
-                        
-                        <p>With over <strong>1,700 GitHub commits</strong>, I enjoy building across multiple domains — AI/ML, full-stack apps, data engineering, and cloud-based solutions. I'm curious about emerging technologies, always learning, and eager to collaborate on innovative projects that make an impact.</p>
-                        
-                        <p>Outside of tech, you'll probably find me <strong>spiking a volleyball</strong> or diving into classic literature (currently <em>Crime and Punishment</em> by Dostoevsky).</p>
+                    </div>
+
+                    <!-- Structured content boxes -->
+                    <div class="about-details-grid">
+                        <!-- Skills Section -->
+                        <div class="detail-box">
+                            <div class="detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <h3>Technical Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">AI/ML</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+
+                        <!-- Experience Section -->
+                        <div class="detail-box">
+                            <div class="detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3>Experience</h3>
+                            <p>Coding since age 12 with over <strong>1,700 GitHub commits</strong>. Building across multiple domains — AI/ML, full-stack apps, data engineering, and cloud-based solutions.</p>
+                        </div>
+
+                        <!-- Current Focus Section -->
+                        <div class="detail-box highlight">
+                            <div class="detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M12 1v6m0 6v6"/>
+                                    <path d="M1 12h6m6 0h6"/>
+                                </svg>
+                            </div>
+                            <h3>Current Focus</h3>
+                            <p>Building <strong>AI Receipt Analyzers</strong> using GPT-4 Vision, <strong>real-time ETL pipelines</strong> for air quality monitoring, and <strong>secure C++ systems</strong> with memory-safe design.</p>
+                        </div>
+
+                        <!-- Personal Section -->
+                        <div class="detail-box">
+                            <div class="detail-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3>Beyond Code</h3>
+                            <p>You'll probably find me <strong>spiking a volleyball</strong> or diving into classic literature (currently reading <em>Crime and Punishment</em> by Dostoevsky).</p>
+                        </div>
+                    </div>
+
+                    <!-- Call to action -->
+                    <div class="about-cta-bottom">
+                        <a href="#contact" class="cta-button primary">Let's Connect</a>
+                        <a href="#projects" class="cta-button secondary">View My Work</a>
                     </div>
                 </div>
             </div>
