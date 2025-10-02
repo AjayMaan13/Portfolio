@@ -586,13 +586,20 @@ html {
     font-style: italic;
 }
 
+.social-links-wrapper {
+    margin-top: 1.5rem; /* ~24px, good breathing space */
+    padding-top: 0.5rem; /* just a subtle gap */
+    border-top: 1px solid var(--color-divider);
+}
+
+
+
 /* Social Links Grid */
 .social-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--space-4);
     max-width: 600px;
-    margin: 0 auto;
 }
 
 .social-link-card {
