@@ -10,7 +10,7 @@ const experienceData = [
     role: "Software Tester / Full Stack Developer",
     company:
       "Government of Ontario, Ministry of Children, Community and Social Services",
-    logo: '../images/govON.png',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s',
     date: "September 2025 – Present",
     location: "Toronto, ON",
     type: "full-time",
@@ -45,7 +45,7 @@ const experienceData = [
     id: "exp2",
     role: "Peer Mentor",
     company: "Seneca Polytechnic",
-    logo: "../images/senecaWorks.png",
+    logo: "https://biotalent-ca.s3.us-east-2.amazonaws.com/media/public/uploads/2024/01/25/Seneca-Works-s.png",
     date: "May 2024 – August 2024",
     location: "Toronto, ON",
     type: "volunteer",
