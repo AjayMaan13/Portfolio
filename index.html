@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/theme.css">
     <link rel="stylesheet" href="src/css/responsive.css">
+    <link rel="stylesheet" href="src/css/experience.css">
 </head>
 
 <body class="light-theme">
@@ -41,7 +42,7 @@
                 <ul class="nav-links">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#timeline" class="nav-link">Journey</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -141,7 +142,8 @@
                         <p>I've been coding since I was 12, and I love turning complex ideas into practical solutions.
                             My projects range from <strong>AI Receipt Analyzers</strong> using GPT-4 Vision, to
                             <strong>real-time ETL pipelines</strong> for air quality monitoring, to <strong>secure C++
-                                systems</strong> with memory-safe design.</p>
+                                systems</strong> with memory-safe design.
+                        </p>
 
                         <p>With over <strong>1,700 GitHub commits</strong>, I enjoy building across multiple domains —
                             AI/ML, full-stack apps, data engineering, and cloud-based solutions. I'm curious about
@@ -155,13 +157,12 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
-        <section id="timeline" class="timeline-section">
+        <!-- Experience Section -->
+        <section id="experience" class="exp-section">
             <div class="container">
-                <h2 class="section-title">My Journey</h2>
-                <div class="timeline">
-                    <!-- Timeline items will be added dynamically from timeline.js -->
-                    <div class="timeline-line"></div>
+                <h2 class="section-title">Experience</h2>
+                <div class="exp-container">
+                    <!-- Experience cards will be generated dynamically by experience.js -->
                 </div>
             </div>
         </section>
@@ -411,58 +412,61 @@
                         <p>Location: Toronto, Canada</p>
                         <p>Status: Available for opportunities</p>
 
-                            <div class="social-links-grid">
-                                <!-- GitHub -->
-                                <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener"
-                                    class="social-link-card">
-                                    <div class="social-icon github">
-                                        <img src="src/images/icons/github-mark.svg" alt="GitHub">
-                                    </div>
-                                    <span>GitHub</span>
-                                </a>
+                        <div class="social-links-grid">
+                            <!-- GitHub -->
+                            <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener"
+                                class="social-link-card">
+                                <div class="social-icon github">
+                                    <img src="src/images/icons/github-mark.svg" alt="GitHub">
+                                </div>
+                                <span>GitHub</span>
+                            </a>
 
-                                <!-- LinkedIn -->
-                                <a href="https://linkedin.com/in/ajaypartap-singh-maan" target="_blank" rel="noopener"
-                                    class="social-link-card">
-                                    <div class="social-icon linkedin">
-                                        <img src="src/images/icons/linkedin-161-svgrepo-com.svg" alt="LinkedIn">
-                                    </div>
-                                    <span>LinkedIn</span>
-                                </a>
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com/in/ajaypartap-singh-maan" target="_blank" rel="noopener"
+                                class="social-link-card">
+                                <div class="social-icon linkedin">
+                                    <img src="src/images/icons/linkedin-161-svgrepo-com.svg" alt="LinkedIn">
+                                </div>
+                                <span>LinkedIn</span>
+                            </a>
 
 
-                                <!-- Discord -->
-                                <a href="https://discord.com/users/507537786988134407" target="_blank" rel="noopener" class="social-link-card">
-                                    <div class="social-icon discord">
-                                        <img src="src/images/icons/discord-svgrepo-com-2.svg" alt="Discord">
-                                    </div>
-                                    <span>Discord</span>
-                                </a>
+                            <!-- Discord -->
+                            <a href="https://discord.com/users/507537786988134407" target="_blank" rel="noopener"
+                                class="social-link-card">
+                                <div class="social-icon discord">
+                                    <img src="src/images/icons/discord-svgrepo-com-2.svg" alt="Discord">
+                                </div>
+                                <span>Discord</span>
+                            </a>
 
-                                <!-- Dev.to -->
-                                <a href="https://dev.to/ajaymaan13" target="_blank" rel="noopener" class="social-link-card">
-                                    <div class="social-icon devto">
-                                        <img src="src/images/icons/dev-to-svgrepo-com.svg" alt="Dev.to">
-                                    </div>
-                                    <span>Dev.to</span>
-                                </a>
+                            <!-- Dev.to -->
+                            <a href="https://dev.to/ajaymaan13" target="_blank" rel="noopener" class="social-link-card">
+                                <div class="social-icon devto">
+                                    <img src="src/images/icons/dev-to-svgrepo-com.svg" alt="Dev.to">
+                                </div>
+                                <span>Dev.to</span>
+                            </a>
 
-                                <!-- Hashnode -->
-                                <a href="https://ajaymaan13.hashnode.dev" target="_blank" rel="noopener" class="social-link-card">
-                                    <div class="social-icon hashnode">
-                                        <img src="src/images/icons/hashnode-svgrepo-com.svg" alt="Hashnode">
-                                    </div>
-                                    <span>Hashnode</span>
-                                </a>
+                            <!-- Hashnode -->
+                            <a href="https://ajaymaan13.hashnode.dev" target="_blank" rel="noopener"
+                                class="social-link-card">
+                                <div class="social-icon hashnode">
+                                    <img src="src/images/icons/hashnode-svgrepo-com.svg" alt="Hashnode">
+                                </div>
+                                <span>Hashnode</span>
+                            </a>
 
-                                <!-- LeetCode -->
-                                <a href="https://leetcode.com/u/AjayMaan13/" target="_blank" rel="noopener" class="social-link-card">
-                                    <div class="social-icon leetcode">
-                                        <img src="src/images/icons/leetcode-svgrepo-com.svg" alt="LeetCode">
-                                    </div>
-                                    <span>LeetCode</span>
-                                </a>
-                            </div>
+                            <!-- LeetCode -->
+                            <a href="https://leetcode.com/u/AjayMaan13/" target="_blank" rel="noopener"
+                                class="social-link-card">
+                                <div class="social-icon leetcode">
+                                    <img src="src/images/icons/leetcode-svgrepo-com.svg" alt="LeetCode">
+                                </div>
+                                <span>LeetCode</span>
+                            </a>
+                        </div>
 
                     </div>
 
@@ -562,6 +566,7 @@
     <script src="src/js/animations.js"></script>
     <script src="src/js/projects.js"></script>
     <script src="src/js/timeline.js"></script>
+    <script src="src/js/experience.js"></script>
 
     <!-- Enhanced Features Scripts -->
     <script src="src/js/terminal.js"></script>
