@@ -129,15 +129,19 @@ body.dark-theme .nav-container {
 }
 
 .island-nav .sun-icon { 
-    display: none; 
-}
-
-body.dark-theme .island-nav .sun-icon { 
     display: block; 
 }
 
-body.dark-theme .island-nav .moon-icon { 
+.island-nav .moon-icon {
+    display: none;
+}
+
+body.dark-theme .island-nav .sun-icon { 
     display: none; 
+}
+
+body.dark-theme .island-nav .moon-icon { 
+    display: block; 
 }
 
 /* Mobile Menu Button */
