@@ -182,32 +182,6 @@ navLinkItems.forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        
-        // Skip if it's just '#'
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            // Get the target's position, accounting for the fixed header
-            const headerHeight = header.offsetHeight;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-            
-            // Smooth scroll to target
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
 // Change header style on scroll
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
