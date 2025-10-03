@@ -385,15 +385,7 @@ function initContextNav() {
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.querySelector('.header');
     const progressBar = document.querySelector('.scroll-progress');
-    
-    // Update progress bar width based on scroll position
-    window.addEventListener('scroll', () => {
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        
-        progressBar.style.width = scrollPercentage + '%';
-    });
+
     
     // Create section observer to detect which section is in view
     const options = {
