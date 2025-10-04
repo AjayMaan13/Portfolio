@@ -1,107 +1,128 @@
-/**
- * Brittany Chiang Style Projects Layout
- * Handles featured and other projects with alternating layouts
- */
-
 // Featured projects data
 const bcFeaturedProjects = [
     {
         id: 1,
+        title: 'ArtVault - Art Collection Manager',
+        label: 'Featured Project',
+        description: 'A modern web application for discovering and organizing artworks from the Metropolitan Museum of Art. Features secure JWT authentication, personal collections, search history, and optimized Server-Side Rendering with Next.js serving 100+ daily users.',
+        image: './src/images/artvault.png',
+        tech: ['Next.js', 'React', 'MongoDB', 'JWT', 'Bootstrap', 'Vercel'],
+        github: 'https://github.com/AjayMaan13/artvault',
+        external: 'https://artvault-delta.vercel.app'
+    },
+    {
+        id: 2,
+        title: 'AI Receipt Analyzer',
+        label: 'Featured Project',
+        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
+        image: './src/images/receipt.png',
+        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
+        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
+        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
+    },
+    {
+        id: 3,
         title: 'FinSight - Personal Finance Tracker',
         label: 'Featured Project',
-        description: 'A comprehensive personal finance application built with modern full-stack technologies to help users manage their finances effectively. Features include transaction management, goal tracking, budget management, financial insights with visual analytics, and secure JWT-based authentication.',
-        image: './src/images/artvault.png',
-        tech: ['React 19', 'Node.js', 'Express', 'PostgreSQL', 'JWT', 'Tailwind CSS'],
+        description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
+        image: './src/images/finsight.png',
+        tech: ['React 19', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Python Flask'],
         github: 'https://github.com/AjayMaan13/FinSight',
         external: '#'
     },
     {
-        id: 2,
-        title: 'Seneca Polytechnic Deliveries',
-        label: 'Featured Project',
-        description: 'A sophisticated delivery management system implementing optimal routing algorithms, capacity constraints, and distance calculations for logistics operations. Built in C/C++ with modular design, custom pathfinding algorithms, and sophisticated data structures.',
-        image: './src/images/senecaWorks.png',
-        tech: ['C', 'C++', 'Algorithms', 'Data Structures', 'Visual Studio'],
-        github: 'https://github.com/AjayMaan13/SenecaPolytechnicDeliveries',
-        external: '#'
-    },
-    {
-        id: 3,
-        title: 'Credit Card Validator Upgraded',
-        label: 'Featured Project',
-        description: 'A comprehensive C application that evolved from a simple validator into a production-ready card management system with advanced security and network programming. Features AES-256-CBC encryption, real-time API integration with BIN database lookups using cURL, and secure card storage.',
-        image: './src/images/govON.png',
-        tech: ['C', 'OpenSSL', 'cURL', 'cJSON', 'Security', 'Cryptography'],
-        github: 'https://github.com/AjayMaan13/Credit-Card-Validator-Upgraded',
-        external: '#'
-    }
-];
-
-// Other projects data
-// Other projects data - ADD MORE PROJECTS HERE (total should be more than 6)
-const bcOtherProjects = [
-    {
         id: 4,
-        title: 'SmartLib - Library Management',
-        description: 'A professional-grade library management system built in C++ with advanced OOP concepts including inheritance, polymorphism, and virtual functions.',
-        tech: ['C++17', 'OOP', 'STL'],
-        github: 'https://github.com/AjayMaan13/SmartLib',
+        title: 'AirAware - AI Data Processing Pipeline',
+        label: 'Featured Project',
+        description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
+        image: './src/images/airaware.png',
+        tech: ['Python', 'PostgreSQL', 'Pandas', 'NumPy', 'Machine Learning', 'ETL'],
+        github: 'https://github.com/AjayMaan13/AirAware',
         external: '#'
     },
     {
         id: 5,
-        title: 'Portfolio Website',
-        description: 'Personal portfolio website built with vanilla JavaScript, featuring smooth animations, dark mode, and responsive design.',
-        tech: ['HTML', 'CSS', 'JavaScript'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'Accessibility Testing Framework',
+        label: 'Featured Project',
+        description: 'Comprehensive automated web accessibility testing framework following WCAG 2.0 standards. Features Page Object Model architecture, cross-browser support, visual reporting with screenshots, and CI/CD integration through GitHub Actions.',
+        image: './src/images/a11y.png',
+        tech: ['Python', 'Selenium', 'TestNG', 'axe-core', 'GitHub Actions', 'PyTest'],
+        github: 'https://github.com/AjayMaan13/A11ySeleniumFramework',
         external: '#'
-    },
+    }
+];
+
+const bcOtherProjects = [
     {
         id: 6,
-        title: 'Algorithm Visualizer',
-        description: 'Interactive visualization tool for sorting and pathfinding algorithms with step-by-step execution and speed controls.',
-        tech: ['React', 'D3.js', 'Algorithms'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'Tic-Tac-Toe AI',
+        description: 'Unbeatable AI using Minimax algorithm with Alpha-Beta pruning optimization. Features beautiful Pygame GUI, 50x performance improvement, and comprehensive testing achieving instant move calculations.',
+        tech: ['Python', 'Pygame', 'AI', 'Minimax', 'Alpha-Beta Pruning'],
+        github: 'https://github.com/AjayMaan13/tic-tac-toe-ai',
         external: '#'
     },
     {
         id: 7,
-        title: 'Weather Dashboard',
-        description: 'Real-time weather application with geolocation support, 5-day forecasts, and interactive weather maps.',
-        tech: ['JavaScript', 'API', 'Leaflet.js'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'SmartLib - Library Management',
+        description: 'Professional-grade library system built with C++17 featuring advanced OOP concepts, design patterns, RAII memory management, and zero memory leaks.',
+        tech: ['C++17', 'OOP', 'STL', 'Design Patterns'],
+        github: 'https://github.com/AjayMaan13/SmartLib',
         external: '#'
     },
     {
         id: 8,
-        title: 'Task Manager Pro',
-        description: 'Full-featured task management app with drag-and-drop, categories, priorities, and local storage persistence.',
-        tech: ['TypeScript', 'React', 'LocalStorage'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'Seneca Polytechnic Deliveries',
+        description: 'Delivery logistics system implementing A* and Dijkstra pathfinding algorithms for optimized route planning. Developed using Agile methodology with user stories, acceptance testing, and comprehensive test coverage achieving 100% validation across 32+ test cases.',
+        tech: ['C', 'C++', 'A* Algorithm', 'Dijkstra', 'Agile', 'Testing'],
+        github: 'https://github.com/AjayMaan13/SenecaPolytechnicDeliveries',
         external: '#'
     },
     {
         id: 9,
-        title: 'Code Snippet Manager',
-        description: 'Developer tool for organizing and searching code snippets with syntax highlighting and tags.',
-        tech: ['Vue.js', 'Prism.js', 'IndexedDB'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'TeachMe Education Database',
+        description: 'Sophisticated Oracle database with business intelligence, advanced SQL features including window functions and CTEs, and Docker containerization for deployment.',
+        tech: ['Oracle', 'SQL', 'PL/SQL', 'Docker'],
+        github: 'https://github.com/AjayMaan13/TeachMe',
         external: '#'
     },
     {
         id: 10,
-        title: 'Markdown Editor',
-        description: 'Live markdown editor with preview, export to PDF, and customizable themes.',
-        tech: ['React', 'Marked.js', 'jsPDF'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'Credit Card Validator Upgraded',
+        description: 'Production-ready card management system with AES-256-CBC encryption, real-time BIN API integration using cURL, and JSON structured logging for compliance.',
+        tech: ['C', 'OpenSSL', 'cURL', 'cJSON', 'Security'],
+        github: 'https://github.com/AjayMaan13/Credit-Card-Validator-Upgraded',
         external: '#'
     },
     {
         id: 11,
-        title: 'Chat Application',
-        description: 'Real-time chat app with rooms, private messaging, and emoji support.',
-        tech: ['Socket.io', 'Node.js', 'MongoDB'],
-        github: 'https://github.com/AjayMaan13',
+        title: 'Digital Dine-In',
+        description: 'Console-based restaurant ordering system featuring OOP design with abstract classes, dynamic pricing, memory-safe RAII implementation, and automated billing with CSV integration.',
+        tech: ['C++11/14', 'OOP', 'File I/O', 'Memory Management'],
+        github: 'https://github.com/AjayMaan13/Digital-Dine-In',
+        external: '#'
+    },
+    {
+        id: 12,
+        title: 'ArtVault Test Automation',
+        description: 'Selenium + TestNG automation suite featuring Page Object Model structure, data-driven tests with DataProvider, and parallel execution for comprehensive test coverage.',
+        tech: ['Java', 'Selenium', 'TestNG', 'POM'],
+        github: 'https://github.com/AjayMaan13/ArtVault-TestAutomation',
+        external: '#'
+    },
+    {
+        id: 13,
+        title: 'GitTrack',
+        description: 'Simple Java CLI tool that fetches and displays recent GitHub user activity directly in your terminal with formatted output and error handling.',
+        tech: ['Java', 'CLI', 'GitHub API'],
+        github: 'https://github.com/AjayMaan13/GitTrack',
+        external: '#'
+    },
+    {
+        id: 14,
+        title: 'PyDB-Core',
+        description: 'Lightweight key-value database implementation featuring immutable data structures, MVCC, and ACID compliance built from scratch to demonstrate database internals.',
+        tech: ['Python', 'Database', 'ACID'],
+        github: 'https://github.com/AjayMaan13/pydb-core',
         external: '#'
     }
 ];
