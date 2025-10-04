@@ -375,11 +375,13 @@ section:nth-child(even) {
     animation: fadeInUp 0.5s ease forwards 0.9s;
 }
 
-/* Scroll hint - positioned within hero section */
+
+/* Scroll Hint - Positioned more down and left */
+/* Scroll Hint - Properly centered and positioned for all screens */
 .hero-scroll-hint {
     position: absolute;
-    bottom: -140px; /* This puts it outside the hero section */
-    left: 48%;
+    bottom: 3rem; /* Moved up for all sizes */
+    left: 50%; /* Centered on all screens */
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -391,6 +393,7 @@ section:nth-child(even) {
     opacity: 0;
     animation: fadeIn 1s ease forwards 1.5s;
     transition: color 0.3s ease;
+    z-index: 10;
 }
 
 .hero-scroll-hint:hover {
@@ -401,6 +404,34 @@ section:nth-child(even) {
     width: 24px;
     height: 24px;
     animation: bounceArrow 2s ease-in-out infinite;
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+    .hero-scroll-hint {
+        bottom: -4rem; /* Adjusted for small screens */
+        left: 50%; /* Centered */
+    }
+    
+    .hero-scroll-hint svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @keyframes bounceArrow {

@@ -33,6 +33,28 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
 });
 
+// Smooth scroll function
+function scrollToNext() {
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+        const headerHeight = document.querySelector('header')?.offsetHeight || 80;
+        const targetPosition = aboutSection.offsetTop - headerHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Initialize after DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollHint = document.querySelector('.hero-scroll-hint');
+    if (scrollHint) {
+        scrollHint.addEventListener('click', scrollToNext);
+    }
+});
+
 // Simple, reliable typing effect
 function simpleTypingEffect() {
     const roles = [
@@ -285,24 +307,7 @@ function updateActiveNavLink() {
         }
     });
 }
-// Add smooth scroll for hero scroll hint
-function scrollToNext() {
-    const nextSection = document.querySelector('#about');
-    if (nextSection) {
-        // Get header height to account for fixed header
-        const headerHeight = header.offsetHeight;
-        
-        // Calculate the position to scroll to
-        const sectionTop = nextSection.getBoundingClientRect().top + window.pageYOffset;
-        const targetPosition = sectionTop - headerHeight - 20; // 20px extra padding
-        
-        // Smooth scroll to the target position
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }
-}
+
 
 // Make sure the function is globally available
 window.scrollToNext = scrollToNext;
