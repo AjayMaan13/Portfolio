@@ -14,6 +14,7 @@ const formStatus = document.querySelector('.form-status');
 const backToTop = document.querySelector('.back-to-top');
 const pageLoader = document.querySelector('.page-loader');
 
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
     // Hide page loader after content loads
@@ -45,6 +46,18 @@ function scrollToNext() {
             behavior: 'smooth'
         });
     }
+}
+
+const backToTopBtn = document.querySelector('.back-to-top');
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }
 
 // Initialize after DOM loads
