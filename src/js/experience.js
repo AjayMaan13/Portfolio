@@ -267,7 +267,6 @@ function addExperienceCSS() {
             padding: var(--space-2);
             background: transparent;
             border-radius: var(--radius-md);
-            border-left: 2px solid var(--color-accent-primary);
             transition: all 0.3s ease;
             padding-left: var(--space-3);
         }

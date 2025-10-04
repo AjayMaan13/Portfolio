@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="src/css/responsive.css">
     <link rel="stylesheet" href="src/css/experience.css">
     <link rel="stylesheet" href="src/css/island-navbar.css">
+    <link rel="stylesheet" href="src/css/bc-projects.css">
+
 
 </head>
 
@@ -160,14 +162,33 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section">
+        <!-- Featured Projects Section - BC Style -->
+        <section id="projects" class="bc-projects-section">
             <div class="container">
-                <h2 class="section-title">Featured Projects</h2>
+                <!-- Section Header -->
+                <div class="bc-section-header">
+                    <span class="bc-section-number">03.</span>
+                    <h2 class="bc-section-title">Some Things I've Built</h2>
+                    <div class="bc-section-line"></div>
+                </div>
 
-                <!-- Projects Container - dynamically filled by JavaScript -->
-                <div class="projects-container">
-                    <!-- Projects will be generated here by featured-projects.js -->
+                <!-- Featured Projects Container -->
+                <div class="bc-featured-container">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+
+                <!-- Other Projects Section -->
+                <div class="bc-other-section">
+                    <h2 class="bc-other-title">Other Noteworthy Projects</h2>
+                    <div class="bc-other-grid">
+                        <!-- Other projects will be dynamically inserted here -->
+                    </div>
+                    <div class="bc-show-more">
+                        <button class="bc-show-more-btn btn btn-secondary">Show More</button>
+                        <a href="https://github.com/AjayMaan13?tab=repositories" target="_blank" class="bc-archive-link">
+                            View Archive
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -558,7 +579,7 @@
     <script src="src/js/guided-tour.js"></script>
     <script src="src/js/3d-background.js"></script>
     <script src="src/js/typing.js"></script>
-
+    <script src="src/js/bc-projects.js"></script>
     <script src="src/js/island-navbar.js"></script>
 </body>
 
