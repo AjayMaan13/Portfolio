@@ -15,7 +15,7 @@ const bcFeaturedProjects = [
         title: 'AI Receipt Analyzer',
         label: 'Featured Project',
         description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
-        image: './src/images/receipt.png',
+        image: './src/images/receipt-analyzer.png',
         tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
         github: 'https://github.com/AjayMaan13/smart-script-analyzer',
         external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
