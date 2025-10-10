@@ -1,10 +1,10 @@
 /**
- * Fixed Guided Tour - Avoids Collision with Social Sidebar
+ * Fixed Guided Tour - Corrected Element Targeting
  * Provides a step-by-step introduction to the portfolio
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Tour steps - updated with better positioning
+    // Tour steps - updated with correct selectors from your HTML
     const tourSteps = [
         {
             target: '.hero-content',
@@ -19,24 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
             position: 'left'
         },
         {
-            target: '#timeline',
-            title: 'My Journey',
-            content: 'This section tells the story of my programming journey and what I\'ve learned along the way.',
-            position: 'left', // Changed from 'right' to 'left' to avoid sidebar
-            offset: { x: -100, y: 0 } // Added offset to move further left
+            target: '#about',
+            title: 'About Me',
+            content: 'Learn more about my background, education, and what drives me as a developer.',
+            position: 'left',
+            offset: { x: -100, y: 0 }
+        },
+        {
+            target: '#experience',
+            title: 'My Experience',
+            content: 'Check out my professional experience and the roles I\'ve held.',
+            position: 'left',
+            offset: { x: -100, y: 0 }
         },
         {
             target: '#projects',
             title: 'My Projects',
-            content: 'Browse through the projects I\'ve built. You can filter them by category using the buttons above.',
+            content: 'Browse through the projects I\'ve built. Each project card shows the technologies used and links to the code.',
             position: 'top'
         },
         {
-            target: '.project-card',
-            title: 'Interactive Projects',
-            content: 'Hover over any project card to see a 3D effect, and flip it to see more details!',
-            position: 'left', // Changed from 'right' to 'left'
-            offset: { x: -80, y: 0 } // Added offset
+            target: '#skills',
+            title: 'Technical Skills',
+            content: 'Here you can see all the languages, frameworks, and tools I work with.',
+            position: 'top'
         },
         {
             target: '#contact',
@@ -45,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             position: 'top'
         },
         {
-            target: '.terminal-toggle',
-            title: 'Interactive Terminal',
-            content: 'Try the interactive terminal! Click this button to open it and type commands to learn more about me.',
+            target: '.fixed-social-bar',
+            title: 'Social Links',
+            content: 'You can also find me on these platforms. Check out my GitHub for more projects!',
             position: 'left'
         }
     ];
@@ -158,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(step.target);
         
         if (!targetElement) {
+            console.warn(`Tour step ${stepIndex}: Target element "${step.target}" not found. Skipping...`);
             // Skip to next step if target doesn't exist
             showTourStep(stepIndex + 1);
             return;
