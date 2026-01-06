@@ -44,7 +44,7 @@ const experienceData = [
     id: "exp2",
     role: "Open Source Mentor",
     company: "Social Winter of Code (SWOC)",
-    logo: "https://swoc.tech/favicon.ico",
+    logo: "https://www.socialwinterofcode.com/SWOC_W_Black.png",
     date: "Jan 2026 – Present",
     location: "Remote",
     type: "volunteer",
