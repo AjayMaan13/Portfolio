@@ -40,6 +40,31 @@ const experienceData = [
       "CI/CD",
     ],
     current: true,
+  },{
+    id: "exp2",
+    role: "Open Source Mentor",
+    company: "Social Winter of Code (SWOC)",
+    logo: "https://swoc.tech/favicon.ico",
+    date: "Jan 2026 – Present",
+    location: "Remote",
+    type: "volunteer",
+    description:
+      "Selected as a Mentor for Social Winter of Code (SWOC), guiding contributors through open-source projects, codebases, and best practices while ensuring high-quality, impactful contributions.",
+    highlights: [
+      "Mentored contributors by providing technical guidance on issue understanding, code structure, debugging, and implementation strategies across multiple open-source projects",
+      "Reviewed pull requests, suggested improvements, and collaborated with project admins to maintain code quality, originality, and alignment with project goals",
+      "Actively supported contributors via GitHub and Discord, unblocking technical challenges and fostering a collaborative, inclusive open-source learning environment",
+    ],
+    technologies: [
+      "Open Source",
+      "GitHub",
+      "Pull Request Reviews",
+      "Mentorship",
+      "Community Building",
+      "Code Review",
+      "Documentation",
+    ],
+    current: true,
   },
   {
     id: "exp2",
