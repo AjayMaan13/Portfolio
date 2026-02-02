@@ -40,57 +40,7 @@ const experienceData = [
       "CI/CD",
     ],
     current: true,
-  },{
-    id: "exp2",
-    role: "Open Source Mentor",
-    company: "Social Winter of Code (SWOC)",
-    logo: "https://www.socialwinterofcode.com/SWOC_W_Black.png",
-    date: "Jan 2026 – Present",
-    location: "Remote",
-    type: "volunteer",
-    description:
-      "Selected as a Mentor for Social Winter of Code (SWOC), guiding contributors through open-source projects, codebases, and best practices while ensuring high-quality, impactful contributions.",
-    highlights: [
-      "Mentored contributors by providing technical guidance on issue understanding, code structure, debugging, and implementation strategies across multiple open-source projects",
-      "Reviewed pull requests, suggested improvements, and collaborated with project admins to maintain code quality, originality, and alignment with project goals",
-      "Actively supported contributors via GitHub and Discord, unblocking technical challenges and fostering a collaborative, inclusive open-source learning environment",
-    ],
-    technologies: [
-      "Open Source",
-      "GitHub",
-      "Pull Request Reviews",
-      "Mentorship",
-      "Community Building",
-      "Code Review",
-      "Documentation",
-    ],
-    current: true,
-  },
-  {
-    id: "exp2",
-    role: "Peer Mentor",
-    company: "Seneca Polytechnic",
-    logo: "https://biotalent-ca.s3.us-east-2.amazonaws.com/media/public/uploads/2024/01/25/Seneca-Works-s.png",
-    date: "May 2024 – August 2024",
-    location: "Toronto, ON",
-    type: "volunteer",
-    description:
-      "Guided and supported new students through their transition to postsecondary education by fostering leadership, communication, and mentorship within the Seneca community.",
-    highlights: [
-      "Mentored and supported 15+ new students, providing guidance on academic expectations, time management, and study skills during their first semester",
-      "Facilitated peer support groups and one-on-one sessions, actively listening and connecting students to Seneca’s academic and wellness resources",
-      "Delivered orientation and training sessions, ensuring students understood program requirements, available services, and community standards",
-      "Promoted inclusion and engagement by helping students build networks, connect with professors, and adapt to college life, fostering a supportive learning environment",
-    ],
-    technologies: [
-      "Leadership",
-      "Communication",
-      "Mentorship",
-      "Training Delivery",
-      "Student Engagement",
-    ],
-    current: false,
-  },
+  }
 ];
 
 // DOM Elements

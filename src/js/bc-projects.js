@@ -28,7 +28,7 @@ const bcFeaturedProjects = [
         image: './src/images/finsight.png',
         tech: ['React 19', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Python Flask'],
         github: 'https://github.com/AjayMaan13/FinSight',
-        external: '#'
+        external: 'https://fin-sight-mu.vercel.app/'
     },
     {
         id: 4,
