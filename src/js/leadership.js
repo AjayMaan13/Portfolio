@@ -35,6 +35,35 @@ const leadershipData = [
     current: true,
   },
   {
+    id: "lead3",
+    role: "Robotics Mentor",
+    company: "UTRA Hacks 2025 - University of Toronto Robotics Association",
+    logo: "https://hackathon.utra.ca/_next/image?url=%2Fheader%2Futra-hacks-header-logo.png&w=256&q=75", // Use UTRA logo if available, or U of T logo
+    date: "January 2025",
+    location: "Toronto, ON",
+    type: "mentorship",
+    description:
+      "Selected as mentor for UTRA Hacks 2025 - Canada's premier robotics hackathon hosted by the University of Toronto Robotics Association. Guided student teams through 2-day Winter Olympics biathlon challenge, demonstrating autonomous robotics system design and best practices.",
+    highlights: [
+      "Mentored 15+ student teams building autonomous robots with Arduino, guiding implementation of color sensors (TCS3200), IR line following, ultrasonic obstacle detection, and servo-controlled mechanisms",
+      "Designed and built demonstration robot showcasing state machine architecture, sensor calibration workflows, and modular testing strategies for navigation and target shooting systems",
+      "Provided hands-on technical support debugging sensor integration issues, motor control algorithms, and autonomous decision-making logic during intensive 48-hour competition",
+      "Delivered workshops on robotics fundamentals including perception (sensors), reasoning (path planning), and actuation (motor control) to enhance learning outcomes",
+    ],
+    technologies: [
+      "Arduino",
+      "C/C++",
+      "Robotics",
+      "Embedded Systems",
+      "Sensors",
+      "State Machines",
+      "Mentorship",
+      "Workshop Facilitation",
+      "Technical Support",
+    ],
+    current: false,
+  },
+  {
     id: "lead2",
     role: "Peer Mentor",
     company: "Seneca Polytechnic",
