@@ -11,6 +11,16 @@ const bcFeaturedProjects = [
         external: 'https://artvault-delta.vercel.app'
     },
     {
+        id: 15,
+        title: 'UTRA Hacks Mentors',
+        label: 'Featured Project',
+        description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
+        image: './src/images/utraHacks.jpeg',
+        tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
+        github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
+        external: '#'
+    },
+    {
         id: 2,
         title: 'AI Receipt Analyzer',
         label: 'Featured Project',
