@@ -40,6 +40,37 @@ const experienceData = [
       "CI/CD",
     ],
     current: true,
+  },
+  {
+    id: "exp3",
+    role: "Data Engineering Lead",
+    company: "Ontario Government x Microsoft Hackathon 2025",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s", // Ontario gov logo, or use Microsoft logo
+    date: "November 2025 – December 2025",
+    location: "Toronto, ON",
+    type: "full-time",
+    description:
+      "Led data engineering team at 2-day government hackathon, building ETL pipelines and analytics infrastructure using Microsoft Fabric, Databricks, and Azure cloud services to process large-scale public safety datasets.",
+    highlights: [
+      "Led team of 6 engineers building production-grade ETL workflows using Microsoft Fabric and Databricks with PySpark, processing 300K+ crime records from Ontario public safety databases",
+      "Designed lakehouse architecture with Bronze-Silver-Gold layers using Azure Data Factory, implementing incremental data loading and data quality validation with Delta Lake",
+      "Developed Power BI dashboards with real-time crime analytics and geospatial visualizations, enabling data-driven insights for government stakeholders",
+      "Delivered end-to-end data pipeline in 48 hours, demonstrating rapid prototyping and cloud-native data engineering best practices",
+    ],
+    technologies: [
+      "Microsoft Fabric",
+      "Databricks",
+      "PySpark",
+      "Apache Spark",
+      "Azure Data Factory",
+      "Power BI",
+      "Delta Lake",
+      "ETL",
+      "Data Engineering",
+      "Lakehouse Architecture",
+      "SQL",
+    ],
+    current: false,
   }
 ];
 
