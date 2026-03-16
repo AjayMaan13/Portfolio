@@ -35,7 +35,7 @@ const leadershipData = [
     current: false,
   },
   {
-    id: "lead4",
+    id: "lead3",
     role: "Mentor",
     company: "MathHacks at De La Salle College \"Oaklands\"",
     logo: "https://media.licdn.com/dms/image/v2/D560BAQHyIEHEuNgl7w/company-logo_200_200/B56Zji42_MHkAM-/0/1756153213707/mathhacksto_logo?e=1775088000&v=beta&t=WjcgwAJ4x59hOJ7AwHH2IAuFxEtXrHsV9yc_PkwG-cU",
@@ -62,7 +62,7 @@ const leadershipData = [
     current: false,
   },
   {
-    id: "lead3",
+    id: "lead4",
     role: "Robotics Mentor",
     company: "UTRA Hacks 2025 - University of Toronto Robotics Association",
     logo: "https://hackathon.utra.ca/_next/image?url=%2Fheader%2Futra-hacks-header-logo.png&w=256&q=75", // Use UTRA logo if available, or U of T logo
@@ -92,6 +92,37 @@ const leadershipData = [
   },
   {
     id: "lead2",
+    role: "Data Engineering Lead",
+    company: "Ontario Government x Microsoft Hackathon 2025",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s",
+    date: "November 2025 – December 2025",
+    location: "Toronto, ON",
+    type: "leadership",
+    description:
+      "Led data engineering team at 2-day government hackathon, building ETL pipelines and analytics infrastructure using Microsoft Fabric, Databricks, and Azure cloud services to process large-scale public safety datasets.",
+    highlights: [
+      "Led team of 6 engineers building production-grade ETL workflows using Microsoft Fabric and Databricks with PySpark, processing 300K+ crime records from Ontario public safety databases",
+      "Designed lakehouse architecture with Bronze-Silver-Gold layers using Azure Data Factory, implementing incremental data loading and data quality validation with Delta Lake",
+      "Developed Power BI dashboards with real-time crime analytics and geospatial visualizations, enabling data-driven insights for government stakeholders",
+      "Delivered end-to-end data pipeline in 48 hours, demonstrating rapid prototyping and cloud-native data engineering best practices",
+    ],
+    technologies: [
+      "Microsoft Fabric",
+      "Databricks",
+      "PySpark",
+      "Apache Spark",
+      "Azure Data Factory",
+      "Power BI",
+      "Delta Lake",
+      "ETL",
+      "Data Engineering",
+      "Lakehouse Architecture",
+      "SQL",
+    ],
+    current: false,
+  },
+  {
+    id: "lead5",
     role: "Peer Mentor",
     company: "Seneca Polytechnic",
     logo: "https://biotalent-ca.s3.us-east-2.amazonaws.com/media/public/uploads/2024/01/25/Seneca-Works-s.png",
@@ -118,6 +149,7 @@ const leadershipData = [
     ],
     current: false,
   },
+
 ];
 
 // DOM Elements
