@@ -34,6 +34,17 @@ const featuredProjectsData = [
         codeUrl: 'https://github.com/AjayMaan13/SmartLib'
     },
     {
+        id: 'project5',
+        title: 'FraudNet·AI — Real-Time Fraud Detection',
+        label: 'Featured Project · GenAI Genesis 2026',
+        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms (cycle detection, fan-out analysis, burst detection, Louvain clustering, weighted PageRank), and lets IBM Granite 3 AI explain every finding to investigators in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
+        technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'SQLite', 'Tailwind v4', '3D WebGL'],
+        image: '',
+        demoUrl: 'https://fraudnet-ai.vercel.app',
+        codeUrl: 'https://github.com/AjayMaan13/fraudnet-ai',
+        devpostUrl: 'https://devpost.com/AjayMaan13'
+    },
+    {
         id: 'project4',
         title: 'Credit Card Validator Upgraded',
         label: 'Featured Project',
@@ -282,13 +293,21 @@ function createFeaturedProject(project, index) {
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                     </svg>
                 </a>
-                <a href="${project.demoUrl}" class="project-link" target="_blank" rel="noopener" aria-label="External Link">
+                ${project.demoUrl && project.demoUrl !== '#' ? `
+                <a href="${project.demoUrl}" class="project-link" target="_blank" rel="noopener" aria-label="Live Demo">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
                         <line x1="10" y1="14" x2="21" y2="3"></line>
                     </svg>
-                </a>
+                </a>` : ''}
+                ${project.devpostUrl ? `
+                <a href="${project.devpostUrl}" class="project-link" target="_blank" rel="noopener" aria-label="DevPost">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                        <path d="M8 12h8M8 9h5M8 15h5"></path>
+                    </svg>
+                </a>` : ''}
             </div>
         </div>
     `;

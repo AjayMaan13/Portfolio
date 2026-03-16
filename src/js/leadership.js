@@ -10,7 +10,7 @@ const leadershipData = [
     role: "Open Source Mentor",
     company: "Social Winter of Code (SWOC)",
     logo: "https://www.socialwinterofcode.com/SWOC_W_Black.png",
-    date: "December 2025 – Present",
+    date: "December 2025 – March 2026",
     location: "Remote",
     type: "mentorship",
     description:
@@ -32,7 +32,7 @@ const leadershipData = [
       "Git",
       "Technical Writing",
     ],
-    current: true,
+    current: false,
   },
   {
     id: "lead4",
