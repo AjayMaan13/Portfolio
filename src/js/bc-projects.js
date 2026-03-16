@@ -2,36 +2,6 @@
 const bcFeaturedProjects = [
     {
         id: 1,
-        title: 'ArtVault - Art Collection Manager',
-        label: 'Featured Project',
-        description: 'A modern web application for discovering and organizing artworks from the Metropolitan Museum of Art. Features secure JWT authentication, personal collections, search history, and optimized Server-Side Rendering with Next.js serving 100+ daily users.',
-        image: './src/images/artvault.png',
-        tech: ['Next.js', 'React', 'MongoDB', 'JWT', 'Bootstrap', 'Vercel'],
-        github: 'https://github.com/AjayMaan13/artvault',
-        external: 'https://artvault-delta.vercel.app'
-    },
-    {
-        id: 15,
-        title: 'UTRA Hacks Mentors',
-        label: 'Featured Project',
-        description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
-        image: './src/images/utraHacks.jpeg',
-        tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
-        github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
-        external: '#'
-    },
-    {
-        id: 2,
-        title: 'AI Receipt Analyzer',
-        label: 'Featured Project',
-        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
-        image: './src/images/receipt-analyzer.png',
-        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
-        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
-        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
-    },
-    {
-        id: 3,
         title: 'FinSight - Personal Finance Tracker',
         label: 'Featured Project',
         description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
@@ -41,7 +11,38 @@ const bcFeaturedProjects = [
         external: 'https://fin-sight-mu.vercel.app/'
     },
     {
+        id: 2,
+        title: 'FraudNet·AI — Real-Time Fraud Detection',
+        label: 'Featured Project · GenAI Genesis 2026',
+        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
+        image: './src/images/fraudnet.png',
+        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
+        github: 'https://github.com/AjayMaan13/fraudnet-ai',
+        external: 'https://fraudnet-ai.vercel.app',
+        devpost: 'https://devpost.com/AjayMaan13'
+    },
+    {
+        id: 3,
+        title: 'UTRA Hacks Mentors',
+        label: 'Featured Project',
+        description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
+        image: './src/images/utraHacks.jpeg',
+        tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
+        github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
+        external: '#'
+    },
+    {
         id: 4,
+        title: 'AI Receipt Analyzer',
+        label: 'Featured Project',
+        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
+        image: './src/images/receipt-analyzer.png',
+        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
+        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
+        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
+    },
+    {
+        id: 5,
         title: 'AirAware - AI Data Processing Pipeline',
         label: 'Featured Project',
         description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
@@ -51,7 +52,7 @@ const bcFeaturedProjects = [
         external: '#'
     },
     {
-        id: 5,
+        id: 6,
         title: 'Accessibility Testing Framework',
         label: 'Featured Project',
         description: 'Comprehensive automated web accessibility testing framework following WCAG 2.0 standards. Features Page Object Model architecture, cross-browser support, visual reporting with screenshots, and CI/CD integration through GitHub Actions.',
@@ -63,7 +64,17 @@ const bcFeaturedProjects = [
 ];
 
 const bcOtherProjects = [
-    {
+    {   
+        
+        id: 5,
+        title: 'ArtVault - Art Collection Manager',
+        description: 'A modern web application for discovering and organizing artworks from the Metropolitan Museum of Art. Features secure JWT authentication, personal collections, search history, and optimized Server-Side Rendering with Next.js serving 100+ daily users.',
+        tech: ['Next.js', 'React', 'MongoDB', 'JWT', 'Bootstrap', 'Vercel'],
+        github: 'https://github.com/AjayMaan13/artvault',
+        external: 'https://artvault-delta.vercel.app'
+    },
+    {   
+
         id: 6,
         title: 'Tic-Tac-Toe AI',
         description: 'Unbeatable AI using Minimax algorithm with Alpha-Beta pruning optimization. Features beautiful Pygame GUI, 50x performance improvement, and comprehensive testing achieving instant move calculations.',
@@ -193,13 +204,21 @@ function renderFeaturedProjects() {
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
                     </a>
-                    <a href="${project.external}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="External Link">
+                    ${project.external && project.external !== '#' ? `
+                    <a href="${project.external}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                             <polyline points="15 3 21 3 21 9"></polyline>
                             <line x1="10" y1="14" x2="21" y2="3"></line>
                         </svg>
-                    </a>
+                    </a>` : ''}
+                    ${project.devpost ? `
+                    <a href="${project.devpost}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="DevPost">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                            <path d="M8 12h8M8 9h5M8 15h5"></path>
+                        </svg>
+                    </a>` : ''}
                 </div>
             </div>
         </article>
