@@ -35,6 +35,33 @@ const leadershipData = [
     current: true,
   },
   {
+    id: "lead4",
+    role: "Mentor",
+    company: "MathHacks at De La Salle College \"Oaklands\"",
+    logo: "https://media.licdn.com/dms/image/v2/D560BAQHyIEHEuNgl7w/company-logo_200_200/B56Zji42_MHkAM-/0/1756153213707/mathhacksto_logo?e=1775088000&v=beta&t=WjcgwAJ4x59hOJ7AwHH2IAuFxEtXrHsV9yc_PkwG-cU",
+    date: "March 2026",
+    location: "Toronto, ON",
+    type: "volunteer",
+    description:
+      "Volunteered as a mentor at MathHacks, a math-focused hackathon at De La Salle College \"Oaklands\", supporting students in building innovative projects at the intersection of mathematics and technology.",
+    highlights: [
+      "Mentored student teams tackling real-world problems, including an 8th-grade team building a Chrome extension that tracked browsing history and visualised it as a 3D rendered graph",
+      "Provided technical guidance alongside industry mentors including lead architects, ML practitioners, and product leaders from companies like Dayforce, ClassZoo, and Lazer Technologies",
+      "Witnessed students leveraging cutting-edge technologies independently, demonstrating strong initiative and creativity beyond their grade level",
+      "Contributed to a collaborative learning environment that culminated in teams like A(x)iom — a real-time multiplayer math competition platform with ELO ranking — winning the top overall hack",
+    ],
+    technologies: [
+      "Mentorship",
+      "Hackathon",
+      "Mathematics",
+      "Student Engagement",
+      "Community Building",
+      "Volunteer",
+      "Tech Education",
+    ],
+    current: false,
+  },
+  {
     id: "lead3",
     role: "Robotics Mentor",
     company: "UTRA Hacks 2025 - University of Toronto Robotics Association",
