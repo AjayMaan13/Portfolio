@@ -7,39 +7,43 @@
 const experienceData = [
   {
     id: "exp1",
-    role: "Software Tester / Full Stack Developer",
-    company:
-      "Government of Ontario, Ministry of Children, Community and Social Services",
+    role: "Software Developer - AI Automations",
+    company: "Government of Ontario, Ministry of Children, Community and Social Services",
+    companyKey: "ontario-gov",
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s',
-    date: "September 2025 – Present",
-    location: "Toronto, ON",
-    type: "full-time",
-    description:
-      "Designed and executed automated test suites and full-stack solutions for critical Ontario government social service systems, ensuring high quality, accessibility, and reliability across platforms.",
+    date: "January 2026 – Present",
+    location: "Toronto, ON · Hybrid",
+    type: "co-op",
+    description: "",
     highlights: [
-      "Developed and executed automated test frameworks using Selenium WebDriver, TestNG, JUnit, and GitLab CI/CD pipelines for OW, ODSP, and ACSD applications",
-      "Created and maintained test suites for UI, API, and database layers, generating detailed HTML reports and logging results in Jira/Zephyr with full defect tracking and root cause analysis",
-      "Built a full-stack test management platform with React.js, Node.js, Express.js, and Oracle Database, supporting authentication, scheduling, and real-time QA dashboards",
-      "Implemented WCAG 2.0 AA accessibility testing using axe-core, WAVE, ChromeDriver, and GeckoDriver to ensure compliance with government accessibility standards",
+      "Built innovative AI/ML-powered agents using Python, LLM APIs, Microsoft Azure, REST APIs for log analysis, troubleshooting, and debugging support, accelerating incident resolution by 30%",
+    ],
+    technologies: ["Python", "Microsoft Azure", "LLM APIs", "RAGs", "REST APIs"],
+    current: true,
+  },
+  {
+    id: "exp2",
+    role: "Software Developer & Tester",
+    company: "Government of Ontario, Ministry of Children, Community and Social Services",
+    companyKey: "ontario-gov",
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s',
+    date: "September 2025 – January 2026",
+    location: "Toronto, ON",
+    type: "co-op",
+    description: "Designed and executed automated test suites and full-stack solutions for critical Ontario government social service systems, ensuring high quality, accessibility, and reliability across platforms.",
+    highlights: [
+      "Designed and automated 4,000+ end-to-end test cases for SAMS (Social Assistance Management System), the case management platform for Ontario Disability Support Program (ODSP) and Ontario Child with Severe Disabilities (OCSD) benefit delivery across Ontario, using Selenium, TestNG, JUnit, Jenkins CI/CD, and Azure DevOps, increasing regression coverage by 60%",
+      "Built a custom test reporting web application using the MERN stack (MongoDB, Express, React, Node.js) with REST APIs to streamline QA workflows for SAMS release cycles, reducing release cycle time by 35%",
+      "Enhanced IBM Cúram system quality for SAMS through applied software development best practices, contributing to stability of a platform serving hundreds of thousands of ODSP and OCSD recipients across Ontario",
+      "Developed and shipped features for an Angular dashboard supporting internal tooling within the SAMS/MyBenefits ecosystem",
+      "Worked within Agile 2-week sprint cycles using Jira, participating in standups and sprint planning alongside cross-functional OPS development and QA teams",
     ],
     technologies: [
-      "Java",
-      "Selenium",
-      "TestNG",
-      "JUnit",
-      "GitLab",
-      "Jenkins",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Oracle Database",
-      "axe-core",
-      "Jira",
-      "Zephyr",
-      "SQL",
-      "CI/CD",
+      "Java", "Selenium", "TestNG", "JUnit", "Jenkins CI/CD", "Azure DevOps",
+      "MongoDB", "Express", "React.js", "Node.js", "Angular",
+      "IBM Cúram", "Jira", "REST APIs", "Agile",
     ],
-    current: true,
+    current: false,
   },
 ];
 
@@ -120,8 +124,8 @@ function addExperienceCSS() {
             border-color: var(--color-accent-primary);
         }
 
-        /* Current badge */
-        .exp-card[data-current="true"]::after {
+        /* Current badge — only for non-grouped cards */
+        .exp-card:not(.exp-card-grouped)[data-current="true"]::after {
             content: 'CURRENT';
             position: absolute;
             top: var(--space-4);
@@ -141,6 +145,83 @@ function addExperienceCSS() {
         @keyframes pulseGlow {
             0%, 100% { box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3); }
             50% { box-shadow: 0 2px 16px rgba(46, 204, 113, 0.5); }
+        }
+
+        /* Grouped card — roles list */
+        .exp-roles-list {
+            display: flex;
+            flex-direction: column;
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--color-divider);
+        }
+
+        .exp-sub-role {
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        /* Timeline: dot + vertical line */
+        .exp-timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 16px;
+        }
+
+        .exp-timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-accent-primary);
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .exp-timeline-line {
+            flex: 1;
+            width: 2px;
+            background: var(--color-divider);
+            min-height: 16px;
+            margin-top: 4px;
+        }
+
+        .exp-sub-role:last-child .exp-timeline-line {
+            display: none;
+        }
+
+        .exp-sub-role-content {
+            flex: 1;
+            padding-bottom: var(--space-8);
+        }
+
+        .exp-sub-role:last-child .exp-sub-role-content {
+            padding-bottom: 0;
+        }
+
+        .exp-sub-role-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
+        }
+
+        .exp-sub-role-header .exp-role {
+            font-size: var(--text-base);
+            margin-bottom: 0;
+        }
+
+        .exp-current-badge {
+            background: var(--color-success);
+            color: white;
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--weight-bold);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+            animation: pulseGlow 2s ease-in-out infinite;
         }
 
         /* Card Header */
@@ -354,18 +435,116 @@ function addExperienceCSS() {
 function generateExperienceCards() {
   if (!experienceContainer) return;
 
-  // Sort by current status and date (current first, then by date)
-  const sortedData = [...experienceData].sort((a, b) => {
-    if (a.current && !b.current) return -1;
-    if (!a.current && b.current) return 1;
-    return 0;
+  // Group entries by companyKey (fallback to id if no companyKey)
+  const groups = [];
+  const seen = {};
+
+  experienceData.forEach((exp) => {
+    const key = exp.companyKey || exp.id;
+    if (!seen[key]) {
+      seen[key] = { key, exps: [] };
+      groups.push(seen[key]);
+    }
+    seen[key].exps.push(exp);
   });
 
-  // Generate cards
-  sortedData.forEach((exp, index) => {
-    const card = createExperienceCard(exp, index);
-    experienceContainer.appendChild(card);
+  groups.forEach((group, index) => {
+    if (group.exps.length > 1) {
+      const card = createGroupedCard(group.exps, index);
+      experienceContainer.appendChild(card);
+    } else {
+      const card = createExperienceCard(group.exps[0], index);
+      experienceContainer.appendChild(card);
+    }
   });
+}
+
+// Create a grouped card for same-company roles
+function createGroupedCard(exps, index) {
+  const first = exps[0];
+  const last = exps[exps.length - 1];
+  const isCurrentGroup = exps.some((e) => e.current);
+
+  // Overall date span: oldest start → newest end
+  const overallDate = `${last.date.split("–")[0].trim()} – ${first.date.split("–")[1].trim()}`;
+
+  const card = document.createElement("div");
+  card.className = "exp-card exp-card-grouped";
+  card.setAttribute("data-current", isCurrentGroup);
+  card.style.transitionDelay = `${index * 0.1}s`;
+
+  const rolesHTML = exps.map((exp) => `
+    <div class="exp-sub-role">
+      <div class="exp-timeline">
+        <div class="exp-timeline-dot"></div>
+        <div class="exp-timeline-line"></div>
+      </div>
+      <div class="exp-sub-role-content">
+        <div class="exp-sub-role-header">
+          <h3 class="exp-role">${exp.role}</h3>
+          ${exp.current ? '<span class="exp-current-badge">CURRENT</span>' : ''}
+        </div>
+        <div class="exp-meta">
+          <span class="exp-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            ${exp.date}
+          </span>
+          <span class="exp-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            ${exp.location}
+          </span>
+        </div>
+        ${exp.highlights.length ? `
+        <div class="exp-highlights">
+          ${exp.highlights.map((h) => `
+            <div class="exp-highlight-item">
+              <div class="exp-highlight-icon"></div>
+              <p>${h}</p>
+            </div>
+          `).join('')}
+        </div>` : ''}
+        ${exp.technologies.length ? `
+        <div class="exp-tags">
+          ${exp.technologies.map((t) => `<span class="exp-tag">${t}</span>`).join('')}
+        </div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  card.innerHTML = `
+    <div class="exp-card-header">
+      <div class="exp-company-logo">
+        <img src="${first.logo}" alt="${first.company} Logo">
+      </div>
+      <div class="exp-header-content">
+        <h4 class="exp-company">${first.company}</h4>
+        <div class="exp-meta">
+          <span class="exp-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            ${overallDate}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card-body exp-roles-list">
+      ${rolesHTML}
+    </div>
+  `;
+
+  return card;
 }
 
 // Create single experience card
@@ -404,27 +583,23 @@ function createExperienceCard(exp, index) {
                 </div>
             </div>
         </div>
-        
+
         <div class="exp-card-body">
             <p class="exp-description">${exp.description}</p>
-            
+
             <div class="exp-highlights">
                 ${exp.highlights
                   .map(
                     (highlight) => `
                     <div class="exp-highlight-item">
-                        <div class="exp-highlight-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
+                        <div class="exp-highlight-icon"></div>
                         <p>${highlight}</p>
                     </div>
                 `
                   )
                   .join("")}
             </div>
-            
+
             <div class="exp-tags">
                 ${exp.technologies
                   .map((tech) => `<span class="exp-tag">${tech}</span>`)

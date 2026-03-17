@@ -2,6 +2,17 @@
 const bcFeaturedProjects = [
     {
         id: 1,
+        title: 'FraudNet·AI — Real-Time Fraud Detection',
+        label: 'Featured Project · GenAI Genesis 2026',
+        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
+        image: './src/images/fraudnet.ai-ui.png',
+        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
+        github: 'https://github.com/AjayMaan13/fraudnet-ai',
+        external: 'https://fraudnet-ai.vercel.app',
+        devpost: 'https://devpost.com/AjayMaan13'
+    },
+    {
+        id: 2,
         title: 'FinSight - Personal Finance Tracker',
         label: 'Featured Project',
         description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
@@ -9,17 +20,6 @@ const bcFeaturedProjects = [
         tech: ['React 19', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Python Flask'],
         github: 'https://github.com/AjayMaan13/FinSight',
         external: 'https://fin-sight-mu.vercel.app/'
-    },
-    {
-        id: 2,
-        title: 'FraudNet·AI — Real-Time Fraud Detection',
-        label: 'Featured Project · GenAI Genesis 2026',
-        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
-        image: './src/images/fraudnet.png',
-        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
-        github: 'https://github.com/AjayMaan13/fraudnet-ai',
-        external: 'https://fraudnet-ai.vercel.app',
-        devpost: 'https://devpost.com/AjayMaan13'
     },
     {
         id: 3,
