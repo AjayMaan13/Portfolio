@@ -202,6 +202,36 @@
     height: 22px;
 }
 
+/* Hackathon Trophy Callout Banner */
+.bc-hackathon-callout {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: rgba(var(--color-accent-primary-rgb), 0.08);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+    font-family: var(--font-secondary);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+}
+
+.bc-hackathon-callout strong {
+    color: var(--color-accent-primary);
+    font-weight: var(--weight-semibold);
+}
+
+.bc-hackathon-callout-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.bc-featured-project:nth-child(even) .bc-hackathon-callout {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
 /* Hackathon Badge on Image */
 .bc-hackathon-badge {
     position: absolute;
@@ -301,6 +331,20 @@
 
 .bc-other-project:hover .bc-other-project-title {
     color: var(--color-accent-primary);
+}
+
+.bc-other-hackathon-badge {
+    display: inline-block;
+    background-color: rgba(var(--color-accent-primary-rgb), 0.1);
+    color: var(--color-accent-primary);
+    font-family: var(--font-secondary);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: var(--space-3);
+    letter-spacing: 0.02em;
+    border: 1px solid rgba(var(--color-accent-primary-rgb), 0.3);
 }
 
 .bc-other-description {

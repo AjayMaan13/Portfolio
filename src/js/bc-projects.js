@@ -139,7 +139,7 @@ const bcOtherProjects = [
         tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
         github: 'https://github.com/ajaymaan13/devos',
         external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
-        hackathon: { name: 'Notion AI Challenge', duration: '48hrs', context: 'Notion MCP Hackathon' }
+        hackathon: { name: 'Notion AI Challenge', duration: '', context: 'Notion MCP Hackathon' }
     },
     {
         id: 13,
@@ -204,6 +204,11 @@ function renderFeaturedProjects() {
                         <span class="bc-project-title">${project.title}</span>
                     </a>
                 </h3>
+                ${project.hackathon ? `
+                <div class="bc-hackathon-callout">
+                    <span class="bc-hackathon-callout-icon">🏆</span>
+                    <span>Built at <strong>${project.hackathon.name}</strong> · ${project.hackathon.context} · ${project.hackathon.duration}</span>
+                </div>` : ''}
                 <div class="bc-project-description-box">
                     <p class="bc-project-description">${project.description}</p>
                 </div>
@@ -267,6 +272,7 @@ function renderOtherProjects() {
                 </div>
             </div>
             <h3 class="bc-other-project-title">${project.title}</h3>
+            ${project.hackathon ? `<span class="bc-other-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
             <p class="bc-other-description">${project.description}</p>
             <div class="bc-other-tech-list">
                 ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
@@ -322,6 +328,7 @@ function toggleShowMore() {
                     </div>
                 </div>
                 <h3 class="bc-other-project-title">${project.title}</h3>
+                ${project.hackathon ? `<span class="bc-other-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
                 <p class="bc-other-description">${project.description}</p>
                 <div class="bc-other-tech-list">
                     ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
