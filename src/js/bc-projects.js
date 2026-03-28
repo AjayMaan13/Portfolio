@@ -139,7 +139,7 @@ const bcOtherProjects = [
         tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
         github: 'https://github.com/ajaymaan13/devos',
         external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
-        hackathon: { name: 'Notion AI Challenge', duration: '', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
+        hackathon: { name: 'Notion MCP Challenge', duration: '1 Week', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
     },
     {
         id: 13,
@@ -272,7 +272,7 @@ function renderOtherProjects() {
                 </div>
             </div>
             <h3 class="bc-other-project-title">${project.title}</h3>
-            ${project.hackathon ? `<span class="bc-other-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
+            ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
             <p class="bc-other-description">${project.description}</p>
             <div class="bc-other-tech-list">
                 ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
@@ -328,7 +328,7 @@ function toggleShowMore() {
                     </div>
                 </div>
                 <h3 class="bc-other-project-title">${project.title}</h3>
-                ${project.hackathon ? `<span class="bc-other-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
+                ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
                 <p class="bc-other-description">${project.description}</p>
                 <div class="bc-other-tech-list">
                     ${project.tech.map(tech => `<span>${tech}</span>`).join('')}

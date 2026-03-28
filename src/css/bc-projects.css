@@ -367,6 +367,13 @@
     margin-bottom: var(--space-3);
     letter-spacing: 0.02em;
     border: 1px solid rgba(var(--color-accent-primary-rgb), 0.3);
+    text-decoration: none;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.bc-other-hackathon-badge:hover {
+    background-color: rgba(var(--color-accent-primary-rgb), 0.2);
+    opacity: 0.85;
 }
 
 .bc-other-description {
