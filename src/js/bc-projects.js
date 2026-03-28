@@ -9,7 +9,8 @@ const bcFeaturedProjects = [
         tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
         github: 'https://github.com/AjayMaan13/fraudnet-ai',
         external: 'https://fraudnet-ai.vercel.app',
-        devpost: 'https://devpost.com/AjayMaan13'
+        devpost: 'https://devpost.com/AjayMaan13',
+        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
     },
     {
         id: 2,
@@ -29,7 +30,8 @@ const bcFeaturedProjects = [
         image: './src/images/utraHacks.jpeg',
         tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
         github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
-        external: '#'
+        external: '#',
+        hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon", url: 'https://hackathon.utra.ca' }
     },
     {
         id: 4,
@@ -136,7 +138,8 @@ const bcOtherProjects = [
         description: 'AI-powered command center for software engineers. One prompt pulls live Notion tasks via MCP, cross-references Gmail and Calendar, and returns a prioritized daily plan, email draft, and priority reasoning — then writes the plan back to Notion automatically.',
         tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
         github: 'https://github.com/ajaymaan13/devos',
-        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi'
+        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
+        hackathon: { name: 'Notion MCP Challenge', duration: '1 Week', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
     },
     {
         id: 13,
@@ -190,6 +193,7 @@ function renderFeaturedProjects() {
                     <div class="bc-project-image-overlay"></div>
                     <img src="${project.image}" alt="${project.title}" class="bc-project-image" />
                 </a>
+                ${project.hackathon ? `<span class="bc-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
             </div>
 
             <!-- Project Content -->
@@ -200,6 +204,11 @@ function renderFeaturedProjects() {
                         <span class="bc-project-title">${project.title}</span>
                     </a>
                 </h3>
+                ${project.hackathon ? `
+                <div class="bc-hackathon-callout">
+                    <span class="bc-hackathon-callout-icon">🏆</span>
+                    <span>Built at <a href="${project.hackathon.url}" class="bc-hackathon-callout-link" target="_blank" rel="noopener noreferrer"><strong>${project.hackathon.name}</strong></a> · ${project.hackathon.context} · ${project.hackathon.duration}</span>
+                </div>` : ''}
                 <div class="bc-project-description-box">
                     <p class="bc-project-description">${project.description}</p>
                 </div>
@@ -263,6 +272,7 @@ function renderOtherProjects() {
                 </div>
             </div>
             <h3 class="bc-other-project-title">${project.title}</h3>
+            ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
             <p class="bc-other-description">${project.description}</p>
             <div class="bc-other-tech-list">
                 ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
@@ -318,6 +328,7 @@ function toggleShowMore() {
                     </div>
                 </div>
                 <h3 class="bc-other-project-title">${project.title}</h3>
+                ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
                 <p class="bc-other-description">${project.description}</p>
                 <div class="bc-other-tech-list">
                     ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
