@@ -132,6 +132,14 @@ const bcOtherProjects = [
     },
     {
         id: 13,
+        title: 'DevOS',
+        description: 'AI-powered command center for software engineers. One prompt pulls live Notion tasks via MCP, cross-references Gmail and Calendar, and returns a prioritized daily plan, email draft, and priority reasoning — then writes the plan back to Notion automatically.',
+        tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
+        github: 'https://github.com/ajaymaan13/devos',
+        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi'
+    },
+    {
+        id: 13,
         title: 'GitTrack',
         description: 'Simple Java CLI tool that fetches and displays recent GitHub user activity directly in your terminal with formatted output and error handling.',
         tech: ['Java', 'CLI', 'GitHub API'],
