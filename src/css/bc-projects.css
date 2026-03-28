@@ -202,6 +202,25 @@
     height: 22px;
 }
 
+/* Hackathon Badge on Image */
+.bc-hackathon-badge {
+    position: absolute;
+    bottom: var(--space-3);
+    left: var(--space-3);
+    z-index: 10;
+    background-color: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+    font-family: var(--font-secondary);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
 /* Other Projects Section */
 .bc-other-section {
     margin-top: var(--space-24);

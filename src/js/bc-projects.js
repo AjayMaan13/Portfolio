@@ -193,6 +193,7 @@ function renderFeaturedProjects() {
                     <div class="bc-project-image-overlay"></div>
                     <img src="${project.image}" alt="${project.title}" class="bc-project-image" />
                 </a>
+                ${project.hackathon ? `<span class="bc-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
             </div>
 
             <!-- Project Content -->
