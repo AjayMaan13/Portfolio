@@ -65,6 +65,8 @@
     grid-row: 1;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+    border-radius: var(--radius-md);
 }
 
 .bc-featured-project:nth-child(even) .bc-project-image-wrapper {
@@ -227,9 +229,15 @@
     flex-shrink: 0;
 }
 
+.bc-hackathon-callout {
+    margin-left: 17%;
+}
+
 .bc-featured-project:nth-child(even) .bc-hackathon-callout {
     flex-direction: row-reverse;
     text-align: right;
+    margin-left: 0;
+    margin-right: 17%;
 }
 
 /* Hackathon Badge on Image */
@@ -245,6 +253,9 @@
     font-weight: var(--weight-semibold);
     padding: 4px 10px;
     border-radius: 20px;
+    max-width: calc(100% - var(--space-6));
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
     letter-spacing: 0.03em;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
