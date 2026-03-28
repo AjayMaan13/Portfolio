@@ -10,7 +10,7 @@ const bcFeaturedProjects = [
         github: 'https://github.com/AjayMaan13/fraudnet-ai',
         external: 'https://fraudnet-ai.vercel.app',
         devpost: 'https://devpost.com/AjayMaan13',
-        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon" }
+        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ const bcFeaturedProjects = [
         tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
         github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
         external: '#',
-        hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon" }
+        hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon", url: 'https://hackathon.utra.ca' }
     },
     {
         id: 4,
@@ -139,7 +139,7 @@ const bcOtherProjects = [
         tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
         github: 'https://github.com/ajaymaan13/devos',
         external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
-        hackathon: { name: 'Notion AI Challenge', duration: '', context: 'Notion MCP Hackathon' }
+        hackathon: { name: 'Notion AI Challenge', duration: '', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
     },
     {
         id: 13,
@@ -207,7 +207,7 @@ function renderFeaturedProjects() {
                 ${project.hackathon ? `
                 <div class="bc-hackathon-callout">
                     <span class="bc-hackathon-callout-icon">🏆</span>
-                    <span>Built at <strong>${project.hackathon.name}</strong> · ${project.hackathon.context} · ${project.hackathon.duration}</span>
+                    <span>Built at <a href="${project.hackathon.url}" class="bc-hackathon-callout-link" target="_blank" rel="noopener noreferrer"><strong>${project.hackathon.name}</strong></a> · ${project.hackathon.context} · ${project.hackathon.duration}</span>
                 </div>` : ''}
                 <div class="bc-project-description-box">
                     <p class="bc-project-description">${project.description}</p>

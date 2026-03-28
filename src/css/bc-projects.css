@@ -224,6 +224,17 @@
     font-weight: var(--weight-semibold);
 }
 
+.bc-hackathon-callout-link {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.bc-hackathon-callout-link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
 .bc-hackathon-callout-icon {
     font-size: 1rem;
     flex-shrink: 0;
