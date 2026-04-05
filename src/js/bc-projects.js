@@ -45,22 +45,24 @@ const bcFeaturedProjects = [
     },
     {
         id: 5,
+        title: 'PE Hackathon — Production-Hardened URL Shortener',
+        label: 'Featured Project · MLH Production Engineering Hackathon 2026',
+        description: 'A production-hardened URL shortener built to survive real-world failures. Features 96% test coverage, Docker auto-restart chaos recovery, a CI/CD gatekeeper that blocks broken deploys, and full JSON error handling — no stack traces, ever. Built for the MLH Production Engineering Hackathon 2026.',
+        image: './src/images/pe-hackathon.png',
+        tech: ['Flask', 'PostgreSQL', 'Peewee ORM', 'pytest', 'Docker', 'GitHub Actions', 'Python'],
+        github: 'https://github.com/AjayMaan13/pe-hackathon-2026',
+        external: 'https://devpost.com/software/pe-hackathons-2026',
+        devpost: 'https://devpost.com/software/pe-hackathons-2026',
+        hackathon: { name: 'MLH PE Hackathon 2026', duration: '48hrs', context: 'Reliability Engineering Track', url: 'https://devpost.com/software/pe-hackathons-2026' }
+    },
+    {
+        id: 6,
         title: 'AirAware - AI Data Processing Pipeline',
         label: 'Featured Project',
         description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
         image: './src/images/airaware.png',
         tech: ['Python', 'PostgreSQL', 'Pandas', 'NumPy', 'Machine Learning', 'ETL'],
         github: 'https://github.com/AjayMaan13/AirAware',
-        external: '#'
-    },
-    {
-        id: 6,
-        title: 'Accessibility Testing Framework',
-        label: 'Featured Project',
-        description: 'Comprehensive automated web accessibility testing framework following WCAG 2.0 standards. Features Page Object Model architecture, cross-browser support, visual reporting with screenshots, and CI/CD integration through GitHub Actions.',
-        image: './src/images/a11y.png',
-        tech: ['Python', 'Selenium', 'TestNG', 'axe-core', 'GitHub Actions', 'PyTest'],
-        github: 'https://github.com/AjayMaan13/A11ySeleniumFramework',
         external: '#'
     }
 ];
@@ -101,6 +103,23 @@ const bcOtherProjects = [
         external: '#'
     },
     {
+        id: 13,
+        title: 'DevOS',
+        description: 'AI-powered command center for software engineers. One prompt pulls live Notion tasks via MCP, cross-references Gmail and Calendar, and returns a prioritized daily plan, email draft, and priority reasoning — then writes the plan back to Notion automatically.',
+        tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
+        github: 'https://github.com/ajaymaan13/devos',
+        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
+        hackathon: { name: 'Notion MCP Challenge', duration: '1 Week', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
+    },
+    {
+        id: 15,
+        title: 'Accessibility Testing Framework',
+        description: 'Comprehensive automated web accessibility testing framework following WCAG 2.0 standards. Features Page Object Model architecture, cross-browser support, visual reporting with screenshots, and CI/CD integration through GitHub Actions.',
+        tech: ['Python', 'Selenium', 'TestNG', 'axe-core', 'GitHub Actions', 'PyTest'],
+        github: 'https://github.com/AjayMaan13/A11ySeleniumFramework',
+        external: '#'
+    },
+    {
         id: 9,
         title: 'TeachMe Education Database',
         description: 'Sophisticated Oracle database with business intelligence, advanced SQL features including window functions and CTEs, and Docker containerization for deployment.',
@@ -131,15 +150,6 @@ const bcOtherProjects = [
         tech: ['Java', 'Selenium', 'TestNG', 'POM'],
         github: 'https://github.com/AjayMaan13/ArtVault-TestAutomation',
         external: '#'
-    },
-    {
-        id: 13,
-        title: 'DevOS',
-        description: 'AI-powered command center for software engineers. One prompt pulls live Notion tasks via MCP, cross-references Gmail and Calendar, and returns a prioritized daily plan, email draft, and priority reasoning — then writes the plan back to Notion automatically.',
-        tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
-        github: 'https://github.com/ajaymaan13/devos',
-        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
-        hackathon: { name: 'Notion MCP Challenge', duration: '1 Week', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
     },
     {
         id: 13,
