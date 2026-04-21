@@ -6,6 +6,26 @@
 // Experience data array
 const experienceData = [
   {
+    id: "exp0",
+    role: "Service Hub Ambassador",
+    company: "Seneca Polytechnic",
+    companyKey: "seneca",
+    logo: "src/images/seneca.png",
+    date: "April 2026 – Present",
+    location: "North York, ON · On-site",
+    type: "part-time",
+    description: "",
+    highlights: [
+      "Delivered front-line support to students, helping them navigate college services and available resources.",
+      "Responded to student inquiries and assisted with campus services to create a positive and engaging experience.",
+      "Operated in a fast-paced, dynamic environment, using an agile approach to adapt to changing needs.",
+      "Managed and prioritized tasks to ensure efficient and timely service delivery.",
+      "Developed strong communication, problem-solving, adaptability, and teamwork skills through regular interaction with students and staff.",
+    ],
+    technologies: ["Communication", "Time Management", "Problem Solving", "Adaptability", "Teamwork"],
+    current: true,
+  },
+  {
     id: "exp1",
     role: "Software Developer - AI Automations",
     company: "Government of Ontario, Ministry of Children, Community and Social Services",

@@ -38,7 +38,7 @@ const leadershipData = [
     id: "lead3",
     role: "Mentor",
     company: "MathHacks at De La Salle College \"Oaklands\"",
-    logo: "https://media.licdn.com/dms/image/v2/D560BAQHyIEHEuNgl7w/company-logo_200_200/B56Zji42_MHkAM-/0/1756153213707/mathhacksto_logo?e=1775088000&v=beta&t=WjcgwAJ4x59hOJ7AwHH2IAuFxEtXrHsV9yc_PkwG-cU",
+    logo: "src/images/math-hacks.png",
     date: "March 2026",
     location: "Toronto, ON",
     type: "volunteer",
@@ -122,10 +122,40 @@ const leadershipData = [
     current: false,
   },
   {
+    id: "lead5a",
+    role: "Peer Mentor",
+    company: "Seneca Polytechnic",
+    companyKey: "seneca-volunteer",
+    logo: "src/images/seneca.png",
+    date: "April 2026 – Present",
+    location: "Toronto, ON",
+    type: "mentorship",
+    description:
+      "Resumed mentorship role, continuing to guide and support new students through their transition to postsecondary education within the Seneca community.",
+    highlights: [
+      "Mentored first-year students, providing guidance on academic expectations, time management strategies, and study skills during critical first semester transition",
+      "Facilitated peer support groups and one-on-one mentoring sessions, connecting students to Seneca's academic resources, wellness services, and career development programs",
+      "Delivered orientation and training sessions on program requirements, available services, and community standards, ensuring smooth integration into college life",
+      "Promoted diversity and inclusion by helping students build professional networks, connect with faculty, and adapt to collaborative learning environments",
+    ],
+    technologies: [
+      "Leadership",
+      "Mentorship",
+      "Communication",
+      "Training Delivery",
+      "Student Engagement",
+      "Conflict Resolution",
+      "Workshop Facilitation",
+      "Resource Coordination",
+    ],
+    current: true,
+  },
+  {
     id: "lead5",
     role: "Peer Mentor",
     company: "Seneca Polytechnic",
-    logo: "https://biotalent-ca.s3.us-east-2.amazonaws.com/media/public/uploads/2024/01/25/Seneca-Works-s.png",
+    companyKey: "seneca-volunteer",
+    logo: "src/images/seneca.png",
     date: "May 2024 – September 2024",
     location: "Toronto, ON",
     type: "mentorship",
@@ -178,11 +208,115 @@ function generateLeadershipCards() {
     return 0;
   });
 
-  // Generate cards
-  sortedData.forEach((leader, index) => {
-    const card = createLeadershipCard(leader, index);
-    leadershipContainer.appendChild(card);
+  // Group entries by companyKey (fallback to id if no companyKey)
+  const groups = [];
+  const seen = {};
+
+  sortedData.forEach((leader) => {
+    const key = leader.companyKey || leader.id;
+    if (!seen[key]) {
+      seen[key] = { key, exps: [] };
+      groups.push(seen[key]);
+    }
+    seen[key].exps.push(leader);
   });
+
+  groups.forEach((group, index) => {
+    if (group.exps.length > 1) {
+      const card = createGroupedLeadershipCard(group.exps, index);
+      leadershipContainer.appendChild(card);
+    } else {
+      const card = createLeadershipCard(group.exps[0], index);
+      leadershipContainer.appendChild(card);
+    }
+  });
+}
+
+// Create a grouped card for same-company roles
+function createGroupedLeadershipCard(exps, index) {
+  const first = exps[0];
+  const last = exps[exps.length - 1];
+  const isCurrentGroup = exps.some((e) => e.current);
+
+  const overallDate = `${last.date.split("–")[0].trim()} – ${first.date.split("–")[1].trim()}`;
+
+  const card = document.createElement("div");
+  card.className = "exp-card exp-card-grouped";
+  card.setAttribute("data-current", isCurrentGroup);
+  card.style.transitionDelay = `${index * 0.1}s`;
+
+  const rolesHTML = exps.map((exp) => `
+    <div class="exp-sub-role">
+      <div class="exp-timeline">
+        <div class="exp-timeline-dot"></div>
+        <div class="exp-timeline-line"></div>
+      </div>
+      <div class="exp-sub-role-content">
+        <div class="exp-sub-role-header">
+          <h3 class="exp-role">${exp.role}</h3>
+          ${exp.current ? '<span class="exp-current-badge">CURRENT</span>' : ''}
+        </div>
+        <div class="exp-meta">
+          <span class="exp-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            ${exp.date}
+          </span>
+          <span class="exp-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            ${exp.location}
+          </span>
+        </div>
+        ${exp.highlights.length ? `
+        <div class="exp-highlights">
+          ${exp.highlights.map((h) => `
+            <div class="exp-highlight-item">
+              <div class="exp-highlight-icon"></div>
+              <p>${h}</p>
+            </div>
+          `).join('')}
+        </div>` : ''}
+        ${exp.technologies.length ? `
+        <div class="exp-tags">
+          ${exp.technologies.map((t) => `<span class="exp-tag">${t}</span>`).join('')}
+        </div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  card.innerHTML = `
+    <div class="exp-card-header">
+      <div class="exp-company-logo">
+        <img src="${first.logo}" alt="${first.company} Logo">
+      </div>
+      <div class="exp-header-content">
+        <h4 class="exp-company">${first.company}</h4>
+        <div class="exp-meta">
+          <span class="exp-date">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            ${overallDate}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card-body exp-roles-list">
+      ${rolesHTML}
+    </div>
+  `;
+
+  return card;
 }
 
 // Create single leadership card
