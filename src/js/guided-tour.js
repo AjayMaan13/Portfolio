@@ -81,56 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the tour when the button is clicked
     tourButton.addEventListener('click', startTour);
     
-    // Show the welcome message on first visit
-    if (!localStorage.getItem('tourShown')) {
-        // Show welcome message after a short delay
-        setTimeout(() => {
-            showWelcomeMessage();
-        }, 2000);
-    }
-    
-    function showWelcomeMessage() {
-        const welcomeModal = document.createElement('div');
-        welcomeModal.className = 'tour-modal';
-        welcomeModal.innerHTML = `
-            <div class="tour-modal-content">
-                <h3>Welcome to My Portfolio!</h3>
-                <p>Thank you for visiting! Would you like a quick guided tour to explore the features of this site?</p>
-                <div class="tour-modal-buttons">
-                    <button class="btn btn-primary start-tour-btn">Yes, show me around</button>
-                    <button class="btn btn-secondary close-tour-btn">No thanks, I'll explore on my own</button>
-                </div>
-            </div>
-        `;
-        
-        // Add to page
-        document.body.appendChild(welcomeModal);
-        
-        // Show with animation
-        setTimeout(() => {
-            welcomeModal.classList.add('active');
-        }, 100);
-        
-        // Add event listeners
-        welcomeModal.querySelector('.start-tour-btn').addEventListener('click', () => {
-            welcomeModal.classList.remove('active');
-            setTimeout(() => {
-                welcomeModal.remove();
-                startTour();
-            }, 300);
-        });
-        
-        welcomeModal.querySelector('.close-tour-btn').addEventListener('click', () => {
-            welcomeModal.classList.remove('active');
-            setTimeout(() => {
-                welcomeModal.remove();
-            }, 300);
-        });
-        
-        // Remember that we've shown the welcome message
-        localStorage.setItem('tourShown', 'true');
-    }
-
     function startTour() {
         // Set tour as active
         tourActive = true;
