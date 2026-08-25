@@ -1039,22 +1039,21 @@ html {
     display: inline-flex;
     align-items: center;
     padding: 6px 14px;
-    background: var(--color-text-primary);
-    color: var(--color-bg-primary);
+    background: rgba(var(--color-accent-primary-rgb), 0.1);
+    color: var(--color-accent-primary);
     border-radius: var(--radius-full);
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    border: none;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
     cursor: default;
 }
 
 .skill-badge:hover {
-    opacity: 0.75;
+    background: var(--color-accent-primary);
+    color: white;
     transform: translateY(-1px);
-    background: var(--color-text-primary);
-    color: var(--color-bg-primary);
-    box-shadow: none;
+    box-shadow: var(--shadow-sm);
 }
 
 .skill-text-only {
