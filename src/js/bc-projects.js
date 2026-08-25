@@ -32,18 +32,6 @@ const bcFeaturedProjects = [
     },
     {
         id: 4,
-        title: 'FraudNet·AI — Real-Time Fraud Detection',
-        label: 'Featured Project · GenAI Genesis 2026',
-        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
-        image: './src/images/fraudnet.ai-ui.png',
-        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
-        github: 'https://github.com/AjayMaan13/fraudnet-ai',
-        external: 'https://fraudnet-ai.vercel.app',
-        devpost: 'https://devpost.com/AjayMaan13',
-        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
-    },
-    {
-        id: 5,
         title: 'FinSight - Personal Finance Tracker',
         label: 'Featured Project',
         description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
@@ -53,7 +41,7 @@ const bcFeaturedProjects = [
         external: 'https://fin-sight-mu.vercel.app/'
     },
     {
-        id: 6,
+        id: 5,
         title: 'UTRA Hacks Mentors',
         label: 'Featured Project',
         description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
@@ -64,17 +52,7 @@ const bcFeaturedProjects = [
         hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon", url: 'https://hackathon.utra.ca' }
     },
     {
-        id: 7,
-        title: 'AI Receipt Analyzer',
-        label: 'Featured Project',
-        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
-        image: './src/images/receipt-analyzer.png',
-        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
-        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
-        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
-    },
-    {
-        id: 8,
+        id: 6,
         title: 'PE Hackathon — Production-Hardened URL Shortener',
         label: 'Featured Project · MLH Production Engineering Hackathon 2026',
         description: 'A production-hardened URL shortener built to survive real-world failures. Features 96% test coverage, Docker auto-restart chaos recovery, a CI/CD gatekeeper that blocks broken deploys, and full JSON error handling — no stack traces, ever. Built for the MLH Production Engineering Hackathon 2026.',
@@ -86,7 +64,7 @@ const bcFeaturedProjects = [
         hackathon: { name: 'MLH PE Hackathon 2026', duration: '48hrs', context: 'Reliability Engineering Track', url: 'https://devpost.com/software/pe-hackathons-2026' }
     },
     {
-        id: 9,
+        id: 7,
         title: 'AirAware - AI Data Processing Pipeline',
         label: 'Featured Project',
         description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
@@ -98,8 +76,25 @@ const bcFeaturedProjects = [
 ];
 
 const bcOtherProjects = [
-    {   
-        
+    {
+        id: 16,
+        title: 'FraudNet·AI — Real-Time Fraud Detection',
+        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
+        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
+        github: 'https://github.com/AjayMaan13/fraudnet-ai',
+        external: 'https://fraudnet-ai.vercel.app',
+        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
+    },
+    {
+        id: 17,
+        title: 'AI Receipt Analyzer',
+        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
+        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
+        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
+        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
+    },
+    {
+
         id: 5,
         title: 'ArtVault - Art Collection Manager',
         description: 'A modern web application for discovering and organizing artworks from the Metropolitan Museum of Art. Features secure JWT authentication, personal collections, search history, and optimized Server-Side Rendering with Next.js serving 100+ daily users.',
