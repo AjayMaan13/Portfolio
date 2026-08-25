@@ -97,7 +97,9 @@
 
 .bc-project-image {
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+    background-color: var(--color-bg-secondary);
     display: block;
     transition: transform 0.3s ease;
     filter: grayscale(20%);
@@ -106,6 +108,19 @@
 .bc-project-image-link:hover .bc-project-image {
     transform: scale(1.02);
     filter: grayscale(0%);
+}
+
+.bc-project-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+    color: white;
+    font-size: var(--text-4xl);
+    font-weight: var(--weight-bold);
+    font-family: var(--font-secondary);
 }
 
 /* Project Content */

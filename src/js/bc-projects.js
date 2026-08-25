@@ -2,6 +2,36 @@
 const bcFeaturedProjects = [
     {
         id: 1,
+        title: 'Fragments — REST API Microservice',
+        label: 'Featured Project',
+        description: 'Secure Node.js/Express REST API for on-read data conversions across 11 content types (JSON ↔ YAML, Markdown → HTML, CSV → JSON, image-to-image via sharp/libvips), with endpoint security enforced by AWS Cognito JWT middleware. Architected as a scalable microservice on AWS ECS Fargate behind a load balancer across 2 availability zones — object data in S3, metadata in DynamoDB — with zero-downtime rolling deploys via GitHub Actions. Backed by ~92% test coverage across 125 unit tests and 14 Hurl integration suites, served over a custom HTTPS domain.',
+        image: './src/images/fragments.png',
+        tech: ['Node.js', 'Express', 'AWS Cognito', 'S3', 'DynamoDB', 'ECS Fargate', 'Docker', 'GitHub Actions'],
+        github: '',
+        external: '#'
+    },
+    {
+        id: 2,
+        title: 'LeaseLens — Lease Extraction & Rent Forecasting',
+        label: 'Featured Project',
+        description: 'Evaluation-first AI system for commercial lease documents. Benchmarks three extraction systems — a regex baseline, BERT NER, and an LLM structured-output pipeline — against a 40-document gold set of real SEC EDGAR commercial leases, reaching 0.803 micro-F1 with the LLM system versus 0.313 for the regex baseline. Backed by a CI regression gate that fails the build if extraction quality drops, bias-audited accuracy across property type and region, and SARIMA rent forecasting that beat a seasonal-naive baseline by 55%.',
+        image: '',
+        tech: ['Python', 'BeautifulSoup', 'Hugging Face Transformers', 'Claude API', 'pandas', 'pytest', 'statsmodels (SARIMA)', 'Streamlit', 'GitHub Actions'],
+        github: 'https://github.com/AjayMaan13/LeaseLens',
+        external: 'https://lease-lens-ai.streamlit.app'
+    },
+    {
+        id: 3,
+        title: 'GTSRB Traffic-Sign Classifier',
+        label: 'Featured Project',
+        description: 'Traffic-sign image classifier over the GTSRB dataset (43 categories), rebuilt from a course exercise into a full 12-factor deep learning project. Trains and compares three architectures — a baseline CNN, an augmented deep CNN, and a MobileNetV2 transfer-learning model — with the purpose-built deep CNN reaching 99.17% test accuracy at roughly 401K parameters, outperforming transfer learning at a fraction of the size. Includes Grad-CAM explainability, per-class precision/recall evaluation, and a live demo deployed to Hugging Face Spaces.',
+        image: './src/images/gtsrb-gradcam.png',
+        tech: ['Python', 'TensorFlow/Keras', 'scikit-learn', 'Gradio', 'Hugging Face Spaces'],
+        github: 'https://github.com/AjayMaan13/gtsrb-traffic-classifier',
+        external: 'https://huggingface.co/spaces/AjayMaan13/road-sign-vision'
+    },
+    {
+        id: 4,
         title: 'FraudNet·AI — Real-Time Fraud Detection',
         label: 'Featured Project · GenAI Genesis 2026',
         description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
@@ -13,7 +43,7 @@ const bcFeaturedProjects = [
         hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
     },
     {
-        id: 2,
+        id: 5,
         title: 'FinSight - Personal Finance Tracker',
         label: 'Featured Project',
         description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
@@ -23,7 +53,7 @@ const bcFeaturedProjects = [
         external: 'https://fin-sight-mu.vercel.app/'
     },
     {
-        id: 3,
+        id: 6,
         title: 'UTRA Hacks Mentors',
         label: 'Featured Project',
         description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
@@ -34,7 +64,7 @@ const bcFeaturedProjects = [
         hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon", url: 'https://hackathon.utra.ca' }
     },
     {
-        id: 4,
+        id: 7,
         title: 'AI Receipt Analyzer',
         label: 'Featured Project',
         description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
@@ -44,7 +74,7 @@ const bcFeaturedProjects = [
         external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
     },
     {
-        id: 5,
+        id: 8,
         title: 'PE Hackathon — Production-Hardened URL Shortener',
         label: 'Featured Project · MLH Production Engineering Hackathon 2026',
         description: 'A production-hardened URL shortener built to survive real-world failures. Features 96% test coverage, Docker auto-restart chaos recovery, a CI/CD gatekeeper that blocks broken deploys, and full JSON error handling — no stack traces, ever. Built for the MLH Production Engineering Hackathon 2026.',
@@ -56,7 +86,7 @@ const bcFeaturedProjects = [
         hackathon: { name: 'MLH PE Hackathon 2026', duration: '48hrs', context: 'Reliability Engineering Track', url: 'https://devpost.com/software/pe-hackathons-2026' }
     },
     {
-        id: 6,
+        id: 9,
         title: 'AirAware - AI Data Processing Pipeline',
         label: 'Featured Project',
         description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
@@ -201,7 +231,10 @@ function renderFeaturedProjects() {
             <div class="bc-project-image-wrapper">
                 <a href="${project.external}" class="bc-project-image-link" target="_blank" rel="noopener noreferrer">
                     <div class="bc-project-image-overlay"></div>
-                    <img src="${project.image}" alt="${project.title}" class="bc-project-image" />
+                    ${project.image ?
+                        `<img src="${project.image}" alt="${project.title}" class="bc-project-image" />` :
+                        `<div class="bc-project-image-placeholder">${project.title.charAt(0)}</div>`
+                    }
                 </a>
                 ${project.hackathon ? `<span class="bc-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
             </div>
@@ -226,11 +259,12 @@ function renderFeaturedProjects() {
                     ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
                 <div class="bc-project-links">
+                    ${project.github ? `
                     <a href="${project.github}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                         </svg>
-                    </a>
+                    </a>` : ''}
                     ${project.external && project.external !== '#' ? `
                     <a href="${project.external}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
