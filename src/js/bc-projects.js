@@ -15,7 +15,7 @@ const bcFeaturedProjects = [
         title: 'LeaseLens — Lease Extraction & Rent Forecasting',
         label: 'Featured Project',
         description: 'Evaluation-first AI system for commercial lease documents. Benchmarks three extraction systems — a regex baseline, BERT NER, and an LLM structured-output pipeline — against a 40-document gold set of real SEC EDGAR commercial leases, reaching 0.803 micro-F1 with the LLM system versus 0.313 for the regex baseline. Backed by a CI regression gate that fails the build if extraction quality drops, bias-audited accuracy across property type and region, and SARIMA rent forecasting that beat a seasonal-naive baseline by 55%.',
-        image: '',
+        image: './src/images/leaseLens.png',
         tech: ['Python', 'BeautifulSoup', 'Hugging Face Transformers', 'Claude API', 'pandas', 'pytest', 'statsmodels (SARIMA)', 'Streamlit', 'GitHub Actions'],
         github: 'https://github.com/AjayMaan13/LeaseLens',
         external: 'https://lease-lens-ai.streamlit.app'
