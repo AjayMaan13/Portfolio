@@ -16,9 +16,8 @@
     border-radius: var(--radius-xl);
     padding: var(--space-8);
     margin-bottom: var(--space-8);
-    box-shadow: var(--shadow-md);
     border: 1px solid var(--color-divider);
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease;
     opacity: 0;
     transform: translateY(30px);
 }
@@ -28,8 +27,6 @@
 }
 
 .exp-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
     border-color: var(--color-accent-primary);
 }
 
@@ -62,8 +59,9 @@
 }
 
 .exp-role {
+    font-family: var(--font-heading);
     font-size: var(--text-2xl);
-    font-weight: var(--weight-bold);
+    font-weight: var(--weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--space-2);
     line-height: 1.2;
@@ -137,7 +135,7 @@
     flex-shrink: 0;
     width: 32px;
     height: 32px;
-    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+    background: var(--color-accent-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -148,7 +146,7 @@
 .exp-highlight-icon svg {
     width: 18px;
     height: 18px;
-    stroke: white;
+    stroke: var(--color-bg-primary);
     stroke-width: 3;
 }
 
@@ -181,9 +179,7 @@
 
 .exp-tag:hover {
     background: var(--color-accent-primary);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
+    color: var(--color-bg-primary);
 }
 
 /* Animation */

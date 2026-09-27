@@ -1,21 +1,28 @@
-/* Theme Configuration */
+/* Theme Configuration
+ * Fonts and colors match personal-blogs/app/globals.css verbatim, so the
+ * portfolio and the blog read as one person's work. Variable NAMES are kept
+ * as-is (--font-primary, --color-accent-primary, etc.) even though their
+ * meaning/values changed, so every existing selector across style.css,
+ * bc-projects.css, experience.css etc. picks up the new theme automatically
+ * without needing to be touched individually.
+ */
 
 :root {
     /* Animation timings */
     --transition-speed: 0.3s;
     --theme-transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    
-    /* Font families */
-    --font-primary: 'Inter', sans-serif;
+
+    /* Font families — Fraunces (display/headings), Lora (body), JetBrains Mono (UI/code) */
+    --font-primary: 'Lora', serif;
     --font-secondary: 'JetBrains Mono', monospace;
-    --font-heading: 'Poppins', sans-serif;
-    
+    --font-heading: 'Fraunces', serif;
+
     /* Font weights */
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-semibold: 600;
     --weight-bold: 700;
-    
+
     /* Font sizes */
     --text-xs: 0.75rem;    /* 12px */
     --text-sm: 0.875rem;   /* 14px */
@@ -26,7 +33,7 @@
     --text-3xl: 1.875rem;  /* 30px */
     --text-4xl: 2.25rem;   /* 36px */
     --text-5xl: 3rem;      /* 48px */
-    
+
     /* Spacing */
     --space-1: 0.25rem;    /* 4px */
     --space-2: 0.5rem;     /* 8px */
@@ -38,7 +45,7 @@
     --space-16: 4rem;      /* 64px */
     --space-24: 6rem;      /* 96px */
     --space-32: 8rem;      /* 128px */
-    
+
     /* Border radius */
     --radius-sm: 0.25rem;  /* 4px */
     --radius-md: 0.5rem;   /* 8px */
@@ -47,60 +54,69 @@
     --radius-full: 9999px; /* For rounded pills/circles */
 }
 
-/* Light Theme (default) */
+/* Light Theme (default) — same values as personal-blogs' :root */
 .light-theme {
     /* Base colors */
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #F5F7FA;
-    --color-text-primary: #333333;
-    --color-text-secondary: #666666;
-    --color-accent-primary: #5045E4;
-    --color-accent-secondary: #00C2FF;
+    --color-bg-primary: #f7f4ee;
+    --color-bg-secondary: #f1ede3;
+    --color-text-primary: #1f1b16;
+    --color-text-secondary: #6b6558;
+    --color-accent-primary: #9e5829;
+    --color-accent-secondary: #9e5829;
     --color-success: #2ECC71;
     --color-error: #E74C3C;
-    --color-surface: #FFFFFF;
-    --color-divider: #E0E0E0;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #5045E4, #00C2FF);
-    --gradient-secondary: linear-gradient(135deg, #F5F7FA, #E0E0E0);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --color-surface: #fffdf9;
+    --color-divider: #e6e1d4;
+
+    /* No gradient-as-brand — kept as flat accent so any selector still
+       referencing these variables renders consistently rather than breaking. */
+    --gradient-primary: var(--color-accent-primary);
+    --gradient-secondary: var(--color-bg-secondary);
+
+    /* Cards use a border, not a shadow, to match the blog's flat card
+       language — these stay subtle, reserved for real overlays (guided
+       tour popup, mobile drawer) rather than decorative card lift. */
+    --shadow-sm: 0 1px 2px rgba(31, 27, 22, 0.06);
+    --shadow-md: 0 2px 8px rgba(31, 27, 22, 0.08);
+    --shadow-lg: 0 4px 16px rgba(31, 27, 22, 0.1);
+    --shadow-xl: 0 8px 24px rgba(31, 27, 22, 0.12);
+
+    /* RGB versions for opacity controls */
+    --color-accent-primary-rgb: 158, 88, 41; /* RGB for #9e5829 */
+    --color-accent-secondary-rgb: 158, 88, 41;
 }
 
-/* Dark Theme */
+/* Dark Theme — same values as personal-blogs' .dark */
 .dark-theme {
     /* Base colors */
-    --color-bg-primary: #121212;
-    --color-bg-secondary: #1E1E1E;
-    --color-text-primary: #F1F1F1;
-    --color-text-secondary: #B0B0B0;
-    --color-accent-primary: #7C6FFF;
-    --color-accent-secondary: #00D8FF;
+    --color-bg-primary: #0b0a08;
+    --color-bg-secondary: #131110;
+    --color-text-primary: #f2ead9;
+    --color-text-secondary: #9a9384;
+    --color-accent-primary: #e8935a;
+    --color-accent-secondary: #e8935a;
     --color-success: #2ECC71;
     --color-error: #E74C3C;
-    --color-surface: #232323;
-    --color-divider: #333333;
-    
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #7C6FFF, #00D8FF);
-    --gradient-secondary: linear-gradient(135deg, #232323, #121212);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
-    --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.35);
-    --shadow-glow: 0 0 15px rgba(124, 111, 255, 0.15);
+    --color-surface: #141210;
+    --color-divider: #292520;
+
+    --gradient-primary: var(--color-accent-primary);
+    --gradient-secondary: var(--color-bg-secondary);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --shadow-glow: 0 0 15px rgba(232, 147, 90, 0.15);
+
+    /* RGB versions for opacity controls */
+    --color-accent-primary-rgb: 232, 147, 90; /* RGB for #e8935a */
+    --color-accent-secondary-rgb: 232, 147, 90;
 }
 
 /* Theme Transition */
 body {
-    transition: background-color var(--theme-transition), 
+    transition: background-color var(--theme-transition),
                 color var(--theme-transition);
 }
 
@@ -170,22 +186,4 @@ body {
 .dark-theme .moon-icon {
     opacity: 1;
     transform: translateY(0) rotate(0);
-}
-
-/* In your light-theme section */
-.light-theme {
-    /* ...existing variables... */
-    
-    /* RGB versions for opacity controls */
-    --color-accent-primary-rgb: 80, 69, 228; /* RGB for #5045E4 */
-    --color-accent-secondary-rgb: 0, 194, 255; /* RGB for #00C2FF */
-}
-
-/* In your dark-theme section */
-.dark-theme {
-    /* ...existing variables... */
-    
-    /* RGB versions for opacity controls */
-    --color-accent-primary-rgb: 124, 111, 255; /* RGB for #7C6FFF */
-    --color-accent-secondary-rgb: 0, 216, 255; /* RGB for #00D8FF */
 }

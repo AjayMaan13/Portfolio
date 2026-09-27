@@ -1,111 +1,82 @@
-/* Island Navbar Styles */
+/* Site Header
+ * Rebuilt to match personal-blogs' header: a flat, full-width sticky bar
+ * with a border-bottom, instead of the previous floating glassmorphism
+ * pill. Reuses the shared --color-*/--font-* variables from theme.css
+ * rather than a separate --island-* color scope.
+ */
 
-:root {
-    --island-nav-bg: rgba(255, 255, 255, 0.8);
-    --island-nav-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    --island-accent: #0071e3;
-    --island-text: #1d1d1f;
-    --island-hover-bg: rgba(0, 113, 227, 0.1);
-    --island-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.dark-theme {
-    --island-nav-bg: rgba(29, 29, 31, 0.8);
-    --island-nav-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-    --island-text: #f5f5f7;
-    --island-hover-bg: rgba(255, 255, 255, 0.1);
-}
-
-/* Island Navigation Container */
 .island-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    transition: var(--island-transition);
+    border-bottom: 1px solid var(--color-divider);
+    background: var(--color-bg-primary);
+    transition: border-color var(--transition-speed) ease;
+}
+
+.island-nav.scrolled {
+    border-bottom-color: var(--color-accent-primary);
 }
 
 .nav-container {
-    background: var(--island-nav-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-radius: 50px;
-    padding: 12px 24px;
-    box-shadow: var(--island-nav-shadow);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-4);
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: var(--island-transition);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    justify-content: space-between;
+    gap: var(--space-3);
 }
 
-body.dark-theme .nav-container {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.island-nav.scrolled .nav-container {
-    padding: 8px 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-}
-
-/* Logo */
+/* Logo / name */
 .island-nav .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--island-accent);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-primary);
     text-decoration: none;
-    margin-right: 16px;
-    transition: var(--island-transition);
-    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
 }
 
 .island-nav .logo:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
+    color: var(--color-accent-primary);
 }
 
 /* Navigation Links */
 .island-nav .nav-links {
     display: flex;
     list-style: none;
-    gap: 4px;
+    gap: var(--space-4);
     align-items: center;
     margin: 0;
     padding: 0;
 }
 
 .island-nav .nav-link {
-    padding: 8px 16px;
-    color: var(--island-text);
+    padding: var(--space-1) 0;
+    color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-radius: 24px;
-    transition: var(--island-transition);
-    position: relative;
+    font-family: var(--font-secondary);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    transition: color var(--transition-speed) ease;
     white-space: nowrap;
 }
 
 .island-nav .nav-link:hover {
-    background: var(--island-hover-bg);
-    color: var(--island-accent);
+    color: var(--color-text-primary);
 }
 
 .island-nav .nav-link.active {
-    background: var(--island-accent);
-    color: white;
-}
-
-.island-nav .nav-link.active:hover {
-    background: var(--island-accent);
-    opacity: 0.9;
+    color: var(--color-accent-primary);
 }
 
 /* Theme Toggle Button */
 .island-nav .theme-toggle {
     background: none;
-    border: none;
+    border: 1px solid var(--color-divider);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -113,35 +84,34 @@ body.dark-theme .nav-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 8px;
-    transition: var(--island-transition);
-    color: var(--island-text);
+    transition: border-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    color: var(--color-text-primary);
 }
 
 .island-nav .theme-toggle:hover {
-    background: var(--island-hover-bg);
-    transform: rotate(20deg);
+    border-color: var(--color-accent-primary);
+    color: var(--color-accent-primary);
 }
 
 .island-nav .theme-toggle svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
-.island-nav .sun-icon { 
-    display: block; 
+.island-nav .sun-icon {
+    display: block;
 }
 
 .island-nav .moon-icon {
     display: none;
 }
 
-body.dark-theme .island-nav .sun-icon { 
-    display: none; 
+body.dark-theme .island-nav .sun-icon {
+    display: none;
 }
 
-body.dark-theme .island-nav .moon-icon { 
-    display: block; 
+body.dark-theme .island-nav .moon-icon {
+    display: block;
 }
 
 /* Mobile Menu Button */
@@ -156,21 +126,20 @@ body.dark-theme .island-nav .moon-icon {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin-left: 8px;
-    border-radius: 8px;
-    transition: var(--island-transition);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-speed) ease;
 }
 
 .island-nav .mobile-menu-btn:hover {
-    background: var(--island-hover-bg);
+    background: var(--color-bg-secondary);
 }
 
 .island-nav .mobile-menu-btn span {
     width: 20px;
     height: 2px;
-    background: var(--island-text);
+    background: var(--color-text-primary);
     border-radius: 2px;
-    transition: var(--island-transition);
+    transition: var(--transition-speed) ease;
 }
 
 .island-nav .mobile-menu-btn.active span:nth-child(1) {
@@ -189,79 +158,43 @@ body.dark-theme .island-nav .moon-icon {
 @media (max-width: 768px) {
     .island-nav .nav-links {
         position: fixed;
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--island-nav-bg);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        top: 60px;
+        right: var(--space-4);
+        left: var(--space-4);
+        background: var(--color-surface);
+        border: 1px solid var(--color-divider);
         flex-direction: column;
-        padding: 20px;
-        border-radius: 24px;
-        box-shadow: var(--island-nav-shadow);
+        align-items: stretch;
+        gap: 0;
+        padding: var(--space-2);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
         opacity: 0;
         pointer-events: none;
-        transition: var(--island-transition);
-        min-width: 200px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    body.dark-theme .island-nav .nav-links {
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        transform: translateY(-8px);
+        transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
     }
 
     .island-nav .nav-links.active {
         opacity: 1;
         pointer-events: all;
+        transform: translateY(0);
     }
 
     .island-nav .nav-link {
         width: 100%;
+        padding: var(--space-3);
         text-align: center;
+        border-radius: var(--radius-md);
+    }
+
+    .island-nav .nav-link:hover {
+        background: var(--color-bg-secondary);
     }
 
     .island-nav .mobile-menu-btn {
         display: flex;
     }
-
-    .nav-container {
-        padding: 10px 16px;
-    }
-
-    .island-nav .logo {
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .island-nav {
-        top: 10px;
-        width: calc(100% - 20px);
-    }
-
-    .nav-container {
-        width: 100%;
-    }
-
-    .island-nav .logo {
-        font-size: 1.3rem;
-    }
-}
-
-/* Animation for navbar entry */
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-.island-nav {
-    animation: slideDown 0.5s ease-out;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -270,15 +203,10 @@ body.dark-theme .island-nav .moon-icon {
 }
 
 /* Focus states for accessibility */
-.island-nav .nav-link:focus,
-.island-nav .theme-toggle:focus,
-.island-nav .mobile-menu-btn:focus {
-    outline: 2px solid var(--island-accent);
+.island-nav .nav-link:focus-visible,
+.island-nav .theme-toggle:focus-visible,
+.island-nav .mobile-menu-btn:focus-visible,
+.island-nav .logo:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
-}
-
-.island-nav .logo:focus {
-    outline: 2px solid var(--island-accent);
-    outline-offset: 4px;
-    border-radius: 4px;
 }

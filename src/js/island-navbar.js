@@ -30,9 +30,12 @@
 
         // ========== Theme Toggle ==========
         function initTheme() {
-            // Load saved theme from localStorage
+            // Explicit choice (localStorage) wins; otherwise fall back to the
+            // OS-level preference, matching personal-blogs' next-themes setup.
             const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 body.classList.add('dark-theme');
             }
         }

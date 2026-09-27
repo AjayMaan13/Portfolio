@@ -7,16 +7,15 @@
     <title>Ajaypartap Singh Maan | Developer Portfolio</title>
     <meta name="description"
         content="Portfolio of Ajaypartap Singh Maan, a programmer and problem solver specializing in modern web applications.">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r151/three.min.js"></script>
-
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- Fonts -->
+    <!-- Fonts — Fraunces (display), Lora (body), JetBrains Mono (UI/code) —
+         match personal-blogs' typography exactly. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Lora:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheets -->
@@ -31,6 +30,21 @@
 </head>
 
 <body class="light-theme">
+    <!-- Applies the saved/OS-preferred theme before the rest of <body>
+         paints, so there's no flash of the wrong theme (same reasoning as
+         next-themes on the blog). document.body already exists as soon as
+         this start tag is parsed, so this can run here — a <head> script
+         would run before <body> exists at all. Uses the same "dark-theme"
+         class island-navbar.js's runtime toggle uses. -->
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (saved === 'dark' || (!saved && prefersDark)) {
+                document.body.classList.add('dark-theme');
+            }
+        })();
+    </script>
     <!-- Loader -->
     <div class="page-loader">
         <div class="loader-circle"></div>
@@ -38,6 +52,8 @@
 
     <nav class="island-nav" id="islandNav">
         <div class="nav-container">
+            <a href="#home" class="logo">Ajay Maan</a>
+
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -101,15 +117,6 @@
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m7 13 5 5 5-5M7 6l5 5 5-5" />
                     </svg>
-                </div>
-            </div>
-
-            <!-- Background shapes -->
-            <div class="hero-background">
-                <div class="background-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
                 </div>
             </div>
         </section>
@@ -581,20 +588,45 @@
         <div class="social-divider-line"></div>
     </div>
 
+    <!-- Terminal Easter Egg -->
+    <button class="terminal-toggle" aria-label="Open terminal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+        </svg>
+    </button>
+
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <span class="terminal-title">ajay@portfolio: ~</span>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-output">
+                <p>Type <span class="command">help</span> to see available commands.</p>
+            </div>
+            <div class="terminal-input-line">
+                <span class="terminal-prompt">ajay@portfolio:~$</span>
+                <input type="text" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="src/js/main.js"></script>
     <script src="src/js/animations.js"></script>
-    <script src="src/js/projects.js"></script>
-    <script src="src/js/timeline.js"></script>
     <script src="src/js/experience.js"></script>
     <!-- Leadership Script -->
     <script src="src/js/leadership.js"></script>
 
     <!-- Enhanced Features Scripts -->
     <script src="src/js/terminal.js"></script>
-    <script src="src/js/easter-eggs.js"></script>
+    <script src="src/js/easter-egg.js"></script>
     <script src="src/js/guided-tour.js"></script>
-    <script src="src/js/3d-background.js"></script>
     <script src="src/js/typing.js"></script>
     <script src="src/js/bc-projects.js"></script>
     <script src="src/js/island-navbar.js"></script>

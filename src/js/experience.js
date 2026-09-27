@@ -108,9 +108,8 @@ function addExperienceCSS() {
             border-radius: var(--radius-xl);
             padding: var(--space-6);
             margin-bottom: var(--space-6);
-            box-shadow: var(--shadow-md);
             border: 1px solid var(--color-divider);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: border-color 0.3s ease;
             opacity: 0;
             transform: translateY(30px);
             position: relative;
@@ -124,7 +123,7 @@ function addExperienceCSS() {
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, var(--color-accent-primary), var(--color-accent-secondary));
+            background: var(--color-accent-primary);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -139,8 +138,6 @@ function addExperienceCSS() {
         }
 
         .exp-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
             border-color: var(--color-accent-primary);
         }
 
@@ -258,14 +255,11 @@ function addExperienceCSS() {
             height: 60px;
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
             border: 2px solid var(--color-divider);
             transition: all 0.3s ease;
         }
 
         .exp-card:hover .exp-company-logo {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
             border-color: var(--color-accent-primary);
         }
 
@@ -280,8 +274,9 @@ function addExperienceCSS() {
         }
 
         .exp-role {
+            font-family: var(--font-heading);
             font-size: var(--text-xl);
-            font-weight: var(--weight-bold);
+            font-weight: var(--weight-semibold);
             color: var(--color-text-primary);
             margin-bottom: var(--space-2);
             line-height: 1.2;
@@ -385,9 +380,7 @@ function addExperienceCSS() {
 
         .exp-tag:hover {
             background: var(--color-accent-primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
+            color: var(--color-bg-primary);
         }
 
         /* Dark Theme */

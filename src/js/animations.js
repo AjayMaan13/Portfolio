@@ -6,10 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Add animation classes to elements based on their position
     initScrollAnimations();
-    
-    // Add hover effects to cards and buttons
-    initHoverEffects();
-    
+
     // Initialize cursor effects (optional)
     initCursorEffects();
 });
@@ -73,70 +70,6 @@ function initScrollAnimations() {
     // Observe all animate-on-scroll elements
     document.querySelectorAll('.animate-on-scroll').forEach(elem => {
         observer.observe(elem);
-    });
-}
-
-// Initialize hover effects for interactive elements
-function initHoverEffects() {
-    // Project cards hover effect
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            // Get position of mouse relative to card
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the card
-            const y = e.clientY - rect.top; // y position within the card
-            
-            // Calculate rotation based on mouse position
-            // Values between -10 and 10 degrees
-            const rotateY = ((x / rect.width) - 0.5) * 10;
-            const rotateX = ((y / rect.height) - 0.5) * -10;
-            
-            // Apply the rotation
-            card.querySelector('.project-card-inner').style.transform = 
-                `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        // Reset rotation when mouse leaves
-        card.addEventListener('mouseleave', () => {
-            card.querySelector('.project-card-inner').style.transform = 
-                'perspective(1000px) rotateX(0) rotateY(0)';
-        });
-    });
-    
-    // Add hover effects to buttons
-    const buttons = document.querySelectorAll('.btn, .filter-btn, .social-link');
-    
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            button.style.transform = 'translateY(-3px)';
-        });
-        
-        button.addEventListener('mouseleave', () => {
-            button.style.transform = 'translateY(0)';
-        });
-        
-        button.addEventListener('mousedown', () => {
-            button.style.transform = 'translateY(-1px)';
-        });
-        
-        button.addEventListener('mouseup', () => {
-            button.style.transform = 'translateY(-3px)';
-        });
-    });
-    
-    // Skill item hover effect
-    const skillItems = document.querySelectorAll('.skill-item');
-    
-    skillItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-5px)';
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0)';
-        });
     });
 }
 

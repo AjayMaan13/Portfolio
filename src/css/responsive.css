@@ -225,28 +225,6 @@
 }
 
 /* Dark Mode Preference */
-@media (prefers-color-scheme: dark) {
-    body:not(.light-theme) {
-        --color-bg-primary: #121212;
-        --color-bg-secondary: #1E1E1E;
-        --color-text-primary: #F1F1F1;
-        --color-text-secondary: #B0B0B0;
-        --color-accent-primary: #7C6FFF;
-        --color-accent-secondary: #00D8FF;
-        --color-surface: #232323;
-        --color-divider: #333333;
-        
-        --gradient-primary: linear-gradient(135deg, #7C6FFF, #00D8FF);
-        --gradient-secondary: linear-gradient(135deg, #232323, #121212);
-        
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-        --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25);
-        --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
-        --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.35);
-        --shadow-glow: 0 0 15px rgba(124, 111, 255, 0.15);
-    }
-}
-
 /* Print Styles */
 @media print {
     .header,
@@ -268,7 +246,7 @@
         --color-bg-secondary: white;
         --color-text-primary: black;
         --color-text-secondary: #555;
-        --color-accent-primary: #5045E4;
+        --color-accent-primary: #9e5829;
         --shadow-sm: none;
         --shadow-md: none;
         --shadow-lg: none;
@@ -276,9 +254,9 @@
         background-color: white;
         color: black;
     }
-    
+
     a {
-        color: #5045E4;
+        color: #9e5829;
         text-decoration: underline;
     }
     
