@@ -47,7 +47,7 @@ const COMMANDS = {
         description: 'Show contact information',
         action: () => {
             return `<p>Email: ajayapsmaanm13@gmail.com</p>
-                   <p>LinkedIn: linkedin.com/in/ajaypartap-singh-maan</p>
+                   <p>LinkedIn: linkedin.com/in/ajaymaan13</p>
                    <p>GitHub: github.com/AjayMaan13</p>`;
         }
     },

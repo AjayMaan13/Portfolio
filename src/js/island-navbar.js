@@ -74,11 +74,17 @@
         // ========== Smooth Scrolling & Active Link ==========
         navLinkItems.forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
+
+                // External links (e.g. the Blog nav item) aren't in-page
+                // anchors — let the browser handle them normally instead of
+                // intercepting the click.
+                if (!targetId.startsWith('#')) return;
+
+                e.preventDefault();
+
                 const targetSection = document.querySelector(targetId);
-                
+
                 if (!targetSection) return;
 
                 // Close mobile menu
