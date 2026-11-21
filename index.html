@@ -4,33 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajaypartap Singh Maan | Developer Portfolio</title>
+    <title>Ajaypartap Singh Maan | SDET, Software &amp; AI Engineer</title>
     <meta name="description"
-        content="Portfolio of Ajaypartap Singh Maan, a programmer and problem solver specializing in modern web applications.">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r151/three.min.js"></script>
+        content="Ajaypartap Singh Maan: Seneca Polytechnic student and former Government of Ontario co-op building tested, observable software across SDET/QA automation, software engineering and AI/ML.">
+    <meta name="theme-color" content="#5045E4">
+    <link rel="canonical" href="https://ajaymaan13.vercel.app/">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ajaypartap Singh Maan">
+    <meta property="og:title" content="Ajaypartap Singh Maan | SDET, Software &amp; AI Engineer">
+    <meta property="og:description" content="Automation suites, cloud pipelines and AI agents. Government of Ontario co-op, Seneca CPA (graduating Dec 2026).">
+    <meta property="og:url" content="https://ajaymaan13.vercel.app/">
+    <meta property="og:image" content="https://ajaymaan13.vercel.app/src/images/og-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ajaypartap Singh Maan: SDET and QA automation, software engineering, AI/ML">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ajaypartap Singh Maan | SDET, Software &amp; AI Engineer">
+    <meta name="twitter:description" content="Automation suites, cloud pipelines and AI agents.">
+    <meta name="twitter:image" content="https://ajaymaan13.vercel.app/src/images/og-preview.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.ico" sizes="32x32">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+    <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@600;700&display=swap"
-        rel="stylesheet">
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@600;700&display=swap">
+    </noscript>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/theme.css">
     <link rel="stylesheet" href="src/css/responsive.css">
-    <link rel="stylesheet" href="src/css/experience.css">
     <link rel="stylesheet" href="src/css/island-navbar.css">
-    <link rel="stylesheet" href="src/css/bc-projects.css">
+    <!-- Below-the-fold styles load without blocking first paint -->
+    <link rel="preload" as="style" href="src/css/experience.css" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="src/css/bc-projects.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="src/css/experience.css">
+        <link rel="stylesheet" href="src/css/bc-projects.css">
+    </noscript>
 
 
 </head>
 
 <body class="light-theme">
+    <a class="skip-link" href="#main">Skip to main content</a>
     <!-- Loader -->
     <div class="page-loader">
         <div class="loader-circle"></div>
@@ -40,14 +67,13 @@
         <div class="nav-container">
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="https://personal-blogs-mu.vercel.app" class="nav-link" target="_blank" rel="noopener">Blog</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#leadership" class="nav-link">Leadership</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#leadership" class="nav-link">Leadership</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
-                
+                <li><a href="https://personal-blogs-mu.vercel.app" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a></li>
             </ul>
 
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -76,7 +102,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main">
         <!-- Compact Hero/About Section -->
         <section id="home" class="hero-section">
             <div class="container">
@@ -84,16 +110,18 @@
                     <span class="hero-greeting">Hello, I'm</span>
                     <h1 class="hero-title">Ajaypartap Singh Maan</h1>
                     <h2 class="hero-subtitle">
-                        I'm a <span class="typing-text"></span>
+                        I'm <span class="typing-text"></span>
                     </h2>
                     <p class="hero-text">
-                        Passionate about creating exceptional digital experiences.<br>
-                        Currently focused on building accessible, human-centered products.
+                        Seneca CPA student (4.0 GPA, graduating Dec 2026) with an 8-month Government of Ontario co-op.<br>
+                        I build tested, observable software: automation suites, cloud pipelines and AI agents.
                     </p>
                     <div class="hero-buttons">
-                        <a href="https://drive.google.com/file/d/1pvoOVfuTUvr2nDkBQ4g7Mf5F3aPRFUYJ/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener">Resume</a>
+                        <a href="https://drive.google.com/file/d/1pvoOVfuTUvr2nDkBQ4g7Mf5F3aPRFUYJ/view?usp=sharing" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Resume</a>
+                        <a href="#projects" class="btn btn-secondary">View projects</a>
                         <a href="#contact" class="btn btn-secondary">Get In Touch</a>
                     </div>
+                    <p class="hero-availability">Open to SDET / SWE / AI-ML roles · Toronto, ON</p>
 
                 </div>
                 <div class="hero-scroll-hint">
@@ -115,31 +143,53 @@
             </div>
         </section>
 
-        <!-- Updated About Section HTML -->
+        <!-- About Section -->
         <section id="about" class="about-section">
             <div class="container">
                 <h2 class="section-title">About Me</h2>
-                <div class="about-content-new">
-                    <div class="about-text-main">
-                        <p>Hi! I'm <strong>Ajaypartap Singh Maan</strong> — a passionate developer, problem solver, and
-                            lifelong learner. I'm currently studying <strong>Computer Programming & Analysis</strong> at
-                            Seneca Polytechnic, maintaining a <strong>4.0 GPA</strong> and earning <strong>3-time
-                                President's Honour List</strong> recognition.</p>
+                <div class="about-layout">
+                    <div class="about-story">
+                        <p class="about-lead">I build software, and I make a point of proving it works.</p>
 
-                        <p>I've been coding since I was 12, and I love turning complex ideas into practical solutions.
-                            My projects range from <strong>AI Receipt Analyzers</strong> using GPT-4 Vision, to
-                            <strong>real-time ETL pipelines</strong> for air quality monitoring, to <strong>secure C++
-                                systems</strong> with memory-safe design.
-                        </p>
+                        <p>I'm a <strong>Computer Programming &amp; Analysis</strong> student at Seneca Polytechnic
+                            (graduating December 2026) with a <strong>4.0 GPA</strong> and three
+                            <strong>President's Honour List</strong> recognitions. I've been coding since I was 12.</p>
 
-                        <p>With over <strong>2,100 GitHub commits</strong>, I enjoy building across multiple domains —
-                            AI/ML, full-stack apps, data engineering, and cloud-based solutions. I'm curious about
-                            emerging technologies, always learning, and eager to collaborate on innovative projects that
-                            make an impact.</p>
+                        <p>I just finished an <strong>8-month co-op with the Government of Ontario</strong>, working on SAMS, the
+                            case-management platform behind ODSP and OCSD benefits. There I automated regression testing
+                            (cutting test cycles from 8 hours to 28 minutes), built a MERN test-scenario platform for 100+ engineers,
+                            and built AI agents for log triage and document search.</p>
 
-                        <p>Outside of tech, you'll probably find me <strong>spiking a volleyball</strong> or diving into
-                            classic literature (currently <em>Crime and Punishment</em> by Dostoevsky).</p>
+                        <p>On my own time I build things that can be tested, measured and explained: an order API checked with
+                            3,000 parallel orders, a cloud data pipeline, a debugger for failing AI agents. I also mentor:
+                            20+ open-source contributors, hackathon teams and first-year students. When I'm away from the keyboard
+                            I'm reading classic novels and AI books, or playing <strong>volleyball</strong> and <strong>cricket</strong>.</p>
                     </div>
+
+                    <aside class="about-facts" aria-label="Quick facts">
+                        <dl>
+                            <div><dt>Focus</dt><dd>SDET / QA automation, software engineering, AI/ML</dd></div>
+                            <div><dt>Education</dt><dd>Seneca Polytechnic, Computer Programming &amp; Analysis, Dec 2026</dd></div>
+                            <div><dt>Experience</dt><dd>Government of Ontario co-op (8 months)</dd></div>
+                            <div><dt>Based in</dt><dd>Toronto, ON</dd></div>
+                            <div><dt>Looking for</dt><dd>SDET, SWE and AI/ML roles</dd></div>
+                        </dl>
+                    </aside>
+                </div>
+
+                <div class="about-focus">
+                    <article class="about-focus-card">
+                        <h3>SDET &amp; QA automation</h3>
+                        <p>Selenium, TestNG and Page Object suites; Jenkins and Azure DevOps quality gates; concurrency and load testing; accessibility testing with axe-core.</p>
+                    </article>
+                    <article class="about-focus-card">
+                        <h3>Software engineering</h3>
+                        <p>Java and Spring Boot at work; Node, React, PHP and FastAPI in projects; an AWS microservice with Cognito auth, DynamoDB and Terraform.</p>
+                    </article>
+                    <article class="about-focus-card">
+                        <h3>AI/ML engineering</h3>
+                        <p>LLM agents and RAG at the Ontario co-op; evaluation-first projects like LeaseLens and AgentTrace that measure whether the AI actually works.</p>
+                    </article>
                 </div>
             </div>
         </section>
@@ -154,48 +204,41 @@
             </div>
         </section>
 
+        <!-- Projects Section (rendered by src/js/bc-projects.js from src/data/projects.js) -->
+        <section id="projects" class="bc-projects-section">
+            <div class="container">
+                <div class="bc-section-header">
+                    <h2 class="bc-section-title">Projects</h2>
+                    <div class="bc-section-line"></div>
+                </div>
+                <p class="bc-section-intro">Testing, backend, cloud and AI work. Every number below comes from the project's own repo, tests or results files.</p>
+
+                <h3 class="bc-subtitle">Featured</h3>
+                <div class="bc-latest-container"></div>
+                <div class="bc-featured-grid"></div>
+
+                <div class="bc-other-section">
+                    <h3 class="bc-subtitle">More projects</h3>
+                    <div class="bc-filters" role="group" aria-label="Filter projects by track"></div>
+                    <p class="bc-filter-status" role="status" aria-live="polite"></p>
+                    <div class="bc-other-grid"></div>
+                    <div class="bc-show-more">
+                        <button type="button" class="bc-show-more-btn btn btn-secondary" aria-expanded="false">Show more</button>
+                        <a href="https://github.com/AjayMaan13?tab=repositories" target="_blank" rel="noopener noreferrer" class="bc-archive-link">View Archive</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Leadership Section -->
         <section id="leadership" class="exp-section">
             <div class="container">
-                <h2 class="section-title">Leadership & Mentorship</h2>
+                <h2 class="section-title">Leadership &amp; Hackathons</h2>
                 <div class="leadership-container">
-                    <!-- Leadership cards will be generated dynamically by leadership.js -->
+                    <!-- Leadership cards and the hackathon strip are rendered by leadership.js from src/data/leadership.js -->
                 </div>
             </div>
         </section>
-
-        <!-- Featured Projects Section - BC Style -->
-        <section id="projects" class="bc-projects-section">
-            <div class="container">
-                <!-- Section Header -->
-                <div class="bc-section-header">
-                    <h2 class="bc-section-title">Some Things I've Built</h2>
-                    <div class="bc-section-line"></div>
-                </div>
-
-                <!-- Featured Projects Container -->
-                <div class="bc-featured-container">
-                    <!-- Projects will be dynamically inserted here -->
-                </div>
-
-                <!-- Other Projects Section -->
-                <div class="bc-other-section">
-                    <h2 class="bc-other-title">Other Noteworthy Projects</h2>
-                    <div class="bc-other-grid">
-                        <!-- Other projects will be dynamically inserted here -->
-                    </div>
-                    <div class="bc-show-more">
-                        <button class="bc-show-more-btn btn btn-secondary">Show More</button>
-                        <a href="https://github.com/AjayMaan13?tab=repositories" target="_blank"
-                            class="bc-archive-link">
-                            View Archive
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
 
         <!-- Skills Section -->
         <section id="skills" class="skills-section">
@@ -203,228 +246,151 @@
                 <h2 class="section-title">Skills & Expertise</h2>
 
                 <div class="skills-container-compact">
-                    <!-- Programming Languages -->
                     <div class="skills-category-compact">
                         <h3 class="category-title-compact">
                             <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             </span>
-                            Programming Languages
+                            Testing &amp; CI/CD
+                        </h3>
+                        <div class="skills-list-compact">
+                            <div class="skill-badge"><span class="skill-text-only">Selenium</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">TestNG</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">JUnit</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">pytest</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">pytest-bdd</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">PHPUnit</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">xUnit</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Jest</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Vitest</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Hurl</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">axe-core</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Page Object Model</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Maven</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Jenkins</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">GitHub Actions</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Azure DevOps</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">WCAG 2.0</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Git</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Jira</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Agile</span></div>
+                        </div>
+                    </div>
+
+                    <div class="skills-category-compact">
+                        <h3 class="category-title-compact">
+                            <span class="category-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </span>
+                            Languages
                         </h3>
                         <div class="skills-list-compact">
                             <div class="skill-badge"><span class="skill-text-only">Python</span></div>
                             <div class="skill-badge"><span class="skill-text-only">Java</span></div>
                             <div class="skill-badge"><span class="skill-text-only">JavaScript</span></div>
                             <div class="skill-badge"><span class="skill-text-only">TypeScript</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">C#</span></div>
                             <div class="skill-badge"><span class="skill-text-only">C++</span></div>
                             <div class="skill-badge"><span class="skill-text-only">C</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">C#</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">PHP</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">SQL</span></div>
                         </div>
                     </div>
 
-                    <!-- AI & ML -->
                     <div class="skills-category-compact">
                         <h3 class="category-title-compact">
                             <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                             </span>
-                            AI & ML
+                            Frameworks &amp; Libraries
                         </h3>
                         <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">TensorFlow</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">PyTorch</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Keras</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Scikit-learn</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">NLP</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">LLM Fine-tuning</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">LLM APIs</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">RAGs</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Watsonx.ai</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Watsonx</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">FastAPI</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Flask</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Spring Boot</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Node.js</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Express</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">React</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Next.js</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Angular</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Streamlit</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">JavaFX</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Hibernate/JPA</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Tailwind</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Bootstrap</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">.NET 8</span></div>
                         </div>
                     </div>
 
-                    <!-- Data Engineering & Science -->
                     <div class="skills-category-compact">
                         <h3 class="category-title-compact">
                             <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                             </span>
-                            Data Engineering & Science
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">Pandas</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">NumPy</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Matplotlib</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Seaborn</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Time Series</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Image Processing</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Data Validation</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Databases -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                            </span>
-                            Databases
+                            Databases &amp; Messaging
                         </h3>
                         <div class="skills-list-compact">
                             <div class="skill-badge"><span class="skill-text-only">PostgreSQL</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">MongoDB</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Mongoose</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Sequelize</span></div>
                             <div class="skill-badge"><span class="skill-text-only">MySQL</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Oracle Database</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Redis</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">MongoDB</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Oracle</span></div>
                             <div class="skill-badge"><span class="skill-text-only">IBM Db2</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">SQL Server</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Redis</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">SurrealDB</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">BigQuery</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">DynamoDB</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Kafka</span></div>
                         </div>
                     </div>
 
-                    <!-- Frontend -->
                     <div class="skills-category-compact">
                         <h3 class="category-title-compact">
                             <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
                             </span>
-                            Frontend
+                            Cloud &amp; Infrastructure
                         </h3>
                         <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">React</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Angular</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">React Native</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">VueJS</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Streamlit</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Bootstrap</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Tailwind</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">HTML</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">CSS</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                            </span>
-                            Backend
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">NodeJS</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Express.js</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Flask</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Spring Boot</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">RESTful APIs</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">JWT</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">API Integration</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">FastAPI</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">AWS</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Google Cloud (GKE)</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Microsoft Azure</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Docker</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Kubernetes</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Terraform</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Datadog</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Linux</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Vercel</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Render</span></div>
                             <div class="skill-badge"><span class="skill-text-only">Railway</span></div>
                         </div>
                     </div>
 
-                    <!-- Cloud & DevOps -->
                     <div class="skills-category-compact">
                         <h3 class="category-title-compact">
                             <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/></svg>
                             </span>
-                            Cloud & DevOps
+                            AI &amp; Data
                         </h3>
                         <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">AWS</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Microsoft Azure</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Google Cloud</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Docker</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Git</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">GitHub</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Jenkins CI/CD</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Linux</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">ETL</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">IBM Cloud</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Anthropic API</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">LLM APIs</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Azure OpenAI</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">RAG</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">LangGraph</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">MCP</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">PyTorch</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">TensorFlow/Keras</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">scikit-learn</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Pandas</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">NumPy</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Airflow</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">Hugging Face</span></div>
+                            <div class="skill-badge"><span class="skill-text-only">IBM watsonx.ai</span></div>
                         </div>
                     </div>
 
-                    <!-- Testing & QA -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                            </span>
-                            Testing & QA
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">Selenium</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">TestNG</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">JUnit</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Pytest</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Cypress</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Jest</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Data Driven Testing</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">WCAG 2.0</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Project Management -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                            </span>
-                            Project Management
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">Jira</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Confluence</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">GitLab</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Trello</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Slack</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Bitbucket</span></div>
-                        </div>
-                    </div>
-
-                    <!-- CS Fundamentals -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                            </span>
-                            CS Fundamentals
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">Data Structures</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Algorithms</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Design Patterns</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">OOP</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">System Design</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Data Encryption</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Hardware & Embedded Systems -->
-                    <div class="skills-category-compact">
-                        <h3 class="category-title-compact">
-                            <span class="category-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>
-                            </span>
-                            Hardware & Embedded Systems
-                        </h3>
-                        <div class="skills-list-compact">
-                            <div class="skill-badge"><span class="skill-text-only">Arduino</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Raspberry Pi</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Embedded Systems</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Robotics</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Sensor Integration</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Servo Motors</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">IR Sensors</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Ultrasonic Sensors</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">State Machines</span></div>
-                            <div class="skill-badge"><span class="skill-text-only">Motor Control</span></div>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </section>
@@ -443,7 +409,7 @@
 
                         <div class="social-links-grid">
                             <!-- GitHub -->
-                            <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener"
+                            <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener noreferrer"
                                 class="social-link-card">
                                 <div class="social-icon github">
                                     <img src="src/images/icons/github-mark.svg" alt="GitHub">
@@ -452,7 +418,7 @@
                             </a>
 
                             <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/in/ajaymaan13/" target="_blank" rel="noopener"
+                            <a href="https://www.linkedin.com/in/ajaymaan13/" target="_blank" rel="noopener noreferrer"
                                 class="social-link-card">
                                 <div class="social-icon linkedin">
                                     <img src="src/images/icons/linkedin-161-svgrepo-com.svg" alt="LinkedIn">
@@ -462,7 +428,7 @@
 
 
                             <!-- Discord -->
-                            <a href="https://discord.com/users/507537786988134407" target="_blank" rel="noopener"
+                            <a href="https://discord.com/users/507537786988134407" target="_blank" rel="noopener noreferrer"
                                 class="social-link-card">
                                 <div class="social-icon discord">
                                     <img src="src/images/icons/discord-svgrepo-com-2.svg" alt="Discord">
@@ -471,7 +437,7 @@
                             </a>
 
                             <!-- Dev.to -->
-                            <a href="https://dev.to/ajaymaan13" target="_blank" rel="noopener" class="social-link-card">
+                            <a href="https://dev.to/ajaymaan13" target="_blank" rel="noopener noreferrer" class="social-link-card">
                                 <div class="social-icon devto">
                                     <img src="src/images/icons/dev-to-svgrepo-com.svg" alt="Dev.to">
                                 </div>
@@ -479,7 +445,7 @@
                             </a>
 
                             <!-- Hashnode -->
-                            <a href="https://ajaymaan13.hashnode.dev" target="_blank" rel="noopener"
+                            <a href="https://ajaymaan13.hashnode.dev" target="_blank" rel="noopener noreferrer"
                                 class="social-link-card">
                                 <div class="social-icon hashnode">
                                     <img src="src/images/icons/hashnode-svgrepo-com.svg" alt="Hashnode">
@@ -488,7 +454,7 @@
                             </a>
 
                             <!-- LeetCode -->
-                            <a href="https://leetcode.com/u/AjayMaan13/" target="_blank" rel="noopener"
+                            <a href="https://leetcode.com/u/AjayMaan13/" target="_blank" rel="noopener noreferrer"
                                 class="social-link-card">
                                 <div class="social-icon leetcode">
                                     <img src="src/images/icons/leetcode-svgrepo-com.svg" alt="LeetCode">
@@ -499,14 +465,19 @@
 
                     </div>
 
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form" id="contact-form" novalidate>
+                        <!-- Honeypot: hidden from people, bots tend to fill it -->
+                        <div class="form-hp" aria-hidden="true">
+                            <label for="website">Leave this field empty</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
@@ -514,14 +485,14 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone (Optional)</label>
-                            <input type="tel" id="phone" name="phone">
+                            <input type="tel" id="phone" name="phone" autocomplete="tel">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
-                        <div class="form-status"></div>
+                        <div class="form-status" role="status" aria-live="polite"></div>
                     </form>
 
                 </div>
@@ -533,7 +504,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Ajaypartap Singh Maan. All rights reserved.</p>
+                <p>&copy; 2026 Ajaypartap Singh Maan. All rights reserved.</p>
 
                 <a href="#home" class="back-to-top" aria-label="Back to top">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -550,7 +521,7 @@
     <div class="fixed-social-bar">
         <div class="social-icons-list">
 
-            <a href="https://personal-blogs-mu.vercel.app" target="_blank" rel="noopener" class="social-link-item"
+            <a href="https://personal-blogs-mu.vercel.app" target="_blank" rel="noopener noreferrer" class="social-link-item"
                 aria-label="Blog">
                 <svg class="social-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -558,7 +529,7 @@
                     <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                 </svg>
             </a>
-            <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener" class="social-link-item"
+            <a href="https://github.com/AjayMaan13" target="_blank" rel="noopener noreferrer" class="social-link-item"
                 aria-label="GitHub">
                 <svg class="social-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -567,7 +538,7 @@
                     </path>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/ajaymaan13/" target="_blank" rel="noopener"
+            <a href="https://www.linkedin.com/in/ajaymaan13/" target="_blank" rel="noopener noreferrer"
                 class="social-link-item" aria-label="LinkedIn">
                 <svg class="social-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -591,21 +562,23 @@
     </div>
 
     <!-- JavaScript -->
+    <!-- Content: edit these files to change what the page says -->
+    <script src="src/data/experience.js"></script>
+    <script src="src/data/projects.js"></script>
+    <script src="src/data/leadership.js"></script>
+
+    <!-- Renderers -->
     <script src="src/js/main.js"></script>
     <script src="src/js/animations.js"></script>
-    <script src="src/js/projects.js"></script>
-    <script src="src/js/timeline.js"></script>
     <script src="src/js/experience.js"></script>
-    <!-- Leadership Script -->
     <script src="src/js/leadership.js"></script>
+    <script src="src/js/bc-projects.js"></script>
 
-    <!-- Enhanced Features Scripts -->
-    <script src="src/js/terminal.js"></script>
-    <script src="src/js/easter-eggs.js"></script>
+    <!-- Enhancements -->
+    <script src="src/js/easter-egg.js"></script>
     <script src="src/js/guided-tour.js"></script>
     <script src="src/js/3d-background.js"></script>
     <script src="src/js/typing.js"></script>
-    <script src="src/js/bc-projects.js"></script>
     <script src="src/js/island-navbar.js"></script>
 </body>
 

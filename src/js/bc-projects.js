@@ -1,454 +1,276 @@
-// Featured projects data
-const bcFeaturedProjects = [
-    {
-        id: 1,
-        title: 'Fragments — REST API Microservice',
-        label: 'Featured Project',
-        description: 'Secure Node.js/Express REST API for on-read data conversions across 11 content types (JSON ↔ YAML, Markdown → HTML, CSV → JSON, image-to-image via sharp/libvips), with endpoint security enforced by AWS Cognito JWT middleware. Architected as a scalable microservice on AWS ECS Fargate behind a load balancer across 2 availability zones — object data in S3, metadata in DynamoDB — with zero-downtime rolling deploys via GitHub Actions. Backed by ~92% test coverage across 125 unit tests and 14 Hurl integration suites, served over a custom HTTPS domain.',
-        image: './src/images/fragments.png',
-        tech: ['Node.js', 'Express', 'AWS Cognito', 'S3', 'DynamoDB', 'ECS Fargate', 'Docker', 'GitHub Actions'],
-        github: '',
-        external: '#'
-    },
-    {
-        id: 2,
-        title: 'LeaseLens — Lease Extraction & Rent Forecasting',
-        label: 'Featured Project',
-        description: 'Evaluation-first AI system for commercial lease documents. Benchmarks three extraction systems — a regex baseline, BERT NER, and an LLM structured-output pipeline — against a 40-document gold set of real SEC EDGAR commercial leases, reaching 0.803 micro-F1 with the LLM system versus 0.313 for the regex baseline. Backed by a CI regression gate that fails the build if extraction quality drops, bias-audited accuracy across property type and region, and SARIMA rent forecasting that beat a seasonal-naive baseline by 55%.',
-        image: './src/images/leaseLens.png',
-        tech: ['Python', 'BeautifulSoup', 'Hugging Face Transformers', 'Claude API', 'pandas', 'pytest', 'statsmodels (SARIMA)', 'Streamlit', 'GitHub Actions'],
-        github: 'https://github.com/AjayMaan13/LeaseLens',
-        external: 'https://lease-lens-ai.streamlit.app'
-    },
-    {
-        id: 3,
-        title: 'GTSRB Traffic-Sign Classifier',
-        label: 'Featured Project',
-        description: 'Traffic-sign image classifier over the GTSRB dataset (43 categories), rebuilt from a course exercise into a full 12-factor deep learning project. Trains and compares three architectures — a baseline CNN, an augmented deep CNN, and a MobileNetV2 transfer-learning model — with the purpose-built deep CNN reaching 99.17% test accuracy at roughly 401K parameters, outperforming transfer learning at a fraction of the size. Includes Grad-CAM explainability, per-class precision/recall evaluation, and a live demo deployed to Hugging Face Spaces.',
-        image: './src/images/gtsrb-gradcam.png',
-        tech: ['Python', 'TensorFlow/Keras', 'scikit-learn', 'Gradio', 'Hugging Face Spaces'],
-        github: 'https://github.com/AjayMaan13/gtsrb-traffic-classifier',
-        external: 'https://huggingface.co/spaces/AjayMaan13/road-sign-vision'
-    },
-    {
-        id: 4,
-        title: 'FinSight - Personal Finance Tracker',
-        label: 'Featured Project',
-        description: 'Comprehensive full-stack personal finance application with microservices architecture. Features transaction management, goal tracking, budget visualization, and AI-powered balance forecasting using Python Flask ML service with 25+ API endpoints.',
-        image: './src/images/finsight.png',
-        tech: ['React 19', 'Node.js', 'PostgreSQL', 'Express', 'JWT', 'Python Flask'],
-        github: 'https://github.com/AjayMaan13/FinSight',
-        external: 'https://fin-sight-mu.vercel.app/'
-    },
-    {
-        id: 5,
-        title: 'UTRA Hacks Mentors',
-        label: 'Featured Project',
-        description: 'Autonomous biathlon-inspired robot built as mentor at UTRA Hacks 2025 - Canada\'s premier robotics hackathon. Features color-based navigation with TCS3200 RGB sensor, dual IR line following, HC-SR04 ultrasonic obstacle detection, servo-controlled claw and ball launcher, achieving autonomous target shooting and obstacle course completion.',
-        image: './src/images/utraHacks.jpeg',
-        tech: ['Arduino', 'C/C++', 'Robotics', 'Computer Vision', 'State Machine', 'Sensors'],
-        github: 'https://github.com/AjayMaan13/UTRA-Hacks-Mentor26',
-        external: '#',
-        hackathon: { name: 'UTRA Hacks 2026', duration: '24hrs', context: "Canada's premier robotics hackathon", url: 'https://hackathon.utra.ca' }
-    },
-    {
-        id: 6,
-        title: 'PE Hackathon — Production-Hardened URL Shortener',
-        label: 'Featured Project · MLH Production Engineering Hackathon 2026',
-        description: 'A production-hardened URL shortener built to survive real-world failures. Features 96% test coverage, Docker auto-restart chaos recovery, a CI/CD gatekeeper that blocks broken deploys, and full JSON error handling — no stack traces, ever. Built for the MLH Production Engineering Hackathon 2026.',
-        image: './src/images/pe-hackathon.png',
-        tech: ['Flask', 'PostgreSQL', 'Peewee ORM', 'pytest', 'Docker', 'GitHub Actions', 'Python'],
-        github: 'https://github.com/AjayMaan13/pe-hackathon-2026',
-        external: 'https://devpost.com/software/pe-hackathons-2026',
-        devpost: 'https://devpost.com/software/pe-hackathons-2026',
-        hackathon: { name: 'MLH PE Hackathon 2026', duration: '48hrs', context: 'Reliability Engineering Track', url: 'https://devpost.com/software/pe-hackathons-2026' }
-    },
-    {
-        id: 7,
-        title: 'AirAware - AI Data Processing Pipeline',
-        label: 'Featured Project',
-        description: 'Real-time ETL pipeline for air quality monitoring with automated health risk alerts. Implements AI-driven data quality management, predictive analytics, and processes 1000+ data points daily with comprehensive visualization system.',
-        image: './src/images/airaware.png',
-        tech: ['Python', 'PostgreSQL', 'Pandas', 'NumPy', 'Machine Learning', 'ETL'],
-        github: 'https://github.com/AjayMaan13/AirAware',
-        external: '#'
+/**
+ * Projects section renderer.
+ * Content lives in src/data/projects.js (window.PORTFOLIO_PROJECTS, window.PORTFOLIO_TRACKS).
+ *
+ *   Featured (sorted by featuredRank): one compact card each; the first two get a full-width row
+ *   (CSS), the rest sit in a 2-column grid.
+ *   More projects: newest first, filterable by track, 9 shown by default.
+ */
+(function () {
+  'use strict';
+
+  const LATEST_COUNT = 0; // every featured project uses the same compact card
+  const MORE_INITIAL = 9;
+
+  const ICONS = {
+    github:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>',
+    live:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>',
+    devpost:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M8 12h8M8 9h5M8 15h5"></path></svg>',
+    related:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>'
+  };
+
+  function esc(value) {
+    return String(value == null ? '' : value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function parseDate(ym) {
+    const [y, m] = String(ym).split('-').map(Number);
+    return new Date(y, (m || 1) - 1, 1);
+  }
+
+  function formatDate(ym) {
+    return parseDate(ym).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  const trackLabel = (t) => (window.PORTFOLIO_TRACKS[t] ? window.PORTFOLIO_TRACKS[t].label : t);
+
+  function trackBadges(project) {
+    return project.tracks
+      .slice(0, 2)
+      .map((t) => `<span class="bc-track bc-track-${esc(t)}">${esc(trackLabel(t))}</span>`)
+      .join('');
+  }
+
+  function linkIcons(project) {
+    const l = project.links || {};
+    const out = [];
+    if (l.github) {
+      out.push(
+        `<a href="${esc(l.github)}" class="bc-icon-link" target="_blank" rel="noopener noreferrer" aria-label="${esc(project.title)} on GitHub${l.githubLabel ? ' (' + esc(l.githubLabel) + ')' : ''}">${ICONS.github}${l.githubLabel ? `<span class="bc-icon-label">${esc(l.githubLabel)}</span>` : ''}</a>`
+      );
     }
-];
-
-const bcOtherProjects = [
-    {
-        id: 16,
-        title: 'FraudNet·AI — Real-Time Fraud Detection',
-        description: 'Real-time graph intelligence that catches fraud rings before they disappear. Streams live transactions into a 3D force-directed WebGL graph, runs five parallel detection algorithms, and uses IBM Granite 3 AI to explain every finding in plain language. Built in 36 hours at GenAI Genesis 2026 — Canada\'s largest AI hackathon.',
-        tech: ['Next.js 16', 'React 19', 'TypeScript', 'Python', 'FastAPI', 'NetworkX', 'WebSocket', 'IBM watsonx.ai', 'IBM Db2', 'Tailwind v4', '3D WebGL'],
-        github: 'https://github.com/AjayMaan13/fraudnet-ai',
-        external: 'https://fraudnet-ai.vercel.app',
-        hackathon: { name: 'GenAI Genesis 2026', duration: '36hrs', context: "Canada's largest AI hackathon", url: 'https://genaigenesis.ca' }
-    },
-    {
-        id: 17,
-        title: 'AI Receipt Analyzer',
-        description: 'AI-powered receipt analysis application using GPT-4 Vision API for automated item and price extraction. Built with Streamlit featuring image quality assessment, user validation, and real-time spending insights achieving 90%+ accuracy on clear images.',
-        tech: ['Python', 'Streamlit', 'GPT-4 Vision', 'Computer Vision', 'PIL'],
-        github: 'https://github.com/AjayMaan13/smart-script-analyzer',
-        external: 'https://smart-script-analyzer-pxnezltk8wdw775z5ehkwg.streamlit.app'
-    },
-    {
-
-        id: 5,
-        title: 'ArtVault - Art Collection Manager',
-        description: 'A modern web application for discovering and organizing artworks from the Metropolitan Museum of Art. Features secure JWT authentication, personal collections, search history, and optimized Server-Side Rendering with Next.js serving 100+ daily users.',
-        tech: ['Next.js', 'React', 'MongoDB', 'JWT', 'Bootstrap', 'Vercel'],
-        github: 'https://github.com/AjayMaan13/artvault',
-        external: 'https://artvault-delta.vercel.app'
-    },
-    {   
-
-        id: 6,
-        title: 'Tic-Tac-Toe AI',
-        description: 'Unbeatable AI using Minimax algorithm with Alpha-Beta pruning optimization. Features beautiful Pygame GUI, 50x performance improvement, and comprehensive testing achieving instant move calculations.',
-        tech: ['Python', 'Pygame', 'AI', 'Minimax', 'Alpha-Beta Pruning'],
-        github: 'https://github.com/AjayMaan13/tic-tac-toe-ai',
-        external: '#'
-    },
-    {
-        id: 7,
-        title: 'SmartLib - Library Management',
-        description: 'Professional-grade library system built with C++17 featuring advanced OOP concepts, design patterns, RAII memory management, and zero memory leaks.',
-        tech: ['C++17', 'OOP', 'STL', 'Design Patterns'],
-        github: 'https://github.com/AjayMaan13/SmartLib',
-        external: '#'
-    },
-    {
-        id: 8,
-        title: 'Seneca Polytechnic Deliveries',
-        description: 'Delivery logistics system implementing A* and Dijkstra pathfinding algorithms for optimized route planning. Developed using Agile methodology with user stories, acceptance testing, and comprehensive test coverage achieving 100% validation across 32+ test cases.',
-        tech: ['C', 'C++', 'A* Algorithm', 'Dijkstra', 'Agile', 'Testing'],
-        github: 'https://github.com/AjayMaan13/SenecaPolytechnicDeliveries',
-        external: '#'
-    },
-    {
-        id: 13,
-        title: 'DevOS',
-        description: 'AI-powered command center for software engineers. One prompt pulls live Notion tasks via MCP, cross-references Gmail and Calendar, and returns a prioritized daily plan, email draft, and priority reasoning — then writes the plan back to Notion automatically.',
-        tech: ['React', 'Node.js', 'Claude API', 'Notion MCP'],
-        github: 'https://github.com/ajaymaan13/devos',
-        external: 'https://dev.to/ajaymaan13/devos-notion-mcp-challenge-4ehi',
-        hackathon: { name: 'Notion MCP Challenge', duration: '1 Week', context: 'Notion MCP Hackathon', url: 'https://dev.to/challenges/notion-2026-03-04' }
-    },
-    {
-        id: 15,
-        title: 'Accessibility Testing Framework',
-        description: 'Comprehensive automated web accessibility testing framework following WCAG 2.0 standards. Features Page Object Model architecture, cross-browser support, visual reporting with screenshots, and CI/CD integration through GitHub Actions.',
-        tech: ['Python', 'Selenium', 'TestNG', 'axe-core', 'GitHub Actions', 'PyTest'],
-        github: 'https://github.com/AjayMaan13/A11ySeleniumFramework',
-        external: '#'
-    },
-    {
-        id: 9,
-        title: 'TeachMe Education Database',
-        description: 'Sophisticated Oracle database with business intelligence, advanced SQL features including window functions and CTEs, and Docker containerization for deployment.',
-        tech: ['Oracle', 'SQL', 'PL/SQL', 'Docker'],
-        github: 'https://github.com/AjayMaan13/TeachMe',
-        external: '#'
-    },
-    {
-        id: 10,
-        title: 'Credit Card Validator Upgraded',
-        description: 'Production-ready card management system with AES-256-CBC encryption, real-time BIN API integration using cURL, and JSON structured logging for compliance.',
-        tech: ['C', 'OpenSSL', 'cURL', 'cJSON', 'Security'],
-        github: 'https://github.com/AjayMaan13/Credit-Card-Validator-Upgraded',
-        external: '#'
-    },
-    {
-        id: 11,
-        title: 'Digital Dine-In',
-        description: 'Console-based restaurant ordering system featuring OOP design with abstract classes, dynamic pricing, memory-safe RAII implementation, and automated billing with CSV integration.',
-        tech: ['C++11/14', 'OOP', 'File I/O', 'Memory Management'],
-        github: 'https://github.com/AjayMaan13/Digital-Dine-In',
-        external: '#'
-    },
-    {
-        id: 12,
-        title: 'ArtVault Test Automation',
-        description: 'Selenium + TestNG automation suite featuring Page Object Model structure, data-driven tests with DataProvider, and parallel execution for comprehensive test coverage.',
-        tech: ['Java', 'Selenium', 'TestNG', 'POM'],
-        github: 'https://github.com/AjayMaan13/ArtVault-TestAutomation',
-        external: '#'
-    },
-    {
-        id: 13,
-        title: 'GitTrack',
-        description: 'Simple Java CLI tool that fetches and displays recent GitHub user activity directly in your terminal with formatted output and error handling.',
-        tech: ['Java', 'CLI', 'GitHub API'],
-        github: 'https://github.com/AjayMaan13/GitTrack',
-        external: '#'
-    },
-    {
-        id: 14,
-        title: 'PyDB-Core',
-        description: 'Lightweight key-value database implementation featuring immutable data structures, MVCC, and ACID compliance built from scratch to demonstrate database internals.',
-        tech: ['Python', 'Database', 'ACID'],
-        github: 'https://github.com/AjayMaan13/pydb-core',
-        external: '#'
+    if (l.live) {
+      out.push(`<a href="${esc(l.live)}" class="bc-icon-link" target="_blank" rel="noopener noreferrer" aria-label="${esc(project.title)} live demo">${ICONS.live}</a>`);
     }
-];
-
-const INITIAL_PROJECTS_SHOWN = 6;
-let showingAllProjects = false;
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initBCProjects();
-});
-
-function initBCProjects() {
-    renderFeaturedProjects();
-    renderOtherProjects();
-    setupScrollAnimations();
-    setupShowMoreButton();
-}
-
-function setupShowMoreButton() {
-    const button = document.querySelector('.bc-show-more-btn');
-    if (button) {
-        button.addEventListener('click', toggleShowMore);
+    if (l.devpost) {
+      out.push(`<a href="${esc(l.devpost)}" class="bc-icon-link" target="_blank" rel="noopener noreferrer" aria-label="${esc(project.title)} on Devpost">${ICONS.devpost}</a>`);
     }
-}
+    (l.extra || []).forEach((x) => {
+      out.push(
+        `<a href="${esc(x.url)}" class="bc-icon-link" target="_blank" rel="noopener noreferrer" aria-label="${esc(x.label)}">${ICONS.related}<span class="bc-icon-label">${esc(x.label)}</span></a>`
+      );
+    });
+    return out.length ? `<div class="bc-links">${out.join('')}</div>` : '';
+  }
 
-function renderFeaturedProjects() {
-    const container = document.querySelector('.bc-featured-container');
-    if (!container) return;
+  function techChips(project, limit) {
+    return (project.tech || [])
+      .slice(0, limit)
+      .map((t) => `<li>${esc(t)}</li>`)
+      .join('');
+  }
 
-    container.innerHTML = bcFeaturedProjects.map((project, index) => `
-        <article class="bc-featured-project" style="transition-delay: ${index * 0.1}s">
-            <!-- Project Image -->
-            <div class="bc-project-image-wrapper">
-                <a href="${project.external}" class="bc-project-image-link" target="_blank" rel="noopener noreferrer">
-                    <div class="bc-project-image-overlay"></div>
-                    ${project.image ?
-                        `<img src="${project.image}" alt="${project.title}" class="bc-project-image" />` :
-                        `<div class="bc-project-image-placeholder">${project.title.charAt(0)}</div>`
-                    }
-                </a>
-                ${project.hackathon ? `<span class="bc-hackathon-badge">🏆 ${project.hackathon.name} · ${project.hackathon.duration}</span>` : ''}
-            </div>
+  function proofChips(project) {
+    if (!project.proof || !project.proof.length) return '';
+    return `<ul class="bc-proof" aria-label="Verified results">${project.proof.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
+  }
 
-            <!-- Project Content -->
-            <div class="bc-project-content">
-                <p class="bc-project-label">${project.label}</p>
-                <h3>
-                    <a href="${project.external}" class="bc-project-title-link" target="_blank" rel="noopener noreferrer">
-                        <span class="bc-project-title">${project.title}</span>
-                    </a>
-                </h3>
-                ${project.hackathon ? `
-                <div class="bc-hackathon-callout">
-                    <span class="bc-hackathon-callout-icon">🏆</span>
-                    <span>Built at <a href="${project.hackathon.url}" class="bc-hackathon-callout-link" target="_blank" rel="noopener noreferrer"><strong>${project.hackathon.name}</strong></a> · ${project.hackathon.context} · ${project.hackathon.duration}</span>
-                </div>` : ''}
-                <div class="bc-project-description-box">
-                    <p class="bc-project-description">${project.description}</p>
-                </div>
-                <div class="bc-project-tech-list">
-                    ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
-                </div>
-                <div class="bc-project-links">
-                    ${project.github ? `
-                    <a href="${project.github}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>` : ''}
-                    ${project.external && project.external !== '#' ? `
-                    <a href="${project.external}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>` : ''}
-                    ${project.devpost ? `
-                    <a href="${project.devpost}" class="bc-project-icon-link" target="_blank" rel="noopener noreferrer" aria-label="DevPost">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
-                            <path d="M8 12h8M8 9h5M8 15h5"></path>
-                        </svg>
-                    </a>` : ''}
-                </div>
-            </div>
-        </article>
-    `).join('');
-}
+  function pointsList(project) {
+    if (!project.points || !project.points.length) return '';
+    return `<ul class="bc-points">${project.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
+  }
 
-function renderOtherProjects() {
-    const container = document.querySelector('.bc-other-grid');
-    if (!container) return;
+  function imageBlock(project, now, large) {
+    const primary = (project.links && (project.links.live || project.links.github)) || '#';
+    const fit = project.imageFit === 'contain' ? ' bc-fit-contain' : '';
+    const media = project.image
+      ? `<img src="${esc(project.image)}" alt="${esc(project.imageAlt || project.title)}" class="bc-image${fit}" width="1600" height="900" loading="lazy" decoding="async">`
+      : `<div class="bc-image-placeholder bc-ph-${esc(project.tracks[0])}" aria-hidden="true">${esc(project.title.charAt(0))}</div>`;
+    return `
+      <div class="bc-image-wrapper">
+        <a href="${esc(primary)}" class="bc-image-link" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">${media}</a>
+        ${project.hackathon ? `<span class="bc-hackathon-badge"><span aria-hidden="true">🏆 </span>${esc(project.hackathon.name)}${project.hackathon.award ? ' · ' + esc(project.hackathon.award) : project.hackathon.duration ? ' · ' + esc(project.hackathon.duration) : ''}</span>` : ''}
+      </div>`;
+  }
 
-    const projectsToShow = showingAllProjects ? bcOtherProjects : bcOtherProjects.slice(0, INITIAL_PROJECTS_SHOWN);
+  function metaRow(project) {
+    return `<div class="bc-meta">
+        ${trackBadges(project)}
+        <span class="bc-date">${esc(formatDate(project.date))}</span>
+        ${project.team ? `<span class="bc-team">${esc(project.team)}</span>` : ''}
+      </div>`;
+  }
 
-    container.innerHTML = projectsToShow.map((project, index) => `
-        <article class="bc-other-project bc-visible" style="transition-delay: ${index * 0.05}s">
-            <div class="bc-other-header">
-                <div class="bc-folder-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                    </svg>
-                </div>
-                <div class="bc-other-links">
-                    <a href="${project.github}" class="bc-other-icon-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                    </a>
-                    <a href="${project.external}" class="bc-other-icon-link" target="_blank" rel="noopener noreferrer" aria-label="External Link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <h3 class="bc-other-project-title">${project.title}</h3>
-            ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
-            <p class="bc-other-description">${project.description}</p>
-            <div class="bc-other-tech-list">
-                ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
-            </div>
-        </article>
-    `).join('');
-}
+  function titleLink(project) {
+    const primary = (project.links && (project.links.live || project.links.github)) || '';
+    return primary
+      ? `<a href="${esc(primary)}" class="bc-title-link" target="_blank" rel="noopener noreferrer">${esc(project.title)}</a>`
+      : esc(project.title);
+  }
 
-function toggleShowMore() {
-    const container = document.querySelector('.bc-other-grid');
-    const button = document.querySelector('.bc-show-more-btn');
-    
-    if (!container || !button) return;
-    
-    // Get current scroll position relative to the button
-    const buttonRect = button.getBoundingClientRect();
-    const scrollY = window.scrollY;
-    
-    if (!showingAllProjects) {
-        // SHOWING MORE - Add new projects smoothly
-        showingAllProjects = true;
-        button.textContent = 'Show Less';
-        
-        // Get additional projects to add
-        const additionalProjects = bcOtherProjects.slice(INITIAL_PROJECTS_SHOWN);
-        
-        // Create and append new projects with fade-in animation
-        additionalProjects.forEach((project, index) => {
-            const article = document.createElement('article');
-            article.className = 'bc-other-project';
-            article.style.opacity = '0';
-            article.style.transform = 'translateY(20px)';
-            article.innerHTML = `
-                <div class="bc-other-header">
-                    <div class="bc-folder-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                        </svg>
-                    </div>
-                    <div class="bc-other-links">
-                        <a href="${project.github}" class="bc-other-icon-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                            </svg>
-                        </a>
-                        <a href="${project.external}" class="bc-other-icon-link" target="_blank" rel="noopener noreferrer" aria-label="External Link">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <h3 class="bc-other-project-title">${project.title}</h3>
-                ${project.hackathon ? `<a href="${project.hackathon.url}" class="bc-other-hackathon-badge" target="_blank" rel="noopener noreferrer">🏆 ${project.hackathon.name}${project.hackathon.duration ? ' · ' + project.hackathon.duration : ''}</a>` : ''}
-                <p class="bc-other-description">${project.description}</p>
-                <div class="bc-other-tech-list">
-                    ${project.tech.map(tech => `<span>${tech}</span>`).join('')}
-                </div>
-            `;
-            
-            container.appendChild(article);
-            
-            // Trigger animation after a brief delay
-            setTimeout(() => {
-                article.style.transition = 'all 0.4s ease';
-                article.style.opacity = '1';
-                article.style.transform = 'translateY(0)';
-            }, index * 50);
-        });
-        
-    } else {
-        // SHOWING LESS - Remove extra projects smoothly
-        showingAllProjects = false;
-        button.textContent = 'Show More';
-        
-        const allProjects = container.querySelectorAll('.bc-other-project');
-        const projectsToRemove = Array.from(allProjects).slice(INITIAL_PROJECTS_SHOWN);
-        
-        // Fade out projects that will be removed
-        projectsToRemove.forEach((project, index) => {
-            setTimeout(() => {
-                project.style.transition = 'all 0.3s ease';
-                project.style.opacity = '0';
-                project.style.transform = 'translateY(-20px)';
-            }, index * 30);
-        });
-        
-        // Remove them from DOM after animation
-        setTimeout(() => {
-            projectsToRemove.forEach(project => project.remove());
-        }, projectsToRemove.length * 30 + 300);
+  function hackathonLine(project) {
+    const h = project.hackathon;
+    if (!h) return '';
+    const ctx = [h.context, h.duration].filter(Boolean).join(' · ');
+    return `<p class="bc-hackathon-callout"><span aria-hidden="true">🏆</span> <span>Built for <a href="${esc(h.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(h.name)}</strong></a>${ctx ? ' · ' + esc(ctx) : ''}</span></p>`;
+  }
+
+  function latestCard(project, index, now) {
+    return `
+      <article class="bc-latest" id="project-${esc(project.id)}" style="transition-delay:${index * 0.1}s">
+        ${imageBlock(project, now, true)}
+        <div class="bc-content">
+          ${metaRow(project)}
+          <h3 class="bc-title">${titleLink(project)}</h3>
+          ${hackathonLine(project)}
+          <div class="bc-description-box"><p class="bc-description">${esc(project.description)}</p></div>
+          ${proofChips(project)}
+          <ul class="bc-tech">${techChips(project, 8)}</ul>
+          ${linkIcons(project)}
+        </div>
+      </article>`;
+  }
+
+  function compactCard(project, index, now) {
+    return `
+      <article class="bc-card" id="project-${esc(project.id)}" style="transition-delay:${(index % 2) * 0.1}s">
+        ${imageBlock(project, now, false)}
+        <div class="bc-card-body">
+          ${metaRow(project)}
+          <h3 class="bc-card-title">${titleLink(project)}</h3>
+          <p class="bc-card-summary">${esc(project.tagline)}</p>
+          ${pointsList(project)}
+          ${proofChips(project)}
+          <ul class="bc-tech">${techChips(project, 6)}${project.tech.length > 6 ? `<li class="bc-tech-more">+${project.tech.length - 6}</li>` : ''}</ul>
+          ${linkIcons(project)}
+        </div>
+      </article>`;
+  }
+
+  function gridCard(project, now) {
+    return `
+      <article class="bc-mini" id="project-${esc(project.id)}">
+        <div class="bc-mini-top">
+          ${metaRow(project)}
+        </div>
+        <h3 class="bc-mini-title">${esc(project.title)}</h3>
+        ${project.hackathon ? `<a href="${esc(project.hackathon.url)}" class="bc-mini-hackathon" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🏆 </span>${esc(project.hackathon.name)}${project.hackathon.duration ? ' · ' + esc(project.hackathon.duration) : ''}</a>` : ''}
+        <p class="bc-mini-summary">${esc(project.tagline)}</p>
+        <ul class="bc-tech">${techChips(project, 6)}</ul>
+        ${linkIcons(project)}
+      </article>`;
+  }
+
+  // ───────── Render ─────────
+  const state = { filter: 'all', expanded: false };
+
+  function observe(selector) {
+    const els = document.querySelectorAll(selector);
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((e) => e.classList.add('bc-visible'));
+      return;
     }
-}
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('bc-visible');
+            io.unobserve(entry.target);
+          }
+        }),
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    els.forEach((e) => io.observe(e));
+  }
 
+  function renderFeatured(projects, now) {
+    const featured = projects.filter((p) => p.featured).sort((a, b) => a.featuredRank - b.featuredRank);
+    const latestEl = document.querySelector('.bc-latest-container');
+    const gridEl = document.querySelector('.bc-featured-grid');
+    if (latestEl) latestEl.innerHTML = featured.slice(0, LATEST_COUNT).map((p, i) => latestCard(p, i, now)).join('');
+    if (gridEl) gridEl.innerHTML = featured.slice(LATEST_COUNT).map((p, i) => compactCard(p, i, now)).join('');
+  }
 
-function setupOtherProjectsAnimation() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('bc-visible');
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
+  function moreProjects(projects) {
+    return projects
+      .filter((p) => !p.featured)
+      .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.title.localeCompare(b.title)));
+  }
 
-    document.querySelectorAll('.bc-other-project').forEach(project => {
-        observer.observe(project);
-    });
-}
+  function renderFilters(more) {
+    const el = document.querySelector('.bc-filters');
+    if (!el) return;
+    const present = Object.keys(window.PORTFOLIO_TRACKS).filter((t) => more.some((p) => p.tracks.includes(t)));
+    const chips = ['all'].concat(present);
+    el.innerHTML = chips
+      .map((t) => {
+        const label = t === 'all' ? 'All' : trackLabel(t);
+        return `<button type="button" class="bc-filter" data-filter="${esc(t)}" aria-pressed="${state.filter === t}">${esc(label)}</button>`;
+      })
+      .join('');
+  }
 
-function setupScrollAnimations() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('bc-visible');
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
+  function renderMore(more, now, animate) {
+    const grid = document.querySelector('.bc-other-grid');
+    const btn = document.querySelector('.bc-show-more-btn');
+    const status = document.querySelector('.bc-filter-status');
+    if (!grid) return;
 
-    // Observe featured projects
-    document.querySelectorAll('.bc-featured-project').forEach(project => {
-        observer.observe(project);
-    });
+    const filtered = state.filter === 'all' ? more : more.filter((p) => p.tracks.includes(state.filter));
+    const visible = state.expanded ? filtered : filtered.slice(0, MORE_INITIAL);
+    grid.innerHTML = visible.map((p) => gridCard(p, now)).join('');
+    if (animate) {
+      grid.classList.remove('bc-animate');
+      void grid.offsetWidth; // restart animation
+      grid.classList.add('bc-animate');
+    }
 
-    // Observe other projects
-    document.querySelectorAll('.bc-other-project').forEach(project => {
-        observer.observe(project);
-    });
-}
+    if (btn) {
+      const hasMore = filtered.length > MORE_INITIAL;
+      btn.hidden = !hasMore;
+      btn.textContent = state.expanded ? 'Show less' : `Show more (${filtered.length - MORE_INITIAL})`;
+      btn.setAttribute('aria-expanded', String(state.expanded));
+    }
+    if (status) {
+      status.textContent = `Showing ${visible.length} of ${filtered.length} projects${state.filter === 'all' ? '' : ' in ' + trackLabel(state.filter)}`;
+    }
+  }
 
-// Export for use in other files if needed
-window.bcFeaturedProjects = bcFeaturedProjects;
-window.bcOtherProjects = bcOtherProjects;
+  function init() {
+    const projects = window.PORTFOLIO_PROJECTS;
+    if (!Array.isArray(projects) || !window.PORTFOLIO_TRACKS) return;
+    const now = new Date();
+    const more = moreProjects(projects);
+
+    renderFeatured(projects, now);
+    renderFilters(more);
+    renderMore(more, now, false);
+    observe('.bc-latest, .bc-card');
+
+    const filters = document.querySelector('.bc-filters');
+    if (filters) {
+      filters.addEventListener('click', (e) => {
+        const btn = e.target.closest('.bc-filter');
+        if (!btn) return;
+        state.filter = btn.dataset.filter;
+        state.expanded = false;
+        filters.querySelectorAll('.bc-filter').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        renderMore(more, now, true);
+      });
+    }
+
+    const showMore = document.querySelector('.bc-show-more-btn');
+    if (showMore) {
+      showMore.addEventListener('click', () => {
+        state.expanded = !state.expanded;
+        renderMore(more, now, true);
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();

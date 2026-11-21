@@ -79,7 +79,7 @@
     --color-bg-secondary: #1E1E1E;
     --color-text-primary: #F1F1F1;
     --color-text-secondary: #B0B0B0;
-    --color-accent-primary: #7C6FFF;
+    --color-accent-primary: #8F84FF;
     --color-accent-secondary: #00D8FF;
     --color-success: #2ECC71;
     --color-error: #E74C3C;
@@ -87,7 +87,7 @@
     --color-divider: #333333;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #7C6FFF, #00D8FF);
+    --gradient-primary: linear-gradient(135deg, #8F84FF, #00D8FF);
     --gradient-secondary: linear-gradient(135deg, #232323, #121212);
     
     /* Shadows */
@@ -179,6 +179,12 @@ body {
     /* RGB versions for opacity controls */
     --color-accent-primary-rgb: 80, 69, 228; /* RGB for #5045E4 */
     --color-accent-secondary-rgb: 0, 194, 255; /* RGB for #00C2FF */
+
+    /* Project track colours (text on tinted badge, >= 4.5:1 on white) */
+    --color-track-sdet: #0B6B4A;
+    --color-track-swe: #1F5FAE;
+    --color-track-ai: #7B2D9C;
+    --color-track-data: #9A4A00;
 }
 
 /* In your dark-theme section */
@@ -186,6 +192,12 @@ body {
     /* ...existing variables... */
     
     /* RGB versions for opacity controls */
-    --color-accent-primary-rgb: 124, 111, 255; /* RGB for #7C6FFF */
+    --color-accent-primary-rgb: 143, 132, 255; /* RGB for #8F84FF */
     --color-accent-secondary-rgb: 0, 216, 255; /* RGB for #00D8FF */
+
+    /* Project track colours (text on tinted badge, >= 4.5:1 on #232323) */
+    --color-track-sdet: #4ADE9A;
+    --color-track-swe: #82B4FF;
+    --color-track-ai: #D39BFF;
+    --color-track-data: #FFB86B;
 }

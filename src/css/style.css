@@ -2846,3 +2846,279 @@ section[data-active="true"] {
 .fixed-email-bar {
     animation: slideInFromLeft 0.8s ease-out;
 }
+/* ───────── Accessibility & small additions (2026 redesign) ───────── */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--space-4);
+    z-index: 10000;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-accent-primary);
+    color: #fff;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: var(--weight-semibold);
+    transition: top 0.2s ease;
+}
+
+.dark-theme .skip-link {
+    color: #0f0c33;
+}
+
+.skip-link:focus {
+    top: var(--space-4);
+}
+
+.hero-buttons {
+    flex-wrap: wrap;
+}
+
+.hero-availability {
+    margin: var(--space-4) 0 0;
+    font-family: var(--font-secondary);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Honeypot field: off-screen, not display:none (some bots skip display:none) */
+.form-hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.hero-text,
+.bc-card-summary,
+.bc-mini-summary {
+    text-wrap: pretty;
+}
+
+.hero-text {
+    text-wrap: balance;
+}
+
+/* Keep the hero reveal short so first paint is not held back */
+.hero-content > .fade-in-up {
+    animation-duration: 0.5s;
+}
+
+/* ───────── About (2026) ───────── */
+.about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: var(--space-12);
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.about-story p {
+    font-size: var(--text-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-4);
+}
+
+.about-story strong {
+    color: var(--color-text-primary);
+}
+
+.about-story .about-lead {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-6);
+}
+
+.about-facts {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-md);
+}
+
+.about-facts dl {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.about-facts dt {
+    font-family: var(--font-secondary);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent-primary);
+    margin-bottom: 2px;
+}
+
+.about-facts dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text-primary);
+}
+
+.about-focus {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    max-width: 1000px;
+    margin: var(--space-12) auto 0;
+}
+
+.about-focus-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    border-top: 3px solid var(--color-accent-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+}
+
+.about-focus-card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-lg);
+    color: var(--color-text-primary);
+}
+
+.about-focus-card p {
+    margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+    .about-layout,
+    .about-focus {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* The floating tour button sat on top of card text. Make it an icon-only circle
+   on narrower screens and keep it clear of content. */
+@media (max-width: 1280px) {
+    .tour-button {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        bottom: 16px;
+        left: 16px;
+    }
+
+    .tour-button span {
+        display: none;
+    }
+}
+
+/* ───────── Contact: compact ───────── */
+.contact-section {
+    padding: var(--space-16) 0;
+}
+
+.contact-content {
+    gap: var(--space-6);
+    max-width: 1000px;
+    align-items: start;
+}
+
+.contact-info,
+.contact-form {
+    padding: var(--space-6);
+    border-radius: var(--radius-xl);
+}
+
+.contact-info {
+    gap: var(--space-2);
+}
+
+.contact-info h3 {
+    font-size: var(--text-xl);
+    margin: 0 0 var(--space-1);
+}
+
+.contact-info p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: var(--text-sm);
+}
+
+.social-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-4);
+}
+
+.social-link-card {
+    flex-direction: row;
+    gap: var(--space-2);
+    padding: 5px 12px 5px 6px;
+    border-radius: var(--radius-full);
+}
+
+.social-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.social-icon img {
+    width: 15px;
+    height: 15px;
+}
+
+.social-link-card span {
+    font-size: var(--text-xs);
+}
+
+.social-link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.social-link-card:hover .social-icon {
+    transform: none;
+}
+
+.contact-form .form-group {
+    margin-bottom: var(--space-3);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 8px 12px;
+}
+
+.contact-form textarea {
+    height: 80px;
+    min-height: 80px;
+}

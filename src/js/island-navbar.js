@@ -137,8 +137,10 @@
         // ========== Intersection Observer for Active Section ==========
         const sections = document.querySelectorAll('section[id]');
         
+        // threshold 0: the Projects section is taller than the viewport, so a 30% visibility
+        // threshold could never be met and the nav kept highlighting the previous section.
         const observerOptions = {
-            threshold: 0.3,
+            threshold: 0,
             rootMargin: '-100px 0px -66%'
         };
 

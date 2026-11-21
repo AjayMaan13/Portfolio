@@ -1,2 +1,5 @@
 .env
-./src/images/profile-picture.png
+.DS_Store
+node_modules/
+src/images/profile-picture.png
+.vercel
