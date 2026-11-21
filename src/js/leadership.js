@@ -47,10 +47,11 @@
       <ul class="hackathon-strip-list">
         ${hackathons
           .map((h) => {
+            const inner = `<span class="hackathon-badge-name">${escapeHtml(h.name)}</span>
+              <span class="hackathon-badge-detail">${escapeHtml(h.detail)}</span>`;
+            if (!h.url) return `<li><span class="hackathon-badge hackathon-badge-static">${inner}</span></li>`;
             const external = /^https?:/.test(h.url);
-            return `<li><a class="hackathon-badge" href="${escapeHtml(h.url)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
-              <span class="hackathon-badge-name">${escapeHtml(h.name)}</span>
-              <span class="hackathon-badge-detail">${escapeHtml(h.detail)}</span></a></li>`;
+            return `<li><a class="hackathon-badge" href="${escapeHtml(h.url)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${inner}</a></li>`;
           })
           .join('')}
       </ul>`;

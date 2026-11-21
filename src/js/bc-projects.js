@@ -2,16 +2,15 @@
  * Projects section renderer.
  * Content lives in src/data/projects.js (window.PORTFOLIO_PROJECTS, window.PORTFOLIO_TRACKS).
  *
- *   Featured (sorted by featuredRank): rank 1-2 render as full-width "Latest" cards,
- *   the rest as a 2-column grid of compact cards.
+ *   Featured (sorted by featuredRank): one compact card each; the first two get a full-width row
+ *   (CSS), the rest sit in a 2-column grid.
  *   More projects: newest first, filterable by track, 9 shown by default.
  */
 (function () {
   'use strict';
 
-  const LATEST_COUNT = 2;
+  const LATEST_COUNT = 0; // every featured project uses the same compact card
   const MORE_INITIAL = 9;
-  const NEW_WINDOW_DAYS = 60;
 
   const ICONS = {
     github:
@@ -35,11 +34,6 @@
 
   function formatDate(ym) {
     return parseDate(ym).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  }
-
-  function isNew(project, now) {
-    const ageDays = (now - parseDate(project.date)) / 86400000;
-    return ageDays >= 0 && ageDays < NEW_WINDOW_DAYS;
   }
 
   const trackLabel = (t) => (window.PORTFOLIO_TRACKS[t] ? window.PORTFOLIO_TRACKS[t].label : t);
@@ -85,6 +79,11 @@
     return `<ul class="bc-proof" aria-label="Verified results">${project.proof.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
   }
 
+  function pointsList(project) {
+    if (!project.points || !project.points.length) return '';
+    return `<ul class="bc-points">${project.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
+  }
+
   function imageBlock(project, now, large) {
     const primary = (project.links && (project.links.live || project.links.github)) || '#';
     const fit = project.imageFit === 'contain' ? ' bc-fit-contain' : '';
@@ -94,8 +93,7 @@
     return `
       <div class="bc-image-wrapper">
         <a href="${esc(primary)}" class="bc-image-link" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">${media}</a>
-        ${isNew(project, now) ? '<span class="bc-new" aria-label="New project">New</span>' : ''}
-        ${project.hackathon ? `<span class="bc-hackathon-badge"><span aria-hidden="true">🏆 </span>${esc(project.hackathon.name)}${project.hackathon.duration ? ' · ' + esc(project.hackathon.duration) : ''}</span>` : ''}
+        ${project.hackathon ? `<span class="bc-hackathon-badge"><span aria-hidden="true">🏆 </span>${esc(project.hackathon.name)}${project.hackathon.award ? ' · ' + esc(project.hackathon.award) : project.hackathon.duration ? ' · ' + esc(project.hackathon.duration) : ''}</span>` : ''}
       </div>`;
   }
 
@@ -145,6 +143,7 @@
           ${metaRow(project)}
           <h3 class="bc-card-title">${titleLink(project)}</h3>
           <p class="bc-card-summary">${esc(project.tagline)}</p>
+          ${pointsList(project)}
           ${proofChips(project)}
           <ul class="bc-tech">${techChips(project, 6)}${project.tech.length > 6 ? `<li class="bc-tech-more">+${project.tech.length - 6}</li>` : ''}</ul>
           ${linkIcons(project)}
@@ -157,7 +156,6 @@
       <article class="bc-mini" id="project-${esc(project.id)}">
         <div class="bc-mini-top">
           ${metaRow(project)}
-          ${isNew(project, now) ? '<span class="bc-new bc-new-inline">New</span>' : ''}
         </div>
         <h3 class="bc-mini-title">${esc(project.title)}</h3>
         ${project.hackathon ? `<a href="${esc(project.hackathon.url)}" class="bc-mini-hackathon" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🏆 </span>${esc(project.hackathon.name)}${project.hackathon.duration ? ' · ' + esc(project.hackathon.duration) : ''}</a>` : ''}
