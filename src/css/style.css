@@ -2983,39 +2983,8 @@ section[data-active="true"] {
     color: var(--color-text-primary);
 }
 
-.about-focus {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-6);
-    max-width: 1000px;
-    margin: var(--space-12) auto 0;
-}
-
-.about-focus-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-divider);
-    border-top: 3px solid var(--color-accent-primary);
-    border-radius: var(--radius-lg);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-sm);
-}
-
-.about-focus-card h3 {
-    margin: 0 0 var(--space-2);
-    font-size: var(--text-lg);
-    color: var(--color-text-primary);
-}
-
-.about-focus-card p {
-    margin: 0;
-    font-size: var(--text-sm);
-    line-height: 1.65;
-    color: var(--color-text-secondary);
-}
-
 @media (max-width: 900px) {
-    .about-layout,
-    .about-focus {
+    .about-layout {
         grid-template-columns: 1fr;
     }
 }
