@@ -1,91 +1,64 @@
-# My Web Application / Portfolio
+# Ajaypartap Singh Maan: Portfolio
 
-A full-stack web application with responsive design, animations, and email functionality.
+Source for [ajaymaan13.vercel.app](https://ajaymaan13.vercel.app): a fast, accessible, no-framework portfolio aimed at SDET/QA automation, software engineering and AI/ML roles.
 
-## 📋 Project Overview
+## Stack
 
-This project consists of a web application with both client-side and server-side components. It features responsive design, custom animations, and email functionality.
+- **Front end:** plain HTML, CSS and JavaScript. No framework and no build step.
+- **Content:** JavaScript data files in `src/data/`, rendered by small scripts in `src/js/`.
+- **Contact form:** `api/send-email.js`, a Vercel serverless function that sends mail with Nodemailer (Gmail).
+- **Local dev server:** `server.js` (Express) serves the site and mounts the same contact handler.
+- **Hosting:** Vercel.
+- **Extras:** Three.js particle background (lazy-loaded; skipped on small screens and for `prefers-reduced-motion`).
 
-## 🌐 Deployment
-This website is hosted on Vercel and can be accessed at https://ajaymaan13.vercel.app.
-
-## 🔧 Technology Stack
-
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js
-- **Other**: Email integration
-
-## 📁 Project Structure
-
-```
-├── package-lock.json
-├── package.json
-├── public/              # Public static files
-├── server.js            # Main Node.js server file
-├── src/
-│   ├── assets/          # Miscellaneous assets
-│   ├── css/             # Stylesheets
-│   │   ├── responsive.css  # Responsive styles
-│   │   └── style.css       # Main styles
-│   ├── images/          # Project images
-│   │   ├── icons/       # Icon files (e.g., GitHub, VSCode)
-│   │   └── profile-picture.png
-│   └── js/              # JavaScript files
-│       ├── animations.js   # Animation logic
-│       └── main.js         # Core JS logic
-└── test-email.js        # Script to test email functionality
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher recommended)
-- npm (comes with Node.js)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd Portfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the server:
-   ```bash
-   node server.js
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000` (or whatever port you've configured)
-
-## 📊 Features
-
-- Responsive design for various screen sizes
-- Custom animations
-- Email functionality
-- [Add any other significant features here]
-
-## 📧 Email Testing
-
-The project includes email functionality that can be tested using:
+## Run locally
 
 ```bash
-node test-email.js
+npm install
+npm run dev        # http://localhost:3000 (nodemon)
 ```
 
-## 🛠️ Development
+To test the contact form locally, create a `.env` file (never committed):
 
-- The `src/js/main.js` file contains the core JavaScript logic
-- Styling is separated into `style.css` for main styles and `responsive.css` for responsive design
-- Server functionality is handled in `server.js`
+```bash
+EMAIL_USER=you@gmail.com        # sending account
+EMAIL_PASS=your-app-password    # Gmail app password, not your login password
+RECIPIENT_EMAIL=you@gmail.com   # where messages are delivered
+```
 
+## Project layout
 
-## 👤 Contact
+```
+index.html            single page: hero, about, experience, projects, leadership, skills, contact
+api/send-email.js     contact form handler (Vercel function; also used by server.js)
+server.js             local dev server
+src/data/             all page content (edit these to change what the site says)
+  experience.js         work experience
+  projects.js           featured + more projects
+  leadership.js         leadership cards and the hackathon strip
+src/js/               renderers and behaviour (experience.js, bc-projects.js, leadership.js, ...)
+src/css/              theme.css holds design tokens for both themes
+src/images/           screenshots (WebP, under 250 KB each) and logos
+```
 
-Linkedin: www.linkedin.com/in/ajaypartap-singh-maan
-Github: AjayMaan13
+## Editing content
+
+**Add a project:** add an object to `window.PORTFOLIO_PROJECTS` in `src/data/projects.js`; the schema is documented at the top of that file.
+
+- `featured: true` plus a `featuredRank` puts it in the Featured block (ranks 1-2 render as full-width "Latest" cards).
+- Without `featured` it appears in "More projects", sorted by `date` (newest first) and filterable by `tracks`.
+- The "New" ribbon is computed from `date`, so there is nothing to remove later.
+- Screenshots go in `src/images/` as WebP (about 1600 px wide, under 250 KB). Without an image a gradient placeholder is shown.
+
+**Change experience or leadership:** edit `src/data/experience.js` or `src/data/leadership.js`.
+
+**The accuracy rule:** every number on the site must be reproducible from the project's own repo (README, results files, CI output). If you cannot reproduce it, leave it out.
+
+## Deployment
+
+Vercel deploys on every push; pull requests get preview URLs. Set these environment variables in the Vercel project (Settings, Environment Variables) so the contact form works: `EMAIL_USER`, `EMAIL_PASS`, `RECIPIENT_EMAIL`.
+
+## Quality notes
+
+- Targets: Lighthouse Performance 90+, Accessibility 100, WCAG 2.1 AA (focus rings, contrast in both themes, skip link, keyboard-operable filters, reduced-motion support).
+- Contact handler: validates and length-limits input, HTML-escapes it before it reaches the email body, blocks header injection, has a honeypot field and a best-effort per-IP rate limit, and never logs request headers or bodies.

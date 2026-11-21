@@ -3,7 +3,46 @@
  * Creates an interactive 3D background with particle system
  */
 
+const THREE_SRC = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r151/three.min.js";
+
+// Only load three.js when the decoration is worth its weight: skip it for
+// reduced-motion users and small screens, and wait until the hero is in view.
+function shouldRun3D() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const small = window.matchMedia("(max-width: 767px)").matches;
+  return !reduce && !small;
+}
+
+function loadThree() {
+  return new Promise((resolve, reject) => {
+    if (window.THREE) return resolve();
+    const script = document.createElement("script");
+    script.src = THREE_SRC;
+    script.async = true;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  if (!shouldRun3D()) return;
+  const hero = document.querySelector("#home");
+  const start = () => loadThree().then(initBackground3D).catch(() => {});
+  if (hero && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        start();
+      }
+    });
+    io.observe(hero);
+  } else {
+    start();
+  }
+});
+
+function initBackground3D() {
   // Create a container for the 3D canvas
   const container = document.createElement("div");
   container.className = "background-3d"; // Changed from '3d-background' to 'background-3d'
@@ -121,4 +160,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderer.render(scene, camera);
   }
-});
+}

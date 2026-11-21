@@ -1,443 +1,92 @@
 /**
- * Leadership & Mentorship Section
- * Creates leadership cards from data array
+ * Leadership & hackathon strip renderer.
+ * Content lives in src/data/leadership.js (window.PORTFOLIO_LEADERSHIP, window.PORTFOLIO_HACKATHONS).
  */
+(function () {
+  'use strict';
 
-// Leadership data array
-const leadershipData = [
-  {
-    id: "lead1",
-    role: "Open Source Mentor",
-    company: "Social Winter of Code (SWOC)",
-    logo: "https://www.socialwinterofcode.com/SWOC_W_Black.png",
-    date: "December 2025 – March 2026",
-    location: "Remote",
-    type: "mentorship",
-    description:
-      "Selected as a Mentor for Social Winter of Code (SWOC), guiding contributors through open-source projects, codebases, and best practices while ensuring high-quality, impactful contributions.",
-    highlights: [
-      "Mentored 20+ contributors across multiple open-source projects, providing technical guidance on issue understanding, code structure, debugging, and implementation strategies",
-      "Reviewed 50+ pull requests, suggesting improvements and collaborating with project admins to maintain code quality, originality, and alignment with project goals",
-      "Fostered collaborative learning environment via GitHub and Discord, unblocking technical challenges and promoting inclusive open-source practices",
-      "Guided contributors through Git workflows, version control best practices, and collaborative development methodologies",
-    ],
-    technologies: [
-      "Open Source",
-      "GitHub",
-      "Pull Request Reviews",
-      "Mentorship",
-      "Community Building",
-      "Code Review",
-      "Documentation",
-      "Git",
-      "Technical Writing",
-    ],
-    current: false,
-  },
-  {
-    id: "lead3",
-    role: "Mentor",
-    company: "MathHacks at De La Salle College \"Oaklands\"",
-    logo: "src/images/math-hacks.png",
-    date: "March 2026",
-    location: "Toronto, ON",
-    type: "volunteer",
-    description:
-      "Volunteered as a mentor at MathHacks, a math-focused hackathon at De La Salle College \"Oaklands\", supporting students in building innovative projects at the intersection of mathematics and technology.",
-    highlights: [
-      "Mentored student teams tackling real-world problems, including an 8th-grade team building a Chrome extension that tracked browsing history and visualised it as a 3D rendered graph",
-      "Provided technical guidance alongside industry mentors including lead architects, ML practitioners, and product leaders from companies like Dayforce, ClassZoo, and Lazer Technologies",
-      "Witnessed students leveraging cutting-edge technologies independently, demonstrating strong initiative and creativity beyond their grade level",
-      "Contributed to a collaborative learning environment that culminated in teams like A(x)iom — a real-time multiplayer math competition platform with ELO ranking — winning the top overall hack",
-    ],
-    technologies: [
-      "Mentorship",
-      "Hackathon",
-      "Mathematics",
-      "Student Engagement",
-      "Community Building",
-      "Volunteer",
-      "Tech Education",
-    ],
-    current: false,
-  },
-  {
-    id: "lead4",
-    role: "Robotics Mentor",
-    company: "UTRA Hacks 2025 - University of Toronto Robotics Association",
-    logo: "https://hackathon.utra.ca/_next/image?url=%2Fheader%2Futra-hacks-header-logo.png&w=256&q=75", // Use UTRA logo if available, or U of T logo
-    date: "January 2025",
-    location: "Toronto, ON",
-    type: "mentorship",
-    description:
-      "Selected as mentor for UTRA Hacks 2025 - Canada's premier robotics hackathon hosted by the University of Toronto Robotics Association. Guided student teams through 2-day Winter Olympics biathlon challenge, demonstrating autonomous robotics system design and best practices.",
-    highlights: [
-      "Mentored 15+ student teams building autonomous robots with Arduino, guiding implementation of color sensors (TCS3200), IR line following, ultrasonic obstacle detection, and servo-controlled mechanisms",
-      "Designed and built demonstration robot showcasing state machine architecture, sensor calibration workflows, and modular testing strategies for navigation and target shooting systems",
-      "Provided hands-on technical support debugging sensor integration issues, motor control algorithms, and autonomous decision-making logic during intensive 48-hour competition",
-      "Delivered workshops on robotics fundamentals including perception (sensors), reasoning (path planning), and actuation (motor control) to enhance learning outcomes",
-    ],
-    technologies: [
-      "Arduino",
-      "C/C++",
-      "Robotics",
-      "Embedded Systems",
-      "Sensors",
-      "State Machines",
-      "Mentorship",
-      "Workshop Facilitation",
-      "Technical Support",
-    ],
-    current: false,
-  },
-  {
-    id: "lead2",
-    role: "Data Engineering Lead",
-    company: "Ontario Government x Microsoft Hackathon 2025",
-    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM19mN0idFegTWMKEwN-2auLSfz21bowUDdQ&s",
-    date: "November 2025 – December 2025",
-    location: "Toronto, ON",
-    type: "leadership",
-    description:
-      "Led data engineering team at 2-day government hackathon, building ETL pipelines and analytics infrastructure using Microsoft Fabric, Databricks, and Azure cloud services to process large-scale public safety datasets.",
-    highlights: [
-      "Led team of 6 engineers building production-grade ETL workflows using Microsoft Fabric and Databricks with PySpark, processing 300K+ crime records from Ontario public safety databases",
-      "Designed lakehouse architecture with Bronze-Silver-Gold layers using Azure Data Factory, implementing incremental data loading and data quality validation with Delta Lake",
-      "Developed Power BI dashboards with real-time crime analytics and geospatial visualizations, enabling data-driven insights for government stakeholders",
-      "Delivered end-to-end data pipeline in 48 hours, demonstrating rapid prototyping and cloud-native data engineering best practices",
-    ],
-    technologies: [
-      "Microsoft Fabric",
-      "Databricks",
-      "PySpark",
-      "Apache Spark",
-      "Azure Data Factory",
-      "Power BI",
-      "Delta Lake",
-      "ETL",
-      "Data Engineering",
-      "Lakehouse Architecture",
-      "SQL",
-    ],
-    current: false,
-  },
-  {
-    id: "lead5a",
-    role: "Peer Mentor",
-    company: "Seneca Polytechnic",
-    companyKey: "seneca-volunteer",
-    logo: "src/images/seneca.png",
-    date: "April 2026 – Present",
-    location: "Toronto, ON",
-    type: "mentorship",
-    description:
-      "Resumed mentorship role, continuing to guide and support new students through their transition to postsecondary education within the Seneca community.",
-    highlights: [
-      "Mentored first-year students, providing guidance on academic expectations, time management strategies, and study skills during critical first semester transition",
-      "Facilitated peer support groups and one-on-one mentoring sessions, connecting students to Seneca's academic resources, wellness services, and career development programs",
-      "Delivered orientation and training sessions on program requirements, available services, and community standards, ensuring smooth integration into college life",
-      "Promoted diversity and inclusion by helping students build professional networks, connect with faculty, and adapt to collaborative learning environments",
-    ],
-    technologies: [
-      "Leadership",
-      "Mentorship",
-      "Communication",
-      "Training Delivery",
-      "Student Engagement",
-      "Conflict Resolution",
-      "Workshop Facilitation",
-      "Resource Coordination",
-    ],
-    current: true,
-  },
-  {
-    id: "lead5",
-    role: "Peer Mentor",
-    company: "Seneca Polytechnic",
-    companyKey: "seneca-volunteer",
-    logo: "src/images/seneca.png",
-    date: "May 2024 – September 2024",
-    location: "Toronto, ON",
-    type: "mentorship",
-    description:
-      "Guided and supported new students through their transition to postsecondary education by fostering leadership, communication, and mentorship within the Seneca community.",
-    highlights: [
-      "Mentored 15+ first-year students, providing guidance on academic expectations, time management strategies, and study skills during critical first semester transition",
-      "Facilitated peer support groups and one-on-one mentoring sessions, connecting students to Seneca's academic resources, wellness services, and career development programs",
-      "Delivered orientation and training sessions on program requirements, available services, and community standards, ensuring smooth integration into college life",
-      "Promoted diversity and inclusion by helping students build professional networks, connect with faculty, and adapt to collaborative learning environments",
-    ],
-    technologies: [
-      "Leadership",
-      "Mentorship",
-      "Communication",
-      "Training Delivery",
-      "Student Engagement",
-      "Conflict Resolution",
-      "Workshop Facilitation",
-      "Resource Coordination",
-    ],
-    current: false,
-  },
+  const ICON_CALENDAR =
+    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>';
 
-];
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
 
-// DOM Elements
-const leadershipContainer = document.querySelector(".leadership-container");
+  function createCard(item, index) {
+    const card = document.createElement('article');
+    card.className = 'exp-card lead-card';
+    card.id = `lead-${item.id}`;
+    card.style.transitionDelay = `${index * 0.08}s`;
+    card.innerHTML = `
+      <div class="exp-card-header">
+        <div class="exp-company-logo">
+          <img src="${escapeHtml(item.logo)}" alt="${escapeHtml(item.company)} logo" width="60" height="60" loading="lazy">
+        </div>
+        <div class="exp-header-content">
+          <h3 class="exp-role">${escapeHtml(item.role)}</h3>
+          <h4 class="exp-company">${escapeHtml(item.company)}</h4>
+          <div class="exp-meta">
+            <span class="exp-date">${ICON_CALENDAR}${escapeHtml(item.date)}</span>
+            ${item.current ? '<span class="exp-pill exp-pill-current">Current</span>' : ''}
+          </div>
+        </div>
+      </div>
+      <div class="exp-card-body">
+        <ul class="exp-highlights">
+          ${item.highlights.map((h) => `<li class="exp-highlight-item">${escapeHtml(h)}</li>`).join('')}
+        </ul>
+      </div>`;
+    return card;
+  }
 
-// Initialize leadership section
-document.addEventListener("DOMContentLoaded", () => {
-  // Generate leadership cards
-  generateLeadershipCards();
+  function createHackathonStrip(hackathons) {
+    const wrap = document.createElement('div');
+    wrap.className = 'hackathon-strip';
+    wrap.innerHTML = `
+      <h3 class="hackathon-strip-title">Hackathons</h3>
+      <ul class="hackathon-strip-list">
+        ${hackathons
+          .map((h) => {
+            const external = /^https?:/.test(h.url);
+            return `<li><a class="hackathon-badge" href="${escapeHtml(h.url)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>
+              <span class="hackathon-badge-name">${escapeHtml(h.name)}</span>
+              <span class="hackathon-badge-detail">${escapeHtml(h.detail)}</span></a></li>`;
+          })
+          .join('')}
+      </ul>`;
+    return wrap;
+  }
 
-  // Set up scroll animations
-  setupLeadershipAnimations();
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.leadership-container');
+    const data = window.PORTFOLIO_LEADERSHIP;
+    if (!container || !Array.isArray(data)) return;
 
-  // Add interaction effects
-  addLeadershipInteractions();
-});
+    const grid = document.createElement('div');
+    grid.className = 'lead-grid';
+    data.forEach((item, i) => grid.appendChild(createCard(item, i)));
+    container.appendChild(grid);
 
-// Generate leadership cards from data
-function generateLeadershipCards() {
-  if (!leadershipContainer) return;
-
-  // Sort by current status (current first, then by date)
-  const sortedData = [...leadershipData].sort((a, b) => {
-    if (a.current && !b.current) return -1;
-    if (!a.current && b.current) return 1;
-    return 0;
-  });
-
-  // Group entries by companyKey (fallback to id if no companyKey)
-  const groups = [];
-  const seen = {};
-
-  sortedData.forEach((leader) => {
-    const key = leader.companyKey || leader.id;
-    if (!seen[key]) {
-      seen[key] = { key, exps: [] };
-      groups.push(seen[key]);
+    if (Array.isArray(window.PORTFOLIO_HACKATHONS) && window.PORTFOLIO_HACKATHONS.length) {
+      container.appendChild(createHackathonStrip(window.PORTFOLIO_HACKATHONS));
     }
-    seen[key].exps.push(leader);
-  });
 
-  groups.forEach((group, index) => {
-    if (group.exps.length > 1) {
-      const card = createGroupedLeadershipCard(group.exps, index);
-      leadershipContainer.appendChild(card);
-    } else {
-      const card = createLeadershipCard(group.exps[0], index);
-      leadershipContainer.appendChild(card);
+    const cards = container.querySelectorAll('.exp-card');
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach((c) => c.classList.add('visible'));
+      return;
     }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+    cards.forEach((card) => observer.observe(card));
   });
-}
-
-// Create a grouped card for same-company roles
-function createGroupedLeadershipCard(exps, index) {
-  const first = exps[0];
-  const last = exps[exps.length - 1];
-  const isCurrentGroup = exps.some((e) => e.current);
-
-  const overallDate = `${last.date.split("–")[0].trim()} – ${first.date.split("–")[1].trim()}`;
-
-  const card = document.createElement("div");
-  card.className = "exp-card exp-card-grouped";
-  card.setAttribute("data-current", isCurrentGroup);
-  card.style.transitionDelay = `${index * 0.1}s`;
-
-  const rolesHTML = exps.map((exp) => `
-    <div class="exp-sub-role">
-      <div class="exp-timeline">
-        <div class="exp-timeline-dot"></div>
-        <div class="exp-timeline-line"></div>
-      </div>
-      <div class="exp-sub-role-content">
-        <div class="exp-sub-role-header">
-          <h3 class="exp-role">${exp.role}</h3>
-          ${exp.current ? '<span class="exp-current-badge">CURRENT</span>' : ''}
-        </div>
-        <div class="exp-meta">
-          <span class="exp-date">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            ${exp.date}
-          </span>
-          <span class="exp-location">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            ${exp.location}
-          </span>
-        </div>
-        ${exp.highlights.length ? `
-        <div class="exp-highlights">
-          ${exp.highlights.map((h) => `
-            <div class="exp-highlight-item">
-              <div class="exp-highlight-icon"></div>
-              <p>${h}</p>
-            </div>
-          `).join('')}
-        </div>` : ''}
-        ${exp.technologies.length ? `
-        <div class="exp-tags">
-          ${exp.technologies.map((t) => `<span class="exp-tag">${t}</span>`).join('')}
-        </div>` : ''}
-      </div>
-    </div>
-  `).join('');
-
-  card.innerHTML = `
-    <div class="exp-card-header">
-      <div class="exp-company-logo">
-        <img src="${first.logo}" alt="${first.company} Logo">
-      </div>
-      <div class="exp-header-content">
-        <h4 class="exp-company">${first.company}</h4>
-        <div class="exp-meta">
-          <span class="exp-date">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            ${overallDate}
-          </span>
-        </div>
-      </div>
-    </div>
-    <div class="exp-card-body exp-roles-list">
-      ${rolesHTML}
-    </div>
-  `;
-
-  return card;
-}
-
-// Create single leadership card
-function createLeadershipCard(leader, index) {
-  const card = document.createElement("div");
-  card.className = "exp-card";
-  card.setAttribute("data-type", leader.type);
-  card.setAttribute("data-current", leader.current);
-  card.style.transitionDelay = `${index * 0.1}s`;
-
-  card.innerHTML = `
-        <div class="exp-card-header">
-            <div class="exp-company-logo">
-                <img src="${leader.logo}" alt="${leader.company} Logo">
-            </div>
-            <div class="exp-header-content">
-                <h3 class="exp-role">${leader.role}</h3>
-                <h4 class="exp-company">${leader.company}</h4>
-                <div class="exp-meta">
-                    <span class="exp-date">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        ${leader.date}
-                    </span>
-                    <span class="exp-location">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        ${leader.location}
-                    </span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="exp-card-body">
-            <p class="exp-description">${leader.description}</p>
-            
-            <div class="exp-highlights">
-                ${leader.highlights
-                  .map(
-                    (highlight) => `
-                    <div class="exp-highlight-item">
-                        <div class="exp-highlight-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <p>${highlight}</p>
-                    </div>
-                `
-                  )
-                  .join("")}
-            </div>
-            
-            <div class="exp-tags">
-                ${leader.technologies
-                  .map((tech) => `<span class="exp-tag">${tech}</span>`)
-                  .join("")}
-            </div>
-        </div>
-    `;
-
-  return card;
-}
-
-// Setup scroll animations
-function setupLeadershipAnimations() {
-  const cards = document.querySelectorAll(".leadership-container .exp-card");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
-    }
-  );
-
-  cards.forEach((card) => observer.observe(card));
-}
-
-// Add interaction effects
-function addLeadershipInteractions() {
-  const cards = document.querySelectorAll(".leadership-container .exp-card");
-
-  cards.forEach((card) => {
-    // Add ripple effect on click
-    card.addEventListener("click", function (e) {
-      const ripple = document.createElement("span");
-      ripple.style.cssText = `
-                position: absolute;
-                border-radius: 50%;
-                background: rgba(var(--color-accent-primary-rgb), 0.3);
-                width: 20px;
-                height: 20px;
-                pointer-events: none;
-                animation: rippleEffect 0.6s ease-out;
-            `;
-
-      const rect = this.getBoundingClientRect();
-      ripple.style.left = e.clientX - rect.left - 10 + "px";
-      ripple.style.top = e.clientY - rect.top - 10 + "px";
-
-      this.appendChild(ripple);
-
-      setTimeout(() => ripple.remove(), 600);
-    });
-  });
-}
-
-// Export for global access
-window.leadershipData = leadershipData;
-window.generateLeadershipCards = generateLeadershipCards;
+})();

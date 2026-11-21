@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pageLoader) {
         setTimeout(() => {
             pageLoader.classList.add('loaded');
-        }, 500);
+        }, 100);
     }
     
     // Initialize typing effect
@@ -231,7 +231,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         if (targetElement) {
             // Get the target's position, accounting for the fixed header
-            const headerHeight = header.offsetHeight;
+            // The floating island nav replaced .header, so fall back to its 100px scroll offset
+            const headerHeight = header ? header.offsetHeight : 100;
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             
             // Smooth scroll to target
@@ -245,10 +246,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Change header style on scroll
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
+    if (header) {
+        header.classList.toggle('scrolled', window.scrollY > 50);
     }
     
     // Update active nav link
@@ -335,6 +334,14 @@ if (contactForm) {
         const formData = new FormData(contactForm);
         const formDataObj = Object.fromEntries(formData.entries());
         
+        // Honeypot: real visitors never see or fill this field
+        if (formDataObj.website) {
+            showFormMessage('Message sent successfully!', 'success');
+            contactForm.reset();
+            return;
+        }
+        delete formDataObj.website;
+
         // Basic form validation (now includes subject)
         if (!formDataObj.name || !formDataObj.email || !formDataObj.subject || !formDataObj.message) {
             showFormMessage('Please fill in all required fields.', 'error');
@@ -356,7 +363,7 @@ if (contactForm) {
         
         try {
             // Send form data to server
-            const response = await fetch('/send-email', {
+            const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -364,7 +371,12 @@ if (contactForm) {
                 body: JSON.stringify(formDataObj),
             });
             
-            const data = await response.json();
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (parseError) {
+                data = { success: false, message: 'The server returned an unexpected response.' };
+            }
             
             if (data.success) {
                 showFormMessage('Message sent successfully!', 'success');
@@ -387,7 +399,11 @@ if (contactForm) {
 function showFormMessage(message, type) {
     if (formStatus) {
         // Create message element
-        formStatus.innerHTML = `<div class="${type}-message">${message}</div>`;
+        formStatus.textContent = '';
+        const box = document.createElement('div');
+        box.className = `${type}-message`;
+        box.textContent = message;
+        formStatus.appendChild(box);
         
         // Remove message after 5 seconds
         setTimeout(() => {
@@ -405,7 +421,8 @@ function initContextNav() {
     const progressBar = document.querySelector('.scroll-progress');
     
     // Update progress bar width based on scroll position
-    window.addEventListener('scroll', () => {
+    // The scroll-progress bar is optional markup; skip it when absent
+    if (progressBar) window.addEventListener('scroll', () => {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollPercentage = (scrollTop / scrollHeight) * 100;

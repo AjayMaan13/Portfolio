@@ -1,11 +1,9 @@
 // Simple typing effect
 document.addEventListener('DOMContentLoaded', () => {
     const roles = [
+        'SDET & QA Automation Engineer',
         'Software Engineer',
-        'Web Developer',
-        'Problem Solver',
-        'Full-Stack Developer',
-        'Programming Student'
+        'AI/ML Engineer'
     ];
     
     const element = document.querySelector('.typing-text');

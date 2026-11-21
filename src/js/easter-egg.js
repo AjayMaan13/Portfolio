@@ -28,15 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo = document.querySelector('.logo');
     let logoClicks = 0;
     
-    logo.addEventListener('click', (e) => {
-        logoClicks++;
-        
-        // After 5 clicks, activate easter egg
-        if (logoClicks >= 5) {
-            activateLogoEasterEgg();
-            logoClicks = 0;
-        }
-    });
+    // The logo element no longer exists in the markup, so only wire it up if present.
+    if (logo) {
+        logo.addEventListener('click', () => {
+            logoClicks++;
+
+            // After 5 clicks, activate easter egg
+            if (logoClicks >= 5) {
+                activateLogoEasterEgg();
+                logoClicks = 0;
+            }
+        });
+    }
 
     // Easter egg activations
     function activateKonamiEasterEgg() {
