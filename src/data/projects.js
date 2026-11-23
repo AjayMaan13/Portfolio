@@ -215,31 +215,28 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'fragments',
-    title: 'Fragments: REST API Microservice',
-    tagline: 'AWS-hosted Node.js microservice that stores user data and converts it on read.',
-    description: 'A Node.js REST API handling 12 content types, protected by AWS Cognito JWT verification, with metadata in DynamoDB and objects in S3 on ECS Fargate behind a load balancer. The whole AWS environment is Terraform (9 modules, 34 resources), with a 6-job GitHub Actions CI/CD pipeline and 94% line coverage.',
-    date: '2026-05',
+    title: 'Fragments: Cloud-Native API on AWS',
+    tagline: 'Fargate API for storing, converting, sharing and semantically searching small pieces of data.',
+    description:
+      'A cloud-native API on AWS Fargate for storing, converting, sharing and semantically searching small pieces of data. The whole environment is Terraform (12 modules, one-command create and destroy), heavy conversions run on an SQS-backed worker, and search uses Amazon Bedrock embeddings. Load-tested, mutation-tested and observable.',
+    date: '2026-11',
     tracks: ['swe'],
     featured: true,
     featuredRank: 3,
     points: [
-      'Built a 6-job GitHub Actions CI/CD pipeline (ESLint, hadolint, unit, Docker Compose integration, Terraform validate), green on 20 consecutive runs.',
-      'Node.js REST API handling 12 content types, 99.97% uptime and sub-250 ms response times.',
-      'DynamoDB metadata, S3 objects, AWS ECS Fargate at 10,000 requests per second, with Cognito JWT verification middleware.',
-      'Terraform codifies the full AWS environment (9 modules, 34 resources, 23 resource types), created or torn down with one command.'
+      'Terraform defines the whole AWS environment (12 modules, created or destroyed with one command); Cognito auth, S3 and DynamoDB storage, no long-lived credentials.',
+      'Heavy conversions run on a separate SQS-backed worker: cheap-read p95 stays 67 ms with 0 of 3,712 requests failed, versus 39% failing when the work ran in the request.',
+      'Semantic search with Bedrock Titan embeddings reaches recall@1 of 1.00 against 0.44 for a keyword baseline (small author-written set).',
+      '608 unit tests at 97.96% line coverage, mutation score raised from 76.4% to 98.6% on core modules, 20 Hurl integration files, and 6 CloudWatch alarms.'
     ],
-    proof: [
-      '94% line coverage · 195 unit tests',
-      'CI green on 20 consecutive runs'
-    ],
-    tech: ['Node.js', 'Express', 'AWS Cognito', 'S3', 'DynamoDB', 'ECS Fargate', 'Terraform', 'GitHub Actions'],
+    proof: ['608 tests · 97.96% coverage', 'Mutation score 98.6%'],
+    tech: ['Node.js', 'Express', 'AWS Fargate', 'SQS', 'Bedrock', 'DynamoDB', 'S3', 'Cognito', 'Terraform', 'GitHub Actions'],
     image: 'src/images/fragments.webp',
-    imageAlt: 'Fragments microservice architecture on AWS',
-    links: {
-      github: 'https://github.com/AjayMaan13/fragments'
-    },
+    imageAlt: 'Fragments architecture: user and UI, Cognito login, load balancer, API task, SQS queue with dead-letter queue, worker task, S3, DynamoDB, Bedrock and CloudWatch, with test and load results',
+    links: { github: 'https://github.com/AjayMaan13/fragments' },
     team: 'Solo'
   },
+
   {
     id: 'leaselens',
     title: 'LeaseLens: Lease Extraction & Rent Forecasting',
