@@ -232,7 +232,7 @@ window.PORTFOLIO_PROJECTS = [
     proof: ['608 tests · 97.96% coverage', 'Mutation score 98.6%'],
     tech: ['Node.js', 'Express', 'AWS Fargate', 'SQS', 'Bedrock', 'DynamoDB', 'S3', 'Cognito', 'Terraform', 'GitHub Actions'],
     image: 'src/images/fragments.webp',
-    imageAlt: 'Fragments cover: a semantic search for how do I keep my bread culture alive returns the sourdough note, alongside convert-on-read, background worker and expiring share link features, with 608 tests, 98.6% mutation score, 0 of 3,712 requests failed and recall@1 of 1.00',
+    imageAlt: 'Fragments web app in dark mode listing a user\'s fragments as cards with type, size, creation time, view count and expiry, plus Update, Share, Delete and Download as controls',
     links: { github: 'https://github.com/AjayMaan13/fragments' },
     team: 'Solo'
   },
