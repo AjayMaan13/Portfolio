@@ -68,7 +68,7 @@ window.PORTFOLIO_PROJECTS = [
     ],
     tech: ['Python', 'FastAPI', 'Claude API', 'SurrealDB', 'Next.js', 'TypeScript', 'Clerk', 'Render'],
     image: 'src/images/agenttrace.webp',
-    imageAlt: 'AgentTrace pitch cover: rewind to any sub-agent, fix it, and be confident the fix works',
+    imageAlt: 'AgentTrace workbench: a multi-agent run drawn as one line (Request, Planner, Researcher, Writer, Critic) with the planner marked as the likely cause, and two forks showing 0 of 5 right when the critic is changed and 8 of 8 right when the planner is fixed',
     links: {
       github: 'https://github.com/AjayMaan13/AgentTrace',
       live: 'https://agenttrace-web.onrender.com/demo',
