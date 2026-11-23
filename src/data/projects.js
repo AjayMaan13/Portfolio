@@ -98,14 +98,15 @@ window.PORTFOLIO_PROJECTS = [
   {
     id: 'ontario-grid-signal',
     title: 'Ontario Grid Signal',
-    tagline: 'Real IESO grid data streamed through Kafka into BigQuery, with a backtested peak-demand signal.',
+    tagline: 'Real IESO grid data streamed through Kafka into BigQuery, with a backtested signal that flags likely peak-demand hours.',
     description: 'A streaming pipeline on real Ontario IESO public data. A Kubernetes (GKE) cluster, VPC and IAM are provisioned with Terraform (remote state) and gated in GitHub Actions with fmt, validate, tflint and Checkov (58 checks passed). Kafka (Strimzi) feeds BigQuery through a Python consumer that KEDA autoscales; a nightly Airflow DAG compares 30 days of IESO file listings with what was ingested and republishes the gap, with idempotent tasks covered by 6 DAG tests. 10 Datadog monitors are defined as Terraform and were proven with induced failure and lag alerts. A backtested peak-risk signal caught 10 of 10 held-out IESO peaks with 45 minutes of notice at 245 alert-hours.',
     date: '2026-09',
     tracks: ['data', 'swe'],
     featured: true,
     featuredRank: 2,
     proof: [
-      '10 of 10 held-out peaks caught (45 min notice)',
+      '10 of 10 held-out peaks flagged (45 min notice)',
+      '8 of 10 with about 16 h notice',
       'KEDA autoscaling: 5.7× faster catch-up'
     ],
     tech: ['Python', 'Kafka (Strimzi)', 'BigQuery', 'Airflow', 'Kubernetes (GKE)', 'KEDA', 'Terraform', 'Datadog'],
@@ -117,6 +118,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     team: 'Solo',
     points: [
+      'Rule-based peak-demand signal, backtested on held-out 2024–25: 10 of 10 peak hours flagged with 45 min notice, 8 of 10 with about 16 h notice.',
       'GKE cluster, VPC and IAM provisioned with Terraform (remote state), gated by fmt, validate, tflint and Checkov (58 checks passed).',
       'Kafka (Strimzi) to BigQuery pipeline (Python, Airflow) on real IESO data, with a KEDA-autoscaled consumer.',
       'Nightly Airflow DAG reconciles 30 days of IESO file listings and republishes the gap; idempotent tasks, 6 integrity tests.',
