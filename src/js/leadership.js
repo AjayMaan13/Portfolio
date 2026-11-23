@@ -18,6 +18,7 @@
     card.id = `lead-${item.id}`;
     card.style.transitionDelay = `${index * 0.08}s`;
     card.innerHTML = `
+      ${item.image ? `<img class="lead-photo" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt || '')}" width="1600" height="1000" loading="lazy" decoding="async">` : ''}
       <div class="exp-card-header">
         <div class="exp-company-logo">
           <img src="${escapeHtml(item.logo)}" alt="${escapeHtml(item.company)} logo" width="60" height="60" loading="lazy">

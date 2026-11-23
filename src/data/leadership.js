@@ -31,6 +31,8 @@ window.PORTFOLIO_LEADERSHIP = [
     logo: 'src/images/utra-hacks-logo.webp',
     date: '2025 – 2026',
     location: 'Toronto, ON',
+    image: 'src/images/utraHacks.webp',
+    imageAlt: 'Autonomous Arduino robot on a table at UTRA Hacks 2026 (January 31 to February 1), with wiring, sensors and a laptop showing the event page',
     highlights: [
       'Provided technical mentorship to hackathon participants at MathHacks and UTRA Hacks.',
       'Mentored participant teams at UTRA Hacks and built an autonomous Arduino robot as a reference demo for the timed challenge.'
